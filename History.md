@@ -1,5 +1,13 @@
 # History
 
+## 0.12.2 / 2020-04-25
+
+  * `z c` hides selected cell code
+  * `z o` shows selected cell code
+  * `z m` hides all cell code
+  * `z r` shows all cell code
+
+
 ## 0.12.1 / 2020-03-06
 
   * `ctrl [` exits Vim insert mode
