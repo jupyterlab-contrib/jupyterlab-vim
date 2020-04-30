@@ -2,10 +2,10 @@
 
 ## 0.12.2 / 2020-04-25
 
-  * `z c` hides selected cell code
-  * `z o` shows selected cell code
-  * `z m` hides all cell code
-  * `z r` shows all cell code
+  * `z c` hides selected code cell
+  * `z o` shows selected code cell
+  * `z m` hides all code cells
+  * `z r` shows all code cells
 
 
 ## 0.12.1 / 2020-03-06
