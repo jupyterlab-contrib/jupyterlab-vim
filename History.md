@@ -1,5 +1,22 @@
 # History
 
+## 0.12.4 / 2020-05-20
+
+  * Switch from travis to GitHub actions.
+  * Auto deployment when merging to master.
+  * Auto bump of versions.
+
+## 0.12.3 / 2020-04-25
+
+  * `z c` hides selected code cell
+  * `z o` shows selected code cell
+  * `z m` hides all code cells
+  * `z r` shows all code cells
+
+## 0.12.2 / 2020-03-09
+
+  * Change package.json information
+
 ## 0.12.1 / 2020-03-06
 
   * `ctrl [` exits Vim insert mode
