@@ -1,6 +1,6 @@
 {
   "name": "@axlair/jupyterlab_vim",
-  "version": "0.12.4",
+  "version": "0.13.0",
   "description": "Code cell vim bindings",
   "author": "Axel Fahy",
   "license": "MIT",
@@ -21,33 +21,53 @@
     "jupyterlab-extension"
   ],
   "scripts": {
-    "build": "tsc",
-    "clean": "rimraf lib",
-    "lint": "tslint",
-    "prepare": "npm run build",
-    "watch": "tsc -w"
+    "build": "jlpm run build:lib && jlpm run build:labextension:dev",
+    "build:prod": "jlpm run build:lib && jlpm run build:labextension",
+    "build:labextension": "jupyter labextension build .",
+    "build:labextension:dev": "jupyter labextension build --development True .",
+    "build:lib": "tsc",
+    "clean": "jlpm run clean:lib",
+    "clean:lib": "rimraf lib tsconfig.tsbuildinfo",
+    "clean:labextension": "rimraf jupyterlab_vim/labextension",
+    "clean:all": "jlpm run clean:lib && jlpm run clean:labextension",
+    "eslint": "eslint . --ext .ts,.tsx --fix",
+    "eslint:check": "eslint . --ext .ts,.tsx",
+    "install:extension": "jupyter labextension develop --overwrite .",
+    "prepare": "jlpm run clean && jlpm run build:prod",
+    "watch": "run-p watch:src watch:labextension",
+    "watch:src": "tsc -w",
+    "watch:labextension": "jupyter labextension watch ."
   },
   "files": [
     "lib/**/*.{d.ts,eot,gif,html,jpg,js,js.map,json,png,svg,woff2,ttf}",
     "style/**/*.{css,eot,gif,html,jpg,json,png,svg,woff2,ttf}"
   ],
   "jupyterlab": {
-    "extension": true
+    "extension": true,
+    "outputDir": "jupyterlab_vim/labextension"
   },
   "dependencies": {
-    "@jupyterlab/application": "^2.0.1",
-    "@jupyterlab/cells": "^2.0.1",
-    "@jupyterlab/codemirror": "^2.0.1",
-    "@jupyterlab/notebook": "^2.0.1",
-    "@lumino/commands": "^1.10.1",
-    "@lumino/coreutils": "^1.4.2",
-    "@lumino/domutils": "^1.1.7",
+    "@jupyterlab/application": "^3.0.0-rc.13",
+    "@jupyterlab/cells": "^3.0.0-rc.13",
+    "@jupyterlab/codemirror": "^3.0.0-rc.13",
+    "@jupyterlab/notebook": "^3.0.0-rc.13",
+    "@lumino/commands": "^1.12.0",
+    "@lumino/coreutils": "^1.5.3",
+    "@lumino/domutils": "^1.2.3",
     "@types/codemirror": "^0.0.87",
-    "react": "16.9.0"
+    "react": "^17.0.1"
   },
   "devDependencies": {
-    "rimraf": "^2.6.2",
+    "@jupyterlab/builder": "^3.0.0-rc.2",
+    "@typescript-eslint/eslint-plugin": "^2.27.0",
+    "@typescript-eslint/parser": "^2.27.0",
+    "eslint": "^7.5.0",
+    "eslint-config-prettier": "^6.10.1",
+    "eslint-plugin-prettier": "^3.1.2",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^1.19.0",
+    "rimraf": "^3.0.2",
     "tslint": "^6.1.2",
-    "typescript": "^3.9.3"
+    "typescript": "~4.0.3"
   }
 }

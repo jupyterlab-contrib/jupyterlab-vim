@@ -1,5 +1,3 @@
-import * as CodeMirror from 'codemirror';
-
 import {
     JupyterFrontEnd, JupyterFrontEndPlugin
 } from '@jupyterlab/application';
@@ -13,6 +11,7 @@ import {
 } from '@jupyterlab/cells';
 
 import {
+    ICodeMirror,
     CodeMirrorEditor
 } from '@jupyterlab/codemirror';
 
@@ -23,11 +22,6 @@ import {
 import {
     ElementExt
 } from '@lumino/domutils';
-
-import '../style/index.css';
-// Previously the vim keymap was loaded by JupyterLab, but now
-// it is lazy loaded, so we have to load it explicitly
-import 'codemirror/keymap/vim.js';
 
 /**
  * A boolean indicating whether the platform is Mac.
@@ -41,14 +35,15 @@ const extension: JupyterFrontEndPlugin<void> = {
     id: 'jupyterlab_vim',
     autoStart: true,
     activate: activateCellVim,
-    requires: [INotebookTracker]
+    requires: [INotebookTracker, ICodeMirror]
 };
 
 class VimCell {
 
-    constructor(app: JupyterFrontEnd, tracker: INotebookTracker) {
+    constructor(app: JupyterFrontEnd, tracker: INotebookTracker, cm: CodeMirrorEditor) {
         this._tracker = tracker;
         this._app = app;
+        this._cm = cm;
         this._onActiveCellChanged();
         this._tracker.activeCellChanged.connect(this._onActiveCellChanged, this);
     }
@@ -64,24 +59,24 @@ class VimCell {
             editor.setOption('keyMap', 'vim');
             let extraKeys = editor.getOption('extraKeys') || {};
 
-            extraKeys['Esc'] = CodeMirror.prototype.leaveInsertMode;
+            extraKeys['Esc'] = (this._cm as any).prototype.leaveInsertMode;
             if (!IS_MAC) {
                 extraKeys['Ctrl-C'] = false;
             }
 
-            CodeMirror.prototype.save = () => {
+            (this._cm as any).prototype.save = () => {
                 commands.execute('docmanager:save');
             };
 
             editor.setOption('extraKeys', extraKeys);
 
-            let lcm = CodeMirror as any;
+            let lcm = this._cm as any;
             let lvim = lcm.Vim as any;
             lvim.defineEx('quit', 'q', function(cm: any) {
                 commands.execute('notebook:enter-command-mode');
             });
 
-            (CodeMirror as any).Vim.handleKey(editor.editor, '<Esc>');
+            (this._cm as any).Vim.handleKey(editor.editor, '<Esc>');
             lvim.defineMotion('moveByLinesOrCell', (cm: any, head: any, motionArgs: any, vim: any) => {
                 let cur = head;
                 let endCh = cur.ch;
@@ -157,8 +152,8 @@ class VimCell {
                 //     endCh = findFirstNonWhiteSpaceCharacter(cm.getLine(line));
                 //     vim.lastHPos = endCh;
                 // }
-                vim.lastHSPos = cm.charCoords(CodeMirror.Pos(line, endCh), 'div').left;
-                return (CodeMirror as any).Pos(line, endCh);
+                vim.lastHSPos = cm.charCoords((this._cm as any).Pos(line, endCh), 'div').left;
+                return (this._cm as any).Pos(line, endCh);
             });
 
             lvim.mapCommand(
@@ -189,12 +184,14 @@ class VimCell {
 
     private _tracker: INotebookTracker;
     private _app: JupyterFrontEnd;
+    private _cm: CodeMirrorEditor;
 }
 
-function activateCellVim(app: JupyterFrontEnd, tracker: INotebookTracker): Promise<void> {
-
-    Promise.all([app.restored]).then(([args]) => {
+function activateCellVim(app: JupyterFrontEnd, tracker: INotebookTracker, jlabCodeMirror: ICodeMirror): Promise<void> {
+    Promise.all([app.restored]).then(async ([args]) => {
         const { commands, shell } = app;
+        await jlabCodeMirror.ensureVimKeymap()
+        const CodeMirror = (jlabCodeMirror.CodeMirror as unknown) as CodeMirrorEditor;
         function getCurrent(args: ReadonlyPartialJSONObject): NotebookPanel | null {
             const widget = tracker.currentWidget;
             const activate = args['activate'] !== false;
@@ -625,7 +622,7 @@ function activateCellVim(app: JupyterFrontEnd, tracker: INotebookTracker): Promi
         });
 
         // tslint:disable:no-unused-expression
-        new VimCell(app, tracker);
+        new VimCell(app, tracker, CodeMirror);
     });
 
     return Promise.resolve();

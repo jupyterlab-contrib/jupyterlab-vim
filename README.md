@@ -21,17 +21,20 @@ This extension splits Jupyter edit mode into two modes: Vim command mode and Vim
 Three editing modes now exist: Jupyter command, Vim command, and Vim insert.
 
 ## Install
-### Prerequisites
+### For jupyterlab 3+
 
-* JupyterLab 2.0
+```bash
+pip install jupyterlab_vim
+```
 
-### Install or upgrade
+### For jupyterlab 2
+#### Install or upgrade
 
 ```bash
 jupyter labextension install @axlair/jupyterlab_vim
 ```
 
-### Uninstall
+#### Uninstall
 
 ```bash
 jupyter labextension uninstall @axlair/jupyterlab_vim
@@ -106,19 +109,48 @@ Contributions and feedback are most welcome!
 
 [![](https://sourcerer.io/fame/jwkvam/jwkvam/jupyterlab-vim/images/0)](https://sourcerer.io/fame/jwkvam/jwkvam/jupyterlab-vim/links/0)[![](https://sourcerer.io/fame/jwkvam/jwkvam/jupyterlab-vim/images/1)](https://sourcerer.io/fame/jwkvam/jwkvam/jupyterlab-vim/links/1)[![](https://sourcerer.io/fame/jwkvam/jwkvam/jupyterlab-vim/images/2)](https://sourcerer.io/fame/jwkvam/jwkvam/jupyterlab-vim/links/2)[![](https://sourcerer.io/fame/jwkvam/jwkvam/jupyterlab-vim/images/3)](https://sourcerer.io/fame/jwkvam/jwkvam/jupyterlab-vim/links/3)[![](https://sourcerer.io/fame/jwkvam/jwkvam/jupyterlab-vim/images/4)](https://sourcerer.io/fame/jwkvam/jwkvam/jupyterlab-vim/links/4)[![](https://sourcerer.io/fame/jwkvam/jwkvam/jupyterlab-vim/images/5)](https://sourcerer.io/fame/jwkvam/jwkvam/jupyterlab-vim/links/5)[![](https://sourcerer.io/fame/jwkvam/jwkvam/jupyterlab-vim/images/6)](https://sourcerer.io/fame/jwkvam/jwkvam/jupyterlab-vim/links/6)[![](https://sourcerer.io/fame/jwkvam/jwkvam/jupyterlab-vim/images/7)](https://sourcerer.io/fame/jwkvam/jwkvam/jupyterlab-vim/links/7)
 
-## Development
+### Development install
 
-For a development install (requires npm version 4 or later), do the following in the repository directory. **Please note**, you need to make sure that you satisfy all the prerequisites, i.e. the JupyterLab version.
-
-```bash
-jlpm install
-jlpm run build
-jupyter labextension link .
+Note: You will need NodeJS to build the extension package. To install with `conda` do:
+```
+conda install -c conda-forge nodejs
 ```
 
-To rebuild the package and the JupyterLab app:
+The `jlpm` command is JupyterLab's pinned version of
+[yarn](https://yarnpkg.com/) that is installed with JupyterLab. You may use
+`yarn` or `npm` in lieu of `jlpm` below.
 
 ```bash
+# Clone the repo to your local environment
+# Change directory to the jupyterlab_vim directory
+# Install package in development mode
+pip install jupyter_packaging
+pip install -e .
+# Link your development version of the extension with JupyterLab
+jupyter labextension develop . --overwrite
+# Rebuild extension Typescript source after making changes
 jlpm run build
-jupyter lab build
+```
+
+You can watch the source directory and run JupyterLab at the same time in different terminals to watch for changes in the extension's source and automatically rebuild the extension.
+
+```bash
+# Watch the source directory in one terminal, automatically rebuilding when needed
+jlpm run watch
+# Run JupyterLab in another terminal
+jupyter lab
+```
+
+With the watch command running, every saved change will immediately be built locally and available in your running JupyterLab. Refresh JupyterLab to load the change in your browser (you may need to wait several seconds for the extension to be rebuilt).
+
+By default, the `jlpm run build` command generates the source maps for this extension to make it easier to debug using the browser dev tools. To also generate source maps for the JupyterLab core extensions, you can run the following command:
+
+```bash
+jupyter lab build --minimize=False
+```
+
+### Uninstall
+
+```bash
+pip uninstall jupyterlab_vim
 ```
