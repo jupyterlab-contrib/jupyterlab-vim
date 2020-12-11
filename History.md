@@ -1,5 +1,10 @@
 # History
 
+## 0.13.0 / 2020-12-10
+
+  * Support JupyterLab 3+
+  * Set up eslint and prettier
+
 ## 0.12.4 / 2020-05-20
 
   * Switch from travis to GitHub actions.
