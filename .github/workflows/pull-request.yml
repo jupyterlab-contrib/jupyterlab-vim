@@ -21,5 +21,17 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - run: npm install
-      - run: npm run lint src/index.ts
+      - name: Install Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.7'
+          architecture: 'x64'
+      - name: Install dependencies
+        run: pip install jupyterlab 
+      - name: Build the extension
+        run: |
+          jlpm
+          jlpm run eslint:check
+          python -m pip install .
+          jupyter labextension list 2>&1 | grep -ie "@axlair/jupyterlab_vim.*OK"
+          python -m jupyterlab.browser_check
