@@ -12,6 +12,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: Install node
+        uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+          registry-url: 'https://registry.npmjs.org'
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
@@ -22,7 +27,7 @@ jobs:
           pip install setuptools wheel
       - name: Build package
         run: |
-        python setup.py sdist bdist_wheel
+          python setup.py sdist bdist_wheel
       - name: Publish package to PyPi
         uses: pypa/gh-action-pypi-publish@master
         with:
