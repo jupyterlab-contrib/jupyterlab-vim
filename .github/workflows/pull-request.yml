@@ -30,6 +30,7 @@ jobs:
         run: pip install jupyterlab 
       - name: Build the extension
         run: |
+          jlpm
           jlpm run eslint:check
           python -m pip install .
           jupyter labextension list 2>&1 | grep -ie "@axlair/jupyterlab_vim.*OK"
