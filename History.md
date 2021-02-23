@@ -1,5 +1,9 @@
 # History
 
+## 0.13.1 / 2021-02-22
+
+  * Fix saving column position when moving by lines (#28)
+
 ## 0.13.0 / 2020-12-10
 
   * Support JupyterLab 3+
