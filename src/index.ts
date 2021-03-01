@@ -71,73 +71,103 @@ class VimCell {
       });
 
       (this._cm as any).Vim.handleKey(editor.editor, '<Esc>');
-      lvim.defineMotion(
-        'moveByLinesOrCell',
-        (cm: any, head: any, motionArgs: any, vim: any) => {
-          const cur = head;
-          let endCh = cur.ch;
-          const currentCell = activeCell;
-          // TODO: these references will be undefined
-          // Depending what our last motion was, we may want to do different
-          // things. If our last motion was moving vertically, we want to
-          // preserve the HPos from our last horizontal move.  If our last motion
-          // was going to the end of a line, moving vertically we should go to
-          // the end of the line, etc.
-          switch (vim.lastMotion) {
-            case 'moveByLines':
-            case 'moveByDisplayLines':
-            case 'moveByScroll':
-            case 'moveToColumn':
-            case 'moveToEol':
-            // JUPYTER PATCH: add our custom method to the motion cases
-            // eslint-disable-next-line no-fallthrough
-            case 'moveByLinesOrCell':
-              endCh = vim.lastHPos;
-              break;
-            default:
-              vim.lastHPos = endCh;
-          }
-          const repeat = motionArgs.repeat + (motionArgs.repeatOffset || 0);
-          const line = motionArgs.forward
-            ? cur.line + repeat
-            : cur.line - repeat;
-          const first = cm.firstLine();
-          const last = cm.lastLine();
-          // Vim cancels linewise motions that start on an edge and move beyond
-          // that edge. It does not cancel motions that do not start on an edge.
 
-          // JUPYTER PATCH BEGIN
-          // here we insert the jumps to the next cells
-          if (line < first || line > last) {
-            // var currentCell = ns.notebook.get_selected_cell();
-            // var currentCell = tracker.activeCell;
-            // var key = '';
-            // `currentCell !== null should not be needed since `activeCell`
-            // is already check against null (row 61). Added to avoid warning.
-            if (currentCell !== null && currentCell.model.type === 'markdown') {
-              (currentCell as MarkdownCell).rendered = true;
-              // currentCell.execute();
-            }
-            if (motionArgs.forward) {
-              // ns.notebook.select_next();
-              commands.execute('notebook:move-cursor-down');
-              // key = 'j';
-            } else {
-              // ns.notebook.select_prev();
-              commands.execute('notebook:move-cursor-up');
-              // key = 'k';
-            }
-            return;
-          }
-          // JUPYTER PATCH END
-
-          vim.lastHSPos = cm.charCoords(
-            (this._cm as any).Pos(line, endCh),
-            'div'
-          ).left;
-          return (this._cm as any).Pos(line, endCh);
+      // Define a function to use as Vim motion
+      // This replaces the codemirror moveByLines function to
+      // for jumping between notebook cells.
+      const moveByLinesOrCell = (
+        cm: any,
+        head: any,
+        motionArgs: any,
+        vim: any
+      ): any => {
+        const cur = head;
+        let endCh = cur.ch;
+        const currentCell = activeCell;
+        // TODO: these references will be undefined
+        // Depending what our last motion was, we may want to do different
+        // things. If our last motion was moving vertically, we want to
+        // preserve the HPos from our last horizontal move.  If our last motion
+        // was going to the end of a line, moving vertically we should go to
+        // the end of the line, etc.
+        switch (vim?.lastMotion) {
+          case cm.moveByLines:
+          case cm.moveByDisplayLines:
+          case cm.moveByScroll:
+          case cm.moveToColumn:
+          case cm.moveToEol:
+          // JUPYTER PATCH: add our custom method to the motion cases
+          // eslint-disable-next-line no-fallthrough
+          case moveByLinesOrCell:
+            endCh = vim.lastHPos;
+            break;
+          default:
+            vim.lastHPos = endCh;
         }
-      );
+        const repeat = motionArgs.repeat + (motionArgs.repeatOffset || 0);
+        let line = motionArgs.forward ? cur.line + repeat : cur.line - repeat;
+        const first = cm.firstLine();
+        const last = cm.lastLine();
+        const posV = cm.findPosV(
+          cur,
+          motionArgs.forward ? repeat : -repeat,
+          'line',
+          vim.lastHSPos
+        );
+        const hasMarkedText = motionArgs.forward
+          ? posV.line > line
+          : posV.line < line;
+        if (hasMarkedText) {
+          line = posV.line;
+          endCh = posV.ch;
+        }
+
+        // JUPYTER PATCH BEGIN
+        // here we insert the jumps to the next cells
+        if (line < first || line > last) {
+          // var currentCell = ns.notebook.get_selected_cell();
+          // var currentCell = tracker.activeCell;
+          // var key = '';
+          // `currentCell !== null should not be needed since `activeCell`
+          // is already check against null (row 61). Added to avoid warning.
+          if (currentCell !== null && currentCell.model.type === 'markdown') {
+            (currentCell as MarkdownCell).rendered = true;
+            // currentCell.execute();
+          }
+          if (motionArgs.forward) {
+            // ns.notebook.select_next();
+            commands.execute('notebook:move-cursor-down');
+            // key = 'j';
+          } else {
+            // ns.notebook.select_prev();
+            commands.execute('notebook:move-cursor-up');
+            // key = 'k';
+          }
+          return;
+        }
+        // JUPYTER PATCH END
+
+        // function taken from https://github.com/codemirror/CodeMirror/blob/9d0f9d19de70abe817e8b8e161034fbd3f907030/keymap/vim.js#L3328
+        function findFirstNonWhiteSpaceCharacter(text: any): number {
+          if (!text) {
+            return 0;
+          }
+          const firstNonWS = text.search(/\S/);
+          return firstNonWS === -1 ? text.length : firstNonWS;
+        }
+
+        if (motionArgs.toFirstChar) {
+          endCh = findFirstNonWhiteSpaceCharacter(cm.getLine(line));
+          vim.lastHPos = endCh;
+        }
+
+        vim.lastHSPos = cm.charCoords(
+          (this._cm as any).Pos(line, endCh),
+          'div'
+        ).left;
+        return (this._cm as any).Pos(line, endCh);
+      };
+      lvim.defineMotion('moveByLinesOrCell', moveByLinesOrCell);
 
       lvim.mapCommand(
         'k',
