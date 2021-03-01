@@ -1,6 +1,6 @@
 # History
 
-## 0.13.1 / 2021-02-22
+## 0.13.3 / 2021-02-22
 
   * Fix saving column position when moving by lines (#28)
 
