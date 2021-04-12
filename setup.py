@@ -2,42 +2,38 @@
 jupyterlab_vim setup
 """
 import json
-import os
+from pathlib import Path
 
 from jupyter_packaging import (
-    create_cmdclass, install_npm, ensure_targets,
-    combine_commands, get_version,
+    create_cmdclass,
+    install_npm,
+    ensure_targets,
+    combine_commands,
+    skip_if_exists
 )
 import setuptools
 
-HERE = os.path.abspath(os.path.dirname(__file__))
+HERE = Path(__file__).parent.resolve()
 
 # The name of the project
-name="jupyterlab_vim"
+name = "jupyterlab_vim"
 
-# Get our version
-with open(os.path.join(HERE, 'package.json')) as f:
-    version = json.load(f)['version']
-
-lab_path = os.path.join(HERE, name, "labextension")
+lab_path = (HERE / name / "labextension")
 
 # Representative files that should exist after a successful build
 jstargets = [
-    os.path.join(HERE, "lib", "index.js"),
-    os.path.join(lab_path, "package.json"),
+    str(lab_path / "package.json"),
 ]
 
 package_data_spec = {
-    name: [
-        "*"
-    ]
+    name: ["*"],
 }
 
-labext_name = "@axlair/jupyterlab_vim"
+labext_name = "jupyterlab_vim"
 
 data_files_spec = [
-    ("share/jupyter/labextensions/%s" % labext_name, lab_path, "**"),
-    ("share/jupyter/labextensions/%s" % labext_name, HERE, "install.json"),
+    ("share/jupyter/labextensions/%s" % labext_name, str(lab_path), "**"),
+    ("share/jupyter/labextensions/%s" % labext_name, str(HERE), "install.json"),
 ]
 
 cmdclass = create_cmdclass("jsdeps",
@@ -45,31 +41,39 @@ cmdclass = create_cmdclass("jsdeps",
     data_files_spec=data_files_spec
 )
 
-cmdclass["jsdeps"] = combine_commands(
+js_command = combine_commands(
     install_npm(HERE, build_cmd="build:prod", npm=["jlpm"]),
     ensure_targets(jstargets),
 )
 
-with open("README.md", "r") as fh:
-    long_description = fh.read()
+is_repo = (HERE / ".git").exists()
+if is_repo:
+    cmdclass["jsdeps"] = js_command
+else:
+    cmdclass["jsdeps"] = skip_if_exists(jstargets, js_command)
+
+long_description = (HERE / "README.md").read_text()
+
+# Get the package info from package.json
+pkg_json = json.loads((HERE / "package.json").read_bytes())
 
 setup_args = dict(
     name=name,
-    version=version,
-    url="https://github.com/axelfahy/jupyterlab-vim.git",
+    version=pkg_json["version"],
+    url=pkg_json["homepage"],
     author="Jupyterlab-vim contributors",
-    description="Code cell vim bindings",
-    long_description= long_description,
+    description=pkg_json["description"],
+    license=pkg_json["license"],
+    long_description=long_description,
     long_description_content_type="text/markdown",
-    cmdclass= cmdclass,
+    cmdclass=cmdclass,
     packages=setuptools.find_packages(),
     install_requires=[
-        "jupyterlab>=3.0.0,==3.*",
+        "jupyterlab~=3.0",
     ],
     zip_safe=False,
     include_package_data=True,
     python_requires=">=3.6",
-    license="BSD-3-Clause",
     platforms="Linux, Mac OS X, Windows",
     keywords=["Jupyter", "JupyterLab", "JupyterLab3"],
     classifiers=[
@@ -79,6 +83,7 @@ setup_args = dict(
         "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: 3.9",
         "Framework :: Jupyter",
     ],
 )
