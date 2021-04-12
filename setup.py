@@ -29,7 +29,7 @@ package_data_spec = {
     name: ["*"],
 }
 
-labext_name = "jupyterlab_vim"
+labext_name = "@axlair/jupyterlab_vim"
 
 data_files_spec = [
     ("share/jupyter/labextensions/%s" % labext_name, str(lab_path), "**"),
