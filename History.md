@@ -1,5 +1,8 @@
 # History
 
+### 0.14.0
+  * Add ability to enable/disable plugin in settings (#24)
+
 ## 0.13.3 / 2021-02-22
 
   * Fix saving column position when moving by lines (#28)

@@ -1,0 +1,14 @@
+{
+    "title": "Notebook Vim",
+    "description": "Notebook Vim Settings",
+    "type": "object",
+    "additionalProperties": true,
+    "properties": {
+      "enabled": {
+        "type": "boolean",
+        "title": "Enabled",
+        "description": "Enable/disable notebook vim (may require a page refresh)",
+        "default": true
+      }
+    }
+}
