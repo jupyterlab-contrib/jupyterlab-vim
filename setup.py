@@ -51,6 +51,7 @@ setup_args = dict(
     long_description=long_description,
     long_description_content_type="text/markdown",
     cmdclass=cmdclass,
+    data_files=get_data_files(data_files_spec),
     packages=setuptools.find_packages(),
     install_requires=[
         "jupyterlab~=3.0",
