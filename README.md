@@ -1,6 +1,6 @@
 # jupyterlab-vim
 
-> **Disclaimer**: fork of <https://github.com/jwkvam/jupyterlab-vim> for personal use. Use at your own risk.
+> Community fork of <https://github.com/jwkvam/jupyterlab-vim> updated for jupyterlab 2 and 3
 
 [![npm version](https://badge.fury.io/js/jupyterlab_vim.svg)](https://www.npmjs.com/package/jupyterlab_vim)
 [![Build Status](https://travis-ci.org/jwkvam/jupyterlab-vim.svg?branch=master)](https://travis-ci.org/jwkvam/jupyterlab-vim)
