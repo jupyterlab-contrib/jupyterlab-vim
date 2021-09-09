@@ -6,13 +6,13 @@
   "license": "MIT",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
-  "homepage": "https://github.com/axelfahy/jupyterlab-vim",
+  "homepage": "https://github.com/jupyterlab-contrib/jupyterlab-vim",
   "bugs": {
-    "url": "https://github.com/axelfahy/jupyterlab-vim/issues"
+    "url": "https://github.com/jupyterlab-contrib/jupyterlab-vim/issues"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/axelfahy/jupyterlab-vim.git"
+    "url": "https://github.com/jupyterlab-contrib/jupyterlab-vim.git"
   },
   "keywords": [
     "extension",
@@ -57,11 +57,11 @@
     "@lumino/commands": "^1.12.0",
     "@lumino/coreutils": "^1.5.3",
     "@lumino/domutils": "^1.2.3",
-    "@types/codemirror": "^0.0.87",
     "react": "^17.0.1"
   },
   "devDependencies": {
     "@jupyterlab/builder": "^3.0.0-rc.2",
+    "@types/codemirror": "^0.0.87",
     "@typescript-eslint/eslint-plugin": "^2.27.0",
     "@typescript-eslint/parser": "^2.27.0",
     "eslint": "^7.5.0",
