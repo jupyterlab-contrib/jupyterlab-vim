@@ -3,7 +3,7 @@
 > **Disclaimer**: fork of <https://github.com/jwkvam/jupyterlab-vim> for personal use. Use at your own risk.
 
 
-[![Build Status](https://travis-ci.org/jwkvam/jupyterlab-vim.svg?branch=master)](https://travis-ci.org/jwkvam/jupyterlab-vim)
+[![Github Actions Status](https://github.com/jupyterlab-contrib/jupyterlab-vim/workflows/Build/badge.svg)](https://github.com/jupyterlab-contrib/jupyterlab-vim/actions?query=workflow%3ABuild)
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/jupyterlab-contrib/jupyterlab-vim/master?urlpath=lab)
 [![npm version](https://badge.fury.io/js/jupyterlab_vim.svg)](https://www.npmjs.com/package/jupyterlab_vim)
 [![npm downloads](https://img.shields.io/npm/dw/jupyterlab_vim.svg)](https://www.npmjs.com/package/jupyterlab_vim)
