@@ -2,9 +2,12 @@
 
 > Community fork of <https://github.com/jwkvam/jupyterlab-vim> updated for jupyterlab 2 and 3
 
+
+[![Github Actions Status](https://github.com/jupyterlab-contrib/jupyterlab-vim/workflows/Build/badge.svg)](https://github.com/jupyterlab-contrib/jupyterlab-vim/actions?query=workflow%3ABuild)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/jupyterlab-contrib/jupyterlab-vim/master?urlpath=lab)
 [![npm version](https://badge.fury.io/js/jupyterlab_vim.svg)](https://www.npmjs.com/package/jupyterlab_vim)
-[![Build Status](https://travis-ci.org/jwkvam/jupyterlab-vim.svg?branch=master)](https://travis-ci.org/jwkvam/jupyterlab-vim)
 [![npm downloads](https://img.shields.io/npm/dw/jupyterlab_vim.svg)](https://www.npmjs.com/package/jupyterlab_vim)
+[![PyPI](https://img.shields.io/pypi/v/jupyterlab-vim)](https://pypi.org/project/jupyterlab-vim)
 
 Notebook cell vim bindings
 
@@ -112,6 +115,7 @@ Contributions and feedback are most welcome!
 ### Development install
 
 Note: You will need NodeJS to build the extension package. To install with `conda` do:
+
 ```
 conda install -c conda-forge nodejs
 ```

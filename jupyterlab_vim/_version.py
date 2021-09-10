@@ -1,19 +1,18 @@
-__all__ = ['__version__']
+import json
+from pathlib import Path
+
+__all__ = ["__version__"]
 
 def _fetchVersion():
-    import json
-    import os
+    HERE = Path(__file__).parent.resolve()
 
-    HERE = os.path.abspath(os.path.dirname(__file__))
-
-    for d, _, _ in os.walk(HERE): 
+    for settings in HERE.rglob("package.json"): 
         try:
-            with open(os.path.join(d, 'package.json')) as f:
-                return json.load(f)['version']
+            with settings.open() as f:
+                return json.load(f)["version"]
         except FileNotFoundError:
             pass
 
-    raise FileNotFoundError('Could not find package.json under dir {}'.format(HERE))
+    raise FileNotFoundError(f"Could not find package.json under dir {HERE!s}")
 
 __version__ = _fetchVersion()
-
