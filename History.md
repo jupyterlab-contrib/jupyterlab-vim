@@ -1,6 +1,11 @@
 # History
 
-### 0.14.0
+## Next
+
+  * Homogenize the project with the jupyterlab-contrib organization (#46)
+
+## 0.14.0 / 2021-05-04
+
   * Add ability to enable/disable plugin in settings (#24)
 
 ## 0.13.3 / 2021-02-22
