@@ -2,7 +2,7 @@
 
 > Community fork of <https://github.com/jwkvam/jupyterlab-vim> updated for jupyterlab 2 and 3
 
-
+![Extension status](https://img.shields.io/badge/status-ready-success "ready to be used")
 [![Github Actions Status](https://github.com/jupyterlab-contrib/jupyterlab-vim/workflows/Build/badge.svg)](https://github.com/jupyterlab-contrib/jupyterlab-vim/actions?query=workflow%3ABuild)
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/jupyterlab-contrib/jupyterlab-vim/master?urlpath=lab)
 [![npm version](https://img.shields.io/npm/v/@axlair/jupyterlab_vim)](https://www.npmjs.com/package/@axlair/jupyterlab_vim)
