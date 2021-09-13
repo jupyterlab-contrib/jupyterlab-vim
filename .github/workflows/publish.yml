@@ -5,7 +5,13 @@ name: PyPi Package
 
 on:
   push:
-    branches: master
+    tags: ['*']
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version part to upgrade (major | minor | patch)'     
+        required: true
+        default: 'patch'
 
 jobs:
   publish-pypi:
@@ -13,7 +19,11 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Bump version
+        if: ${{ github.event_name != 'workflow_dispatch' }}
+        id: version-bump
         uses: 'phips28/gh-action-bump-version@master'
+        with:
+          default: ${{ github.event.inputs.version }}
       - name: Install node
         uses: actions/setup-node@v1
         with:
@@ -26,10 +36,12 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install build
+          # JupyterLab needed to install `jlpm` for npm publication
+          pip install build jupyterlab
       - name: Build package
         run: |
           python -m build
+
       - name: Publish package to PyPi
         uses: pypa/gh-action-pypi-publish@master
         with:
@@ -39,4 +51,14 @@ jobs:
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
-
+          
+      - name: Create Release
+        run: |
+          hub release create \
+          ${{ env.NEW_TAG }} \
+          -m "Release ${{ env.NEW_TAG }}" \
+          -a ./dist/* 
+        env:
+          GITHUB_USER: ${{ secrets.GITHUB_USER }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NEW_TAG: ${{ steps.version-bump.outputs.newTag || env.GITHUB_REF }}
