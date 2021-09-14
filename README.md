@@ -8,6 +8,7 @@
 [![npm version](https://img.shields.io/npm/v/@axlair/jupyterlab_vim)](https://www.npmjs.com/package/@axlair/jupyterlab_vim)
 [![npm downloads](https://img.shields.io/npm/dw/@axlair/jupyterlab_vim.svg)](https://www.npmjs.com/package/@axlair/jupyterlab_vim)
 [![PyPI](https://img.shields.io/pypi/v/jupyterlab-vim)](https://pypi.org/project/jupyterlab-vim)
+[![Conda Version](https://img.shields.io/conda/vn/conda-forge/jupyterlab_vim.svg)](https://anaconda.org/conda-forge/jupyterlab_vim)
 
 Notebook cell vim bindings
 
