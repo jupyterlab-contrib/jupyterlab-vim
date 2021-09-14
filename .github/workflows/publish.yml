@@ -22,6 +22,8 @@ jobs:
         if: ${{ github.event_name == 'workflow_dispatch' }}
         id: version-bump
         uses: 'phips28/gh-action-bump-version@master'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           default: ${{ github.event.inputs.version }}
       - name: Install node
