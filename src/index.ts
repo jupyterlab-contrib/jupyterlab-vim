@@ -679,6 +679,12 @@ function activateCellVim(
     if (enabled && !hasEverBeenEnabled) {
       hasEverBeenEnabled = true;
       setupPlugin(app, tracker, jlabCodeMirror);
+    } else if (!enabled) {
+      app.commands.addKeyBinding({
+        command: 'notebook:enter-command-mode',
+        keys: ['Escape'],
+        selector: '.jp-Notebook.jp-mod-editMode'
+      });
     }
   }
 
