@@ -39,6 +39,15 @@ function activateCellVim(
   let addedCommands: Array<IDisposable> | null = null;
   let hasEverBeenEnabled = false;
 
+  cellManager = new VimCellManager(app.commands, globalCodeMirror, enabled);
+  // it's ok to connect here because we will never reach the vim section unless
+  // ensureVimKeyMap has been called due to the checks for enabled.
+  // we need to have now in order to keep track of the last active cell
+  // so that we can modify it when vim is turned on or off.
+  tracker.activeCellChanged.connect(
+    cellManager.onActiveCellChanged,
+    cellManager
+  );
   async function updateSettings(
     settings: ISettingRegistry.ISettings
   ): Promise<void> {
@@ -52,17 +61,9 @@ function activateCellVim(
         hasEverBeenEnabled = true;
         await app.restored;
         await jlabCodeMirror.ensureVimKeymap();
-        cellManager = new VimCellManager(
-          app.commands,
-          globalCodeMirror,
-          enabled
-        );
-        tracker.activeCellChanged.connect(
-          cellManager.onActiveCellChanged,
-          cellManager
-        );
       }
       addedCommands = addJLabCommands(app, tracker, globalCodeMirror);
+      cellManager?.modifyCell(cellManager.lastActiveCell);
     } else {
       addedCommands?.forEach(command => command.dispose());
       escBinding = app.commands.addKeyBinding({
@@ -70,6 +71,7 @@ function activateCellVim(
         keys: ['Escape'],
         selector: '.jp-Notebook.jp-mod-editMode'
       });
+      cellManager?.modifyCell(cellManager.lastActiveCell);
     }
   }
 

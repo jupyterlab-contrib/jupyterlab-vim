@@ -17,15 +17,21 @@ export class VimCellManager {
     this._commands = commands;
     this._cm = cm;
     this.enabled = enabled;
+    this.lastActiveCell = null;
   }
 
   onActiveCellChanged(
     tracker: INotebookTracker,
     activeCell: Cell<ICellModel> | null
   ): void {
+    this.modifyCell(activeCell);
+  }
+
+  modifyCell(activeCell: Cell<ICellModel> | null): void {
     if (!activeCell) {
       return;
     }
+    this.lastActiveCell = activeCell;
     const editor = activeCell.editor as CodeMirrorEditor;
 
     if (this.enabled) {
@@ -189,5 +195,6 @@ export class VimCellManager {
 
   private _commands: CommandRegistry;
   private _cm: CodeMirrorEditor;
+  public lastActiveCell: Cell<ICellModel> | null;
   public enabled: boolean;
 }
