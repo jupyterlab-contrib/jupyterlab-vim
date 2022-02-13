@@ -11,6 +11,26 @@
       "disabled": true
     }
   ],
+  "jupyter.lab.menus": {
+    "main":[
+    {
+      "id": "jp-mainmenu-settings",
+      "items": [
+        {
+          "type": "separator",
+          "rank": 38
+        },
+        {
+          "command": "jupyterlab-vim:toggle",
+          "rank": 38
+        },
+        {
+          "type": "separator",
+          "rank": 38
+        }
+      ]
+    }
+  ]},
   "properties": {
     "enabled": {
       "type": "boolean",

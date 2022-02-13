@@ -13,6 +13,7 @@ import { VimCellManager } from './codemirrorCommands';
 import { addJLabCommands } from './labCommands';
 
 const PLUGIN_NAME = '@axlair/jupyterlab_vim';
+const TOGGLE_ID = 'jupyterlab-vim:toggle';
 let enabled = false;
 
 /**
@@ -25,12 +26,22 @@ const extension: JupyterFrontEndPlugin<void> = {
   requires: [INotebookTracker, ICodeMirror, ISettingRegistry]
 };
 
-function activateCellVim(
+async function activateCellVim(
   app: JupyterFrontEnd,
   tracker: INotebookTracker,
   jlabCodeMirror: ICodeMirror,
   settingRegistry: ISettingRegistry
 ): Promise<void> {
+  // await app.restored;
+  app.commands.addCommand(TOGGLE_ID, {
+    label: 'Enable Notebook Vim mode',
+    execute: () => {
+      if (settingRegistry) {
+        void settingRegistry.set(`${PLUGIN_NAME}:plugin`, 'enabled', !enabled);
+      }
+    },
+    isToggled: () => enabled
+  });
   // eslint-disable-next-line prettier/prettier
   const globalCodeMirror = jlabCodeMirror.CodeMirror as unknown as CodeMirrorEditor;
   let cellManager: VimCellManager | null = null;
@@ -52,6 +63,7 @@ function activateCellVim(
     settings: ISettingRegistry.ISettings
   ): Promise<void> {
     enabled = settings.get('enabled').composite === true;
+    app.commands.notifyCommandChanged(TOGGLE_ID);
     if (cellManager) {
       cellManager.enabled = enabled;
     }
