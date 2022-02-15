@@ -17,6 +17,7 @@ import { ISettingRegistry } from '@jupyterlab/settingregistry';
 import { ReadonlyPartialJSONObject } from '@lumino/coreutils';
 
 import { ElementExt } from '@lumino/domutils';
+import { IDisposable } from '@lumino/disposable';
 
 /**
  * A boolean indicating whether the platform is Mac.
@@ -673,12 +674,20 @@ function activateCellVim(
   settingRegistry: ISettingRegistry
 ): Promise<void> {
   let hasEverBeenEnabled = false;
+  let escBinding: IDisposable | null = null;
   function updateSettings(settings: ISettingRegistry.ISettings): void {
     // TODO: This does not reset any cells that have been used with VIM
     enabled = settings.get('enabled').composite === true;
     if (enabled && !hasEverBeenEnabled) {
       hasEverBeenEnabled = true;
       setupPlugin(app, tracker, jlabCodeMirror);
+      escBinding?.dispose();
+    } else if (!enabled) {
+      escBinding = app.commands.addKeyBinding({
+        command: 'notebook:enter-command-mode',
+        keys: ['Escape'],
+        selector: '.jp-Notebook.jp-mod-editMode'
+      });
     }
   }
 
