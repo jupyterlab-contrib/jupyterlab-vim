@@ -76,6 +76,9 @@ async function activateCellVim(
       }
       addedCommands = addJLabCommands(app, tracker, globalCodeMirror);
       cellManager?.modifyCell(cellManager.lastActiveCell);
+      tracker.forEach(notebook => {
+        notebook.node.dataset.jpVimMode = 'true';
+      });
     } else {
       addedCommands?.forEach(command => command.dispose());
       escBinding = app.commands.addKeyBinding({
@@ -84,7 +87,15 @@ async function activateCellVim(
         selector: '.jp-Notebook.jp-mod-editMode'
       });
       cellManager?.modifyCell(cellManager.lastActiveCell);
+      tracker.forEach(notebook => {
+        notebook.node.dataset.jpVimMode = 'false';
+      });
     }
+
+    // make sure our css selector is added to new notebooks
+    tracker.widgetAdded.connect((sender, notebook) => {
+      notebook.node.dataset.jpVimMode = `${enabled}`;
+    });
   }
 
   settingRegistry.load(`${PLUGIN_NAME}:plugin`).then(
