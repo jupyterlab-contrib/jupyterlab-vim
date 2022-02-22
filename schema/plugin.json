@@ -23,17 +23,17 @@
     {
       "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook.jp-mod-editMode",
       "keys": ["Ctrl O", "D"],
-      "command": "cut-cell-and-edit"
+      "command": "vim:cut-cell-and-edit"
     },
     {
       "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook.jp-mod-editMode",
       "keys": ["Ctrl O", "Y"],
-      "command": "copy-cell-and-edit"
+      "command": "vim:copy-cell-and-edit"
     },
     {
       "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook.jp-mod-editMode",
       "keys": ["Ctrl O", "P"],
-      "command": "paste-cell-and-edit"
+      "command": "vim:paste-cell-and-edit"
     },
     {
       "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook.jp-mod-editMode",
@@ -73,27 +73,27 @@
     {
       "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook.jp-mod-editMode",
       "keys": ["Ctrl J"],
-      "command": "select-below-execute-markdown"
+      "command": "vim:select-below-execute-markdown"
     },
     {
       "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook.jp-mod-editMode",
       "keys": ["Ctrl K"],
-      "command": "select-above-execute-markdown"
+      "command": "vim:select-above-execute-markdown"
     },
     {
       "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook.jp-mod-editMode",
       "keys": ["Escape"],
-      "command": "leave-insert-mode"
+      "command": "vim:leave-insert-mode"
     },
     {
       "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook.jp-mod-editMode",
       "keys": ["Ctrl ["],
-      "command": "leave-insert-mode"
+      "command": "vim:leave-insert-mode"
     },
     {
       "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook:focus",
       "keys": ["Ctrl I"],
-      "command": "enter-insert-mode"
+      "command": "vim:enter-insert-mode"
     },
     {
       "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook.jp-mod-editMode",
@@ -113,11 +113,11 @@
     {
       "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook:focus",
       "keys": ["Shift M"],
-      "command": "merge-and-edit"
+      "command": "vim:merge-and-edit"
     },
     {
       "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook.jp-mod-editMode",
-      "keys": ["Accel 1"],
+      "keys": ["C"],
       "command": "notebook:change-cell-to-code"
     },
     {
@@ -133,22 +133,22 @@
     {
       "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook.jp-mod-editMode",
       "keys": ["Ctrl O", "G"],
-      "command": "select-first-cell"
+      "command": "vim:select-first-cell"
     },
     {
       "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook.jp-mod-editMode",
       "keys": ["Ctrl O", "Ctrl G"],
-      "command": "select-last-cell"
+      "command": "vim:select-last-cell"
     },
     {
       "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook:focus",
       "keys": ["G", "G"],
-      "command": "select-first-cell"
+      "command": "vim:select-first-cell"
     },
     {
       "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook:focus",
       "keys": ["Shift G"],
-      "command": "select-last-cell"
+      "command": "vim:select-last-cell"
     },
     {
       "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook:focus",
@@ -198,7 +198,7 @@
     {
       "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook:focus",
       "keys": ["Z", "Z"],
-      "command": "center-cell"
+      "command": "vim:center-cell"
     },
     {
       "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook:focus",

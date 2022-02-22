@@ -34,7 +34,7 @@ export function addJLabCommands(
     );
   }
   const addedCommands = [
-    commands.addCommand('run-select-next-edit', {
+    commands.addCommand('vim:run-select-next-edit', {
       label: 'Run Cell and Edit Next Cell',
       execute: args => {
         const current = getCurrent(args);
@@ -47,7 +47,7 @@ export function addJLabCommands(
       },
       isEnabled
     }),
-    commands.addCommand('run-cell-and-edit', {
+    commands.addCommand('vim:run-cell-and-edit', {
       label: 'Run Cell and Edit Cell',
       execute: args => {
         const current = getCurrent(args);
@@ -60,7 +60,7 @@ export function addJLabCommands(
       },
       isEnabled
     }),
-    commands.addCommand('cut-cell-and-edit', {
+    commands.addCommand('vim:cut-cell-and-edit', {
       label: 'Cut Cell(s) and Edit Cell',
       execute: args => {
         const current = getCurrent(args);
@@ -73,7 +73,7 @@ export function addJLabCommands(
       },
       isEnabled
     }),
-    commands.addCommand('copy-cell-and-edit', {
+    commands.addCommand('vim:copy-cell-and-edit', {
       label: 'Copy Cell(s) and Edit Cell',
       execute: args => {
         const current = getCurrent(args);
@@ -86,7 +86,7 @@ export function addJLabCommands(
       },
       isEnabled
     }),
-    commands.addCommand('paste-cell-and-edit', {
+    commands.addCommand('vim:paste-cell-and-edit', {
       label: 'Paste Cell(s) and Edit Cell',
       execute: args => {
         const current = getCurrent(args);
@@ -99,7 +99,7 @@ export function addJLabCommands(
       },
       isEnabled
     }),
-    commands.addCommand('merge-and-edit', {
+    commands.addCommand('vim:merge-and-edit', {
       label: 'Merge and Edit Cell',
       execute: args => {
         const current = getCurrent(args);
@@ -112,7 +112,7 @@ export function addJLabCommands(
       },
       isEnabled
     }),
-    commands.addCommand('enter-insert-mode', {
+    commands.addCommand('vim:enter-insert-mode', {
       label: 'Enter Insert Mode',
       execute: args => {
         const current = getCurrent(args);
@@ -128,7 +128,7 @@ export function addJLabCommands(
       },
       isEnabled
     }),
-    commands.addCommand('leave-insert-mode', {
+    commands.addCommand('vim:leave-insert-mode', {
       label: 'Leave Insert Mode',
       execute: args => {
         const current = getCurrent(args);
@@ -143,7 +143,7 @@ export function addJLabCommands(
       },
       isEnabled
     }),
-    commands.addCommand('select-below-execute-markdown', {
+    commands.addCommand('vim:select-below-execute-markdown', {
       label: 'Execute Markdown and Select Cell Below',
       execute: args => {
         const current = getCurrent(args);
@@ -161,7 +161,7 @@ export function addJLabCommands(
       },
       isEnabled
     }),
-    commands.addCommand('select-above-execute-markdown', {
+    commands.addCommand('vim:select-above-execute-markdown', {
       label: 'Execute Markdown and Select Cell Below',
       execute: args => {
         const current = getCurrent(args);
@@ -179,7 +179,7 @@ export function addJLabCommands(
       },
       isEnabled
     }),
-    commands.addCommand('select-first-cell', {
+    commands.addCommand('vim:select-first-cell', {
       label: 'Select First Cell',
       execute: args => {
         const current = getCurrent(args);
@@ -198,7 +198,7 @@ export function addJLabCommands(
       },
       isEnabled
     }),
-    commands.addCommand('select-last-cell', {
+    commands.addCommand('vim:select-last-cell', {
       label: 'Select Last Cell',
       execute: args => {
         const current = getCurrent(args);
@@ -217,7 +217,7 @@ export function addJLabCommands(
       },
       isEnabled
     }),
-    commands.addCommand('center-cell', {
+    commands.addCommand('vim:center-cell', {
       label: 'Center Cell',
       execute: args => {
         const current = getCurrent(args);
