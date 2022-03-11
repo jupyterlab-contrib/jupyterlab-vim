@@ -14,10 +14,6 @@ Notebook cell vim bindings
 
 ![jlabvim](https://user-images.githubusercontent.com/86304/38079432-b7596fd8-32f3-11e8-9ebd-4b9e7823f5f9.gif)
 
-## Special Thanks
-
-I want to acknowledge [Alisue](https://github.com/lambdalisue) and his excellent work creating [vim bindings](https://github.com/lambdalisue/jupyter-vim-binding) for Jupyter notebooks.
-I hope this extension can meet the high bar his work set.
 
 ## Modes
 
@@ -107,6 +103,16 @@ Shortcuts this extension introduces:
 | Z, O    | Show Code Cell |
 | Z, M    | Hide All Code Cells |
 | Z, R    | Show All Code Cells  |
+
+## Special Thanks
+
+
+From @jwkvam:
+
+> I want to acknowledge [Alisue](https://github.com/lambdalisue) and his excellent work creating [vim bindings](https://github.com/lambdalisue/jupyter-vim-binding) for Jupyter notebooks.
+> I hope this extension can meet the high bar his work set.
+
+@jkwvam is the original author of this extension - the original version can be seen [here](https://github.com/jwkvam/jupyterlab-vim). When that version was not updated it was updated first by @axelfahy and then moved to this community organization.
 
 ## Contributing
 
