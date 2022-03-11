@@ -45,6 +45,7 @@ jupyter labextension uninstall @axlair/jupyterlab_vim
 ```
 
 ## Key Bindings
+To learn how to modify key bindings see the [modify-keybinds.md](modify-keybinds.md) file.
 
 **Please note that all keys are lowercase unless `Shift` is explicitly indicated.**
 For example, `Y, Y` is two lowercase `y`s, `Shift-Y, Y` is one uppercase `Y` followed by a lowercase `y`.
