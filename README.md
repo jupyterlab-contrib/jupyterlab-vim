@@ -17,28 +17,27 @@ Notebook cell vim bindings
 
 ## Modes
 
-This extension splits Jupyter edit mode into two modes: Vim command mode and Vim insert mode.
-Three editing modes now exist: Jupyter command, Vim command, and Vim insert.
+Like vim Jupyterlab has a concept of edit mode and command mode. Command mode is when the cursor is not in a specific cell, and edit mode when typing in a cell.
+
+This extension combines that model with the standard vim model of Normal, Insert and Visual modes. So the set of modes now looks like:
+
+1. Jupyterlab Command Mode
+2. Jupyterlab Edit Mode
+    - Insert
+    - Normal
+    - Visual
 
 ## Install
-### For jupyterlab 3+
 
 ```bash
-pip install jupyterlab_vim
+pip install jupyterlab-vim
 ```
-
-### For jupyterlab 2
-#### Install or upgrade
-
+or  with conda/mamba:
 ```bash
-jupyter labextension install @axlair/jupyterlab_vim
+mamba install -c conda-forge jupyterlab_vim
 ```
+For Jupyterlab<3 see [installing.md](installing.md).
 
-#### Uninstall
-
-```bash
-jupyter labextension uninstall @axlair/jupyterlab_vim
-```
 
 ## Key Bindings
 To learn how to modify key bindings see the [modify-keybinds.md](modify-keybinds.md) file.
