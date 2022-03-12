@@ -1,7 +1,7 @@
 ## Modifying Keybindings
 
 
-This extension sets vim-like keybindings for existing jupyterlab commands. Such as  `O` for insert cell below which uses the `notebook:insert-cell-below` command. In addition it adds it's own commands such as `vim:select-below-execute-markdown`.
+This extension adds keybindings for two types of commands. The first type is vim-like keybindings for existing Jupyterlab commands. Such as  `O` for insert cell below which uses the `notebook:insert-cell-below` command. The second kind are for Jupyterlab commands provided by this extension. These commands are prefixed with `vim:`, e.g. `vim:select-below-execute-markdown`.
 
 Both types of commands be modified the same way you modify other [jupyterlab shortcuts](https://jupyterlab.readthedocs.io/en/stable/user/interface.html#keyboard-shortcuts) (aka keybindings) via `Settings > Advanced Settings Editor > Keyboard Shortcuts`
 
@@ -25,6 +25,6 @@ Jupyterlab commands don't know about the concept of vim modes so they will be ac
 
 
 **Vim remappings**
-For vim style remappings (`inoremap`, `imap`, `nmap`...) you currently need to also install the [jupyterlab-vimrc](https://github.com/ianhi/jupyterlab-vimrc#jupyterlab-vimrc) extension.  
+For vim style remappings (`inoremap`, `imap`, `nmap`...) you can use the sibling extension [jupyterlab-vimrc](https://github.com/ianhi/jupyterlab-vimrc#jupyterlab-vimrc).  
 
 Beware that this does not work with everything you may have in your standard vimrc. Jupyterlab uses [Codemirror] for the editors in cells. This extension adds vim support by enabling the [vim](https://codemirror.net/demo/vim.html) emulation in codemirror. While this comes with partial support for remappings in your vimrc the support is incomplete.

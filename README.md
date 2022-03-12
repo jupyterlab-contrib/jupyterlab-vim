@@ -17,9 +17,9 @@ Notebook cell vim bindings
 
 ## Modes
 
-Like vim Jupyterlab has a concept of edit mode and command mode. Command mode is when the cursor is not in a specific cell, and edit mode when typing in a cell.
+Like vim, Jupyterlab has a distinction between edit mode and command mode. Jupyterlab Command mode is when the cursor is not in a specific cell, and edit mode when typing in a cell.
 
-This extension combines that model with the standard vim model of Normal, Insert and Visual modes. So the set of modes now looks like:
+This extension combines the Jupyterlab (Edit and Command) modes with the standard vim modes (Normal, Insert, Visual). So the set of modes now looks like:
 
 1. Jupyterlab Command Mode
 2. Jupyterlab Edit Mode
