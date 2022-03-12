@@ -2,6 +2,8 @@
 
 ## Next
 
+## 0.15.0 / 2022-03-11
+
   * Homogenize the project with the jupyterlab-contrib organization (#46)
   * Fix `Esc` being override by the shortcuts extensions in jupyterlab
   * Restructure Project Code and make keybindings user modifiable (#58)
