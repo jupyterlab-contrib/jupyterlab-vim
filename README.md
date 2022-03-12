@@ -14,37 +14,33 @@ Notebook cell vim bindings
 
 ![jlabvim](https://user-images.githubusercontent.com/86304/38079432-b7596fd8-32f3-11e8-9ebd-4b9e7823f5f9.gif)
 
-## Special Thanks
-
-I want to acknowledge [Alisue](https://github.com/lambdalisue) and his excellent work creating [vim bindings](https://github.com/lambdalisue/jupyter-vim-binding) for Jupyter notebooks.
-I hope this extension can meet the high bar his work set.
 
 ## Modes
 
-This extension splits Jupyter edit mode into two modes: Vim command mode and Vim insert mode.
-Three editing modes now exist: Jupyter command, Vim command, and Vim insert.
+Like vim, Jupyterlab has a distinction between edit mode and command mode. Jupyterlab Command mode is when the cursor is not in a specific cell, and edit mode when typing in a cell.
+
+This extension combines the Jupyterlab (Edit and Command) modes with the standard vim modes (Normal, Insert, Visual). So the set of modes now looks like:
+
+1. Jupyterlab Command Mode
+2. Jupyterlab Edit Mode
+    - Insert
+    - Normal
+    - Visual
 
 ## Install
-### For jupyterlab 3+
 
 ```bash
-pip install jupyterlab_vim
+pip install jupyterlab-vim
 ```
-
-### For jupyterlab 2
-#### Install or upgrade
-
+or  with conda/mamba:
 ```bash
-jupyter labextension install @axlair/jupyterlab_vim
+mamba install -c conda-forge jupyterlab_vim
 ```
+For Jupyterlab<3 see [installing.md](installing.md).
 
-#### Uninstall
-
-```bash
-jupyter labextension uninstall @axlair/jupyterlab_vim
-```
 
 ## Key Bindings
+To learn how to modify key bindings see the [modify-keybinds.md](modify-keybinds.md) file.
 
 **Please note that all keys are lowercase unless `Shift` is explicitly indicated.**
 For example, `Y, Y` is two lowercase `y`s, `Shift-Y, Y` is one uppercase `Y` followed by a lowercase `y`.
@@ -106,6 +102,16 @@ Shortcuts this extension introduces:
 | Z, O    | Show Code Cell |
 | Z, M    | Hide All Code Cells |
 | Z, R    | Show All Code Cells  |
+
+## Special Thanks
+
+
+From @jwkvam:
+
+> I want to acknowledge [Alisue](https://github.com/lambdalisue) and his excellent work creating [vim bindings](https://github.com/lambdalisue/jupyter-vim-binding) for Jupyter notebooks.
+> I hope this extension can meet the high bar his work set.
+
+@jkwvam is the original author of this extension - the original version can be seen [here](https://github.com/jwkvam/jupyterlab-vim). When that version was not updated it was updated first by @axelfahy and then moved to this community organization.
 
 ## Contributing
 
