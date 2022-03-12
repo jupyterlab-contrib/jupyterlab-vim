@@ -98,12 +98,12 @@
     {
       "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook.jp-mod-editMode",
       "keys": ["Ctrl Enter"],
-      "command": "run-cell-and-edit"
+      "command": "vim:run-cell-and-edit"
     },
     {
       "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook.jp-mod-editMode",
       "keys": ["Shift Enter"],
-      "command": "run-select-next-edit"
+      "command": "vim:run-select-next-edit"
     },
     {
       "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook.jp-mod-editMode",
@@ -223,7 +223,7 @@
     {
       "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook.jp-mod-editMode",
       "keys": ["Ctrl O", "Z", "Z"],
-      "command": "center-cell"
+      "command": "vim:center-cell"
     },
     {
       "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook.jp-mod-editMode .jp-InputArea-editor:not(.jp-mod-has-primary-selection)",
