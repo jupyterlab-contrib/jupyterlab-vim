@@ -2,6 +2,9 @@
 
 ## Next
 
+## 0.15.1 / 2022-03-12
+  * Fixed a bug in `0.15.0` where you could no longer type `c`.
+
 ## 0.15.0 / 2022-03-11
 
   * Homogenize the project with the jupyterlab-contrib organization (#46)
