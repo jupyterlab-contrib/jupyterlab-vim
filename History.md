@@ -4,6 +4,8 @@
 
   * Homogenize the project with the jupyterlab-contrib organization (#46)
   * Fix `Esc` being override by the shortcuts extensions in jupyterlab
+  * Restructure Project Code and make keybindings user modifiable (#58)
+  * Add a menu button for enable/disable (#58)
 
 ## 0.14.0 / 2021-05-04
 
