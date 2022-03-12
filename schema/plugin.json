@@ -117,7 +117,7 @@
     },
     {
       "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook.jp-mod-editMode",
-      "keys": ["C"],
+      "keys": ["Accel 1"],
       "command": "notebook:change-cell-to-code"
     },
     {
