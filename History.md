@@ -2,6 +2,7 @@
 
 ## Next
   * Add bindable command to move insert-to-normal-to-command modes (#69)
+  * Rebind Esc to leave-current-mode (#70)
 
 ## 0.15.1 / 2022-03-12
   * Fixed a bug in `0.15.0` where you could no longer type `c`.
