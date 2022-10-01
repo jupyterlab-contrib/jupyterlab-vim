@@ -83,12 +83,12 @@
     {
       "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook.jp-mod-editMode",
       "keys": ["Escape"],
-      "command": "vim:leave-insert-mode"
+      "command": "vim:leave-current-mode"
     },
     {
       "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook.jp-mod-editMode",
       "keys": ["Ctrl ["],
-      "command": "vim:leave-insert-mode"
+      "command": "vim:leave-current-mode"
     },
     {
       "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook:focus",
