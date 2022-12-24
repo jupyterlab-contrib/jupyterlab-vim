@@ -2,261 +2,425 @@
   "title": "Notebook Vim",
   "description": "Notebook Vim Settings",
   "type": "object",
-  "additionalProperties": true,
+  "additionalProperties": false,
   "jupyter.lab.shortcuts": [
     {
       "command": "notebook:enter-command-mode",
-      "keys": ["Escape"],
+      "keys": [
+        "Escape"
+      ],
       "selector": ".jp-Notebook.jp-mod-editMode",
       "disabled": true
     },
     {
       "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook.jp-mod-editMode",
-      "keys": ["Ctrl O", "U"],
+      "keys": [
+        "Ctrl O",
+        "U"
+      ],
       "command": "notebook:undo-cell-action"
     },
     {
       "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook.jp-mod-editMode",
-      "keys": ["Ctrl O", "-"],
+      "keys": [
+        "Ctrl O",
+        "-"
+      ],
       "command": "notebook:split-cell-at-cursor"
     },
     {
       "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook.jp-mod-editMode",
-      "keys": ["Ctrl O", "D"],
+      "keys": [
+        "Ctrl O",
+        "D"
+      ],
       "command": "vim:cut-cell-and-edit"
     },
     {
       "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook.jp-mod-editMode",
-      "keys": ["Ctrl O", "Y"],
+      "keys": [
+        "Ctrl O",
+        "Y"
+      ],
       "command": "vim:copy-cell-and-edit"
     },
     {
       "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook.jp-mod-editMode",
-      "keys": ["Ctrl O", "P"],
+      "keys": [
+        "Ctrl O",
+        "P"
+      ],
       "command": "vim:paste-cell-and-edit"
     },
     {
       "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook.jp-mod-editMode",
-      "keys": ["Ctrl Shift J"],
+      "keys": [
+        "Ctrl Shift J"
+      ],
       "command": "notebook:extend-marked-cells-below"
     },
     {
       "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook:focus",
-      "keys": ["Ctrl Shift J"],
+      "keys": [
+        "Ctrl Shift J"
+      ],
       "command": "notebook:extend-marked-cells-below"
     },
     {
       "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook.jp-mod-editMode",
-      "keys": ["Ctrl Shift K"],
+      "keys": [
+        "Ctrl Shift K"
+      ],
       "command": "notebook:extend-marked-cells-above"
     },
     {
       "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook:focus",
-      "keys": ["Ctrl Shift K"],
+      "keys": [
+        "Ctrl Shift K"
+      ],
       "command": "notebook:extend-marked-cells-above"
     },
     {
       "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook.jp-mod-editMode",
-      "keys": ["Ctrl O", "Shift O"],
+      "keys": [
+        "Ctrl O",
+        "Shift O"
+      ],
       "command": "notebook:insert-cell-above"
     },
     {
       "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook.jp-mod-editMode",
-      "keys": ["Ctrl O", "Ctrl O"],
+      "keys": [
+        "Ctrl O",
+        "Ctrl O"
+      ],
       "command": "notebook:insert-cell-above"
     },
     {
       "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook.jp-mod-editMode",
-      "keys": ["Ctrl O", "O"],
+      "keys": [
+        "Ctrl O",
+        "O"
+      ],
       "command": "notebook:insert-cell-below"
     },
     {
       "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook.jp-mod-editMode",
-      "keys": ["Ctrl J"],
+      "keys": [
+        "Ctrl J"
+      ],
       "command": "vim:select-below-execute-markdown"
     },
     {
       "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook.jp-mod-editMode",
-      "keys": ["Ctrl K"],
+      "keys": [
+        "Ctrl K"
+      ],
       "command": "vim:select-above-execute-markdown"
     },
     {
       "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook.jp-mod-editMode",
-      "keys": ["Escape"],
+      "keys": [
+        "Escape"
+      ],
       "command": "vim:leave-insert-mode"
     },
     {
       "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook.jp-mod-editMode",
-      "keys": ["Ctrl ["],
+      "keys": [
+        "Ctrl ["
+      ],
       "command": "vim:leave-insert-mode"
     },
     {
       "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook:focus",
-      "keys": ["Ctrl I"],
+      "keys": [
+        "Ctrl I"
+      ],
       "command": "vim:enter-insert-mode"
     },
     {
       "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook.jp-mod-editMode",
-      "keys": ["Ctrl Enter"],
+      "keys": [
+        "Ctrl Enter"
+      ],
       "command": "vim:run-cell-and-edit"
     },
     {
       "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook.jp-mod-editMode",
-      "keys": ["Shift Enter"],
+      "keys": [
+        "Shift Enter"
+      ],
       "command": "vim:run-select-next-edit"
     },
     {
       "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook.jp-mod-editMode",
-      "keys": ["Shift Escape"],
+      "keys": [
+        "Shift Escape"
+      ],
       "command": "notebook:enter-command-mode"
     },
     {
       "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook:focus",
-      "keys": ["Shift M"],
+      "keys": [
+        "Shift M"
+      ],
       "command": "vim:merge-and-edit"
     },
     {
       "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook.jp-mod-editMode",
-      "keys": ["Accel 1"],
+      "keys": [
+        "Accel 1"
+      ],
       "command": "notebook:change-cell-to-code"
     },
     {
       "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook.jp-mod-editMode",
-      "keys": ["Accel 2"],
+      "keys": [
+        "Accel 2"
+      ],
       "command": "notebook:change-cell-to-markdown"
     },
     {
       "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook.jp-mod-editMode",
-      "keys": ["Accel 3"],
+      "keys": [
+        "Accel 3"
+      ],
       "command": "notebook:change-cell-to-raw"
     },
     {
       "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook.jp-mod-editMode",
-      "keys": ["Ctrl O", "G"],
+      "keys": [
+        "Ctrl O",
+        "G"
+      ],
       "command": "vim:select-first-cell"
     },
     {
       "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook.jp-mod-editMode",
-      "keys": ["Ctrl O", "Ctrl G"],
+      "keys": [
+        "Ctrl O",
+        "Ctrl G"
+      ],
       "command": "vim:select-last-cell"
     },
     {
       "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook:focus",
-      "keys": ["G", "G"],
+      "keys": [
+        "G",
+        "G"
+      ],
       "command": "vim:select-first-cell"
     },
     {
       "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook:focus",
-      "keys": ["Shift G"],
+      "keys": [
+        "Shift G"
+      ],
       "command": "vim:select-last-cell"
     },
     {
       "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook:focus",
-      "keys": ["Y", "Y"],
+      "keys": [
+        "Y",
+        "Y"
+      ],
       "command": "notebook:copy-cell"
     },
     {
       "command": "notebook:cut-cell",
-      "keys": ["D", "D"],
+      "keys": [
+        "D",
+        "D"
+      ],
       "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook:focus"
     },
     {
       "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook:focus",
-      "keys": ["Shift P"],
+      "keys": [
+        "Shift P"
+      ],
       "command": "notebook:paste-cell-above"
     },
     {
       "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook:focus",
-      "keys": ["P"],
+      "keys": [
+        "P"
+      ],
       "command": "notebook:paste-cell-below"
     },
     {
       "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook:focus",
-      "keys": ["O"],
+      "keys": [
+        "O"
+      ],
       "command": "notebook:insert-cell-below"
     },
     {
       "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook:focus",
-      "keys": ["Shift O"],
+      "keys": [
+        "Shift O"
+      ],
       "command": "notebook:insert-cell-above"
     },
     {
       "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook:focus",
-      "keys": ["U"],
+      "keys": [
+        "U"
+      ],
       "command": "notebook:undo-cell-action"
     },
     {
       "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook:focus",
-      "keys": ["Ctrl E"],
+      "keys": [
+        "Ctrl E"
+      ],
       "command": "notebook:move-cell-down"
     },
     {
       "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook:focus",
-      "keys": ["Ctrl Y"],
+      "keys": [
+        "Ctrl Y"
+      ],
       "command": "notebook:move-cell-up"
     },
     {
       "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook:focus",
-      "keys": ["Z", "Z"],
+      "keys": [
+        "Z",
+        "Z"
+      ],
       "command": "vim:center-cell"
     },
     {
       "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook:focus",
-      "keys": ["Z", "C"],
+      "keys": [
+        "Z",
+        "C"
+      ],
       "command": "notebook:hide-cell-code"
     },
     {
       "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook:focus",
-      "keys": ["Z", "O"],
+      "keys": [
+        "Z",
+        "O"
+      ],
       "command": "notebook:show-cell-code"
     },
     {
       "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook:focus",
-      "keys": ["Z", "M"],
+      "keys": [
+        "Z",
+        "M"
+      ],
       "command": "notebook:hide-all-cell-code"
     },
     {
       "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook:focus",
-      "keys": ["Z", "R"],
+      "keys": [
+        "Z",
+        "R"
+      ],
       "command": "notebook:show-all-cell-code"
     },
     {
       "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook.jp-mod-editMode",
-      "keys": ["Ctrl O", "Z", "Z"],
+      "keys": [
+        "Ctrl O",
+        "Z",
+        "Z"
+      ],
       "command": "vim:center-cell"
     },
     {
       "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook.jp-mod-editMode .jp-InputArea-editor:not(.jp-mod-has-primary-selection)",
-      "keys": ["Ctrl G"],
+      "keys": [
+        "Ctrl G"
+      ],
       "command": "tooltip:launch-notebook"
     }
   ],
   "jupyter.lab.menus": {
-    "main":[
-    {
-      "id": "jp-mainmenu-settings",
-      "items": [
-        {
-          "type": "separator",
-          "rank": 38
-        },
-        {
-          "command": "jupyterlab-vim:toggle",
-          "rank": 38
-        },
-        {
-          "type": "separator",
-          "rank": 38
-        }
-      ]
-    }
-  ]},
+    "main": [
+      {
+        "id": "jp-mainmenu-settings",
+        "items": [
+          {
+            "type": "separator",
+            "rank": 38
+          },
+          {
+            "command": "jupyterlab-vim:toggle",
+            "rank": 38
+          },
+          {
+            "type": "separator",
+            "rank": 38
+          }
+        ]
+      }
+    ]
+  },
   "properties": {
     "enabled": {
       "type": "boolean",
       "title": "Enabled",
       "description": "Enable/disable notebook vim (may require a page refresh)",
       "default": true
+    },
+    "extraKeybindings": {
+      "type": "array",
+      "title": "Extra Vim Keybindings",
+      "items": {
+        "$ref": "#/definitions/shortcut"
+      },
+      "default": []
+    }
+  },
+  "definitions": {
+    "shortcut": {
+      "properties": {
+        "command": {
+          "title": "Keybinding",
+          "description": "The new vim keybinding, or 'left hand side' of the keybinding, e.g. `M`",
+          "type": "string"
+        },
+        "keys": {
+          "title": "The key sequence to execute",
+          "description": "The 'right hand side' of the keybinding to be executed, e.g. `:noh<cr>`",
+          "type": "string"
+        },
+        "context": {
+          "title": "Mode",
+          "description": "Vim mode in which the keybinding applies",
+          "enum": [
+            "normal",
+            "insert",
+            "visual"
+          ],
+          "default": "normal"
+        },
+        "mapfn": {
+          "title": "Map function",
+          "description": "Vim map function to use",
+          "enum": [
+            "map",
+            "noremap"
+          ],
+          "default": "map"
+        },
+        "enabled": {
+          "description": "Whether this keybinding is enabled or not.",
+          "type": "boolean",
+          "default": true
+        }
+      },
+      "required": [
+        "command",
+        "keys"
+      ],
+      "type": "object"
     }
   }
 }
