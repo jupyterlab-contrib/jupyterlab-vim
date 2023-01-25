@@ -75,13 +75,6 @@ export class VimCellManager {
           mapfn,
           enabled: keybindEnabled
         }: IKeybinding) => {
-          console.debug({
-            command,
-            keys,
-            context,
-            mapfn,
-            enabled: keybindEnabled
-          });
           if (keybindEnabled) {
             if (mapfn === 'map') {
               lvim.map(command, keys, context);
@@ -237,5 +230,5 @@ export class VimCellManager {
   private _cm: CodeMirrorEditor;
   public lastActiveCell: Cell<ICellModel> | null;
   public enabled: boolean;
-  public userKeybindings: any;
+  public userKeybindings: IKeybinding[];
 }
