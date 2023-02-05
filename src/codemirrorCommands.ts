@@ -8,16 +8,28 @@ import { CommandRegistry } from '@lumino/commands';
  */
 const IS_MAC = !!navigator.platform.match(/Mac/i);
 
+export interface IKeybinding {
+  command: string;
+  keys: string;
+  context: string;
+  mapfn: string;
+  enabled: boolean;
+}
+
+export interface IOptions {
+  commands: CommandRegistry;
+  cm: CodeMirrorEditor;
+  enabled: boolean;
+  userKeybindings: IKeybinding[];
+}
+
 export class VimCellManager {
-  constructor(
-    commands: CommandRegistry,
-    cm: CodeMirrorEditor,
-    enabled: boolean
-  ) {
+  constructor({ commands, cm, enabled, userKeybindings }: IOptions) {
     this._commands = commands;
     this._cm = cm;
     this.enabled = enabled;
     this.lastActiveCell = null;
+    this.userKeybindings = userKeybindings ?? [];
   }
 
   onActiveCellChanged(
@@ -52,6 +64,27 @@ export class VimCellManager {
 
       const lcm = this._cm as any;
       const lvim = lcm.Vim as any;
+
+      // Clear existing user keybindings, then re-register in case they changed in the user settings
+      ['normal', 'visual', 'insert'].forEach(ctx => lvim.mapclear(ctx));
+      this.userKeybindings.forEach(
+        ({
+          command,
+          keys,
+          context,
+          mapfn,
+          enabled: keybindEnabled
+        }: IKeybinding) => {
+          if (keybindEnabled) {
+            if (mapfn === 'map') {
+              lvim.map(command, keys, context);
+            } else {
+              lvim.noremap(command, keys, context);
+            }
+          }
+        }
+      );
+
       lvim.defineEx('quit', 'q', (cm: any) => {
         this._commands.execute('notebook:enter-command-mode');
       });
@@ -197,4 +230,5 @@ export class VimCellManager {
   private _cm: CodeMirrorEditor;
   public lastActiveCell: Cell<ICellModel> | null;
   public enabled: boolean;
+  public userKeybindings: IKeybinding[];
 }
