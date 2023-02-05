@@ -144,7 +144,7 @@ export function addJLabCommands(
       isEnabled
     }),
     commands.addCommand('vim:leave-current-mode', {
-        label: 'Move Insert to Normal to Command Mode"',
+        label: 'Move Insert to Normal to Jupyter Command Mode"',
         execute: args => {
             const current = getCurrent(args);
 
@@ -154,9 +154,7 @@ export function addJLabCommands(
                     let editor = content.activeCell.editor as CodeMirrorEditor;
 
                     // Get the current editor state
-                    if(editor.editor.state.vim.insertMode) {
-                      (CodeMirror as any).Vim.handleKey(editor.editor, '<Esc>');
-                    } else if (editor.editor.state.vim.visualMode){
+                    if (editor.editor.state.vim.insertMode || editor.editor.state.vim.visualMode) {
                       (CodeMirror as any).Vim.handleKey(editor.editor, '<Esc>');
                     } else {
                       commands.execute('notebook:enter-command-mode');
