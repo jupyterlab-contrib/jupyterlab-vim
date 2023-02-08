@@ -143,6 +143,7 @@ export class VimCellManager {
 
         // JUPYTER PATCH BEGIN
         // here we insert the jumps to the next cells
+
         if (line < first || line > last) {
           // var currentCell = ns.notebook.get_selected_cell();
           // var currentCell = tracker.activeCell;
@@ -150,16 +151,45 @@ export class VimCellManager {
           // `currentCell !== null should not be needed since `activeCell`
           // is already check against null (row 61). Added to avoid warning.
           if (currentCell !== null && currentCell.model.type === 'markdown') {
-            (currentCell as MarkdownCell).rendered = true;
+            if (!motionArgs.handleArrow) {
+              // markdown cells tends to improperly handle arrow keys movement,
+              //  on the way up the cell is rendered, but down movement is ignored
+              //  when use arrows the cell will remain unrendered (need to shift+enter)
+              //  However, this is the same as Jupyter default behaviour
+              (currentCell as MarkdownCell).rendered = true;
+            }
             // currentCell.execute();
           }
           if (motionArgs.forward) {
             // ns.notebook.select_next();
-            this._commands.execute('notebook:move-cursor-down');
+            if (!motionArgs.handleArrow) {
+              this._commands.execute('notebook:move-cursor-down');
+            } else {
+              // This block preventing double cell hop when you use arrow keys for navigation
+              //    also arrow key navigation works properly when current cursor position 
+              //    at the beginning of line for up move, and at the end for down move
+              let cursor = cm.getCursor();
+              let last_char = cm.doc.getLine(last).length;
+              if (cursor.ch !== last_char) {
+                cm.setCursor({ line: last, ch: last_char })
+                this._commands.execute('notebook:move-cursor-down');
+              }
+            }
             // key = 'j';
           } else {
             // ns.notebook.select_prev();
-            this._commands.execute('notebook:move-cursor-up');
+            if (!motionArgs.handleArrow) {
+              this._commands.execute('notebook:move-cursor-up');
+            } else {
+              // This block preventing double cell hop when you use arrow keys for navigation
+              //    also arrow key navigation works properly when current cursor position 
+              //    at the beginning of line for up move, and at the end for down move
+              let cursor = cm.getCursor()
+              if (cursor.ch !== 0) {
+                cm.setCursor({ line: 0, ch: 0 })
+                this._commands.execute('notebook:move-cursor-up');
+              }
+            }
             // key = 'k';
           }
           return;
@@ -188,6 +218,20 @@ export class VimCellManager {
       };
       lvim.defineMotion('moveByLinesOrCell', moveByLinesOrCell);
 
+      lvim.mapCommand(
+        '<Up>',
+        'motion',
+        'moveByLinesOrCell',
+        { forward: false, linewise: true, handleArrow: true },
+        { context: 'normal' }
+      );
+      lvim.mapCommand(
+        '<Down>',
+        'motion',
+        'moveByLinesOrCell',
+        { forward: true, linewise: true, handleArrow: true },
+        { context: 'normal' }
+      );
       lvim.mapCommand(
         'k',
         'motion',
