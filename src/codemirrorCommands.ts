@@ -170,7 +170,7 @@ export class VimCellManager {
               //    at the beginning of line for up move, and at the end for down move
               let cursor = cm.getCursor();
               let last_char = cm.doc.getLine(last).length;
-              if (cursor.ch !== last_char) {
+              if (cursor.line !== last || cursor.ch !== last_char) {
                 cm.setCursor({ line: last, ch: last_char })
                 this._commands.execute('notebook:move-cursor-down');
               }
@@ -185,7 +185,7 @@ export class VimCellManager {
               //    also arrow key navigation works properly when current cursor position 
               //    at the beginning of line for up move, and at the end for down move
               let cursor = cm.getCursor()
-              if (cursor.ch !== 0) {
+              if (cursor.line !== 0 || cursor.ch !== 0) {
                 cm.setCursor({ line: 0, ch: 0 })
                 this._commands.execute('notebook:move-cursor-up');
               }
