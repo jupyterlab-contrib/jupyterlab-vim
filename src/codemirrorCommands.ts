@@ -169,7 +169,7 @@ export class VimCellManager {
               //    also arrow key navigation works properly when current cursor position
               //    at the beginning of line for up move, and at the end for down move
               const cursor = cm.getCursor();
-              let last_char = cm.doc.getLine(last).length;
+              const last_char = cm.doc.getLine(last).length;
               if (cursor.line !== last || cursor.ch !== last_char) {
                 cm.setCursor({ line: last, ch: last_char });
                 this._commands.execute('notebook:move-cursor-down');
