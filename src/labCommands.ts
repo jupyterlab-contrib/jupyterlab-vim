@@ -143,6 +143,30 @@ export function addJLabCommands(
       },
       isEnabled
     }),
+    commands.addCommand('vim:leave-current-mode', {
+      label: 'Move Insert to Normal to Jupyter Command Mode"',
+      execute: args => {
+        const current = getCurrent(args);
+
+        if (current) {
+          const { content } = current;
+          if (content.activeCell !== null) {
+            const editor = content.activeCell.editor as CodeMirrorEditor;
+
+            // Get the current editor state
+            if (
+              editor.editor.state.vim.insertMode ||
+              editor.editor.state.vim.visualMode
+            ) {
+              (CodeMirror as any).Vim.handleKey(editor.editor, '<Esc>');
+            } else {
+              commands.execute('notebook:enter-command-mode');
+            }
+          }
+        }
+      },
+      isEnabled
+    }),
     commands.addCommand('vim:select-below-execute-markdown', {
       label: 'Execute Markdown and Select Cell Below',
       execute: args => {
