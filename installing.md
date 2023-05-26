@@ -8,7 +8,7 @@ pip install jupyterlab_vim
 Uninstall:
 
 ```bash
-pip uninstall jupyterlab-vim
+pip uninstall jupyterlab_vim
 ```
 
 
