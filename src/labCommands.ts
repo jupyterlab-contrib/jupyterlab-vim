@@ -175,7 +175,13 @@ export function addNotebookCommands(
             const vim = cm.state.vim;
 
             // Get the current editor state
-            if (vim.insertMode || vim.visualMode) {
+            if (
+              vim.insertMode ||
+              vim.visualMode ||
+              vim.inputState.operator !== null ||
+              vim.inputState.motion !== null ||
+              vim.inputState.keyBuffer.length !== 0
+            ) {
               Vim.handleKey(cm, '<Esc>');
             } else {
               commands.execute('notebook:enter-command-mode');
