@@ -2,11 +2,16 @@ import { Cell, ICellModel, MarkdownCell } from '@jupyterlab/cells';
 import { CodeMirrorEditor } from '@jupyterlab/codemirror';
 import { INotebookTracker } from '@jupyterlab/notebook';
 import { CommandRegistry } from '@lumino/commands';
+import { Vim, getCM, CodeMirror } from '@replit/codemirror-vim';
 
-/**
- * A boolean indicating whether the platform is Mac.
- */
-const IS_MAC = !!navigator.platform.match(/Mac/i);
+// It may be worth contributing types for these upstream
+interface IVimCodeMirror extends CodeMirror {
+  moveByLines: undefined;
+  moveByDisplayLines: undefined;
+  moveByScroll: undefined;
+  moveToColumn: undefined;
+  moveToEol: undefined;
+}
 
 export interface IKeybinding {
   command: string;
@@ -18,15 +23,13 @@ export interface IKeybinding {
 
 export interface IOptions {
   commands: CommandRegistry;
-  cm: CodeMirrorEditor;
   enabled: boolean;
   userKeybindings: IKeybinding[];
 }
 
 export class VimCellManager {
-  constructor({ commands, cm, enabled, userKeybindings }: IOptions) {
+  constructor({ commands, enabled, userKeybindings }: IOptions) {
     this._commands = commands;
-    this._cm = cm;
     this.enabled = enabled;
     this.lastActiveCell = null;
     this.userKeybindings = userKeybindings ?? [];
@@ -36,34 +39,51 @@ export class VimCellManager {
     tracker: INotebookTracker,
     activeCell: Cell<ICellModel> | null
   ): void {
-    this.modifyCell(activeCell);
+    this.modifyCell(activeCell).catch(console.error);
   }
 
-  modifyCell(activeCell: Cell<ICellModel> | null): void {
+  async modifyCell(activeCell: Cell<ICellModel> | null): Promise<void> {
     if (!activeCell) {
       return;
     }
     this.lastActiveCell = activeCell;
-    const editor = activeCell.editor as CodeMirrorEditor;
+    await activeCell.ready;
+    const editor = activeCell.editor as CodeMirrorEditor | null;
+
+    if (activeCell.isDisposed) {
+      console.warn('Cell was already disposed, cannot setup vim mode');
+      return;
+    }
+
+    if (!editor) {
+      throw Error('Cell editor not available');
+    }
+
+    const view = editor.editor;
 
     if (this.enabled) {
-      editor.setOption('keyMap', 'vim');
-      const extraKeys = editor.getOption('extraKeys') || {};
+      if (!editor.getOption('vim')) {
+        // this erases state, we do not want to call it if not needed.
+        editor.setOption('vim', true);
 
-      // TODO: does can this be any codemirror?
-      extraKeys['Esc'] = (this._cm as any).prototype.leaveInsertMode;
-      if (!IS_MAC) {
-        extraKeys['Ctrl-C'] = false;
+        // On each key press the notebook (`Notebook.handleEvent`) invokes
+        // a handler ensuring focus (`Notebook._ensureFocus`); the logic does
+        // not work well for the `ex commands` panel which is always interpreted
+        // as blurred because it exists outside of the CodeMirror6 state; here
+        // we override `hasFocus` handler to ensure it is taken into account.
+        const cm = getCM(view)!;
+        editor.hasFocus = () => {
+          if (
+            cm.state.dialog &&
+            cm.state.dialog.contains(document.activeElement)
+          ) {
+            return true;
+          }
+          return view.hasFocus;
+        };
       }
-
-      (this._cm as any).prototype.save = (): void => {
-        this._commands.execute('docmanager:save');
-      };
-
-      editor.setOption('extraKeys', extraKeys);
-
-      const lcm = this._cm as any;
-      const lvim = lcm.Vim as any;
+      const lcm = getCM(view);
+      const lvim = Vim;
 
       // Clear existing user keybindings, then re-register in case they changed in the user settings
       ['normal', 'visual', 'insert'].forEach(ctx => lvim.mapclear(ctx));
@@ -85,17 +105,13 @@ export class VimCellManager {
         }
       );
 
-      lvim.defineEx('quit', 'q', (cm: any) => {
-        this._commands.execute('notebook:enter-command-mode');
-      });
-
-      (this._cm as any).Vim.handleKey(editor.editor, '<Esc>');
+      Vim.handleKey(lcm, '<Esc>');
 
       // Define a function to use as Vim motion
       // This replaces the codemirror moveByLines function to
       // for jumping between notebook cells.
       const moveByLinesOrCell = (
-        cm: any,
+        cm: IVimCodeMirror,
         head: any,
         motionArgs: any,
         vim: any
@@ -169,9 +185,10 @@ export class VimCellManager {
               //    also arrow key navigation works properly when current cursor position
               //    at the beginning of line for up move, and at the end for down move
               const cursor = cm.getCursor();
-              const last_char = cm.doc.getLine(last).length;
+              // CM6 is 1-based
+              const last_char = view.state.doc.line(last + 1).length;
               if (cursor.line !== last || cursor.ch !== last_char) {
-                cm.setCursor({ line: last, ch: last_char });
+                cm.setCursor(last, last_char);
                 this._commands.execute('notebook:move-cursor-down');
               }
             }
@@ -186,7 +203,7 @@ export class VimCellManager {
               //    at the beginning of line for up move, and at the end for down move
               const cursor = cm.getCursor();
               if (cursor.line !== 0 || cursor.ch !== 0) {
-                cm.setCursor({ line: 0, ch: 0 });
+                cm.setCursor(0, 0);
                 this._commands.execute('notebook:move-cursor-up');
               }
             }
@@ -211,10 +228,10 @@ export class VimCellManager {
         }
 
         vim.lastHSPos = cm.charCoords(
-          (this._cm as any).Pos(line, endCh),
+          new CodeMirror.Pos(line, endCh),
           'div'
         ).left;
-        return (this._cm as any).Pos(line, endCh);
+        return new CodeMirror.Pos(line, endCh);
       };
       lvim.defineMotion('moveByLinesOrCell', moveByLinesOrCell);
 
@@ -265,13 +282,12 @@ export class VimCellManager {
         this._commands.execute('notebook:split-cell-at-cursor');
       });
       lvim.mapCommand('-', 'action', 'splitCell', {}, { extra: 'normal' });
-    } else if (editor.getOption('keyMap') === 'vim') {
-      editor.setOption('keyMap', 'default');
+    } else if (editor.getOption('vim')) {
+      editor.setOption('vim', false);
     }
   }
 
   private _commands: CommandRegistry;
-  private _cm: CodeMirrorEditor;
   public lastActiveCell: Cell<ICellModel> | null;
   public enabled: boolean;
   public userKeybindings: IKeybinding[];

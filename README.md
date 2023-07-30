@@ -1,8 +1,8 @@
 # jupyterlab-vim
 
-> Community fork of <https://github.com/jwkvam/jupyterlab-vim> updated for jupyterlab 2 and 3
+> Community fork of <https://github.com/jwkvam/jupyterlab-vim> updated for jupyterlab 2, 3 and 4
 
-![Extension status](https://img.shields.io/badge/status-ready-success "ready to be used")
+![Extension status](https://img.shields.io/badge/status-ready-success 'ready to be used')
 [![Github Actions Status](https://github.com/jupyterlab-contrib/jupyterlab-vim/workflows/Build/badge.svg)](https://github.com/jupyterlab-contrib/jupyterlab-vim/actions?query=workflow%3ABuild)
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/jupyterlab-contrib/jupyterlab-vim/master?urlpath=lab)
 [![npm version](https://img.shields.io/npm/v/@axlair/jupyterlab_vim)](https://www.npmjs.com/package/@axlair/jupyterlab_vim)
@@ -14,7 +14,6 @@ Notebook cell vim bindings
 
 ![jlabvim](https://user-images.githubusercontent.com/86304/38079432-b7596fd8-32f3-11e8-9ebd-4b9e7823f5f9.gif)
 
-
 ## Modes
 
 Like vim, Jupyterlab has a distinction between edit mode and command mode. Jupyterlab Command mode is when the cursor is not in a specific cell, and edit mode when typing in a cell.
@@ -23,23 +22,26 @@ This extension combines the Jupyterlab (Edit and Command) modes with the standar
 
 1. Jupyterlab Command Mode
 2. Jupyterlab Edit Mode
-    - Insert
-    - Normal
-    - Visual
+   - Insert
+   - Normal
+   - Visual
 
 ## Install
 
 ```bash
 pip install jupyterlab-vim
 ```
-or  with conda/mamba:
+
+or with conda/mamba:
+
 ```bash
 mamba install -c conda-forge jupyterlab_vim
 ```
+
 For Jupyterlab<3 see [installing.md](installing.md).
 
-
 ## Key Bindings
+
 To learn how to modify key bindings see the [modify-keybinds.md](modify-keybinds.md) file.
 
 **Please note that all keys are lowercase unless `Shift` is explicitly indicated.**
@@ -50,14 +52,14 @@ Shortcuts this extension introduces:
 ### Vim Ex commands
 
 | Command  | Action                     |
-| -------  | ------                     |
+| -------- | -------------------------- |
 | :w[rite] | Save Notebook              |
 | :q[uit]  | Enter Jupyter command mode |
 
 ### Vim command bindings
 
 | Chord           | Action                    |
-| -----           | -------                   |
+| --------------- | ------------------------- |
 | Ctrl-O, U       | Undo Cell Action          |
 | -               | Split Cell at Cursor      |
 | Ctrl-O, -       | Split Cell at Cursor      |
@@ -84,27 +86,26 @@ Shortcuts this extension introduces:
 
 ### Jupyter command bindings
 
-| Chord   | Action            |
-| -----   | ------            |
-| G, G    | Select First Cell |
-| Shift-G | Select Last Cell  |
-| D, D    | Delete Cell       |
-| Y, Y    | Yank (Copy) Cell  |
-| P       | Paste Cell        |
-| Shift-P | Paste Cell Above  |
-| O       | Insert Cell       |
-| Shift-O | Insert Cell Above |
-| U       | Undo Cell Action  |
-| Ctrl-E  | Move Cells Down   |
-| Ctrl-Y  | Move Cells Up     |
-| Z, Z    | Center Cell       |
-| Z, C    | Hide Code Cell |
-| Z, O    | Show Code Cell |
+| Chord   | Action              |
+| ------- | ------------------- |
+| G, G    | Select First Cell   |
+| Shift-G | Select Last Cell    |
+| D, D    | Delete Cell         |
+| Y, Y    | Yank (Copy) Cell    |
+| P       | Paste Cell          |
+| Shift-P | Paste Cell Above    |
+| O       | Insert Cell         |
+| Shift-O | Insert Cell Above   |
+| U       | Undo Cell Action    |
+| Ctrl-E  | Move Cells Down     |
+| Ctrl-Y  | Move Cells Up       |
+| Z, Z    | Center Cell         |
+| Z, C    | Hide Code Cell      |
+| Z, O    | Show Code Cell      |
 | Z, M    | Hide All Code Cells |
-| Z, R    | Show All Code Cells  |
+| Z, R    | Show All Code Cells |
 
 ## Special Thanks
-
 
 From @jwkvam:
 
@@ -116,8 +117,6 @@ From @jwkvam:
 ## Contributing
 
 Contributions and feedback are most welcome!
-
-[![](https://sourcerer.io/fame/jwkvam/jwkvam/jupyterlab-vim/images/0)](https://sourcerer.io/fame/jwkvam/jwkvam/jupyterlab-vim/links/0)[![](https://sourcerer.io/fame/jwkvam/jwkvam/jupyterlab-vim/images/1)](https://sourcerer.io/fame/jwkvam/jwkvam/jupyterlab-vim/links/1)[![](https://sourcerer.io/fame/jwkvam/jwkvam/jupyterlab-vim/images/2)](https://sourcerer.io/fame/jwkvam/jwkvam/jupyterlab-vim/links/2)[![](https://sourcerer.io/fame/jwkvam/jwkvam/jupyterlab-vim/images/3)](https://sourcerer.io/fame/jwkvam/jwkvam/jupyterlab-vim/links/3)[![](https://sourcerer.io/fame/jwkvam/jwkvam/jupyterlab-vim/images/4)](https://sourcerer.io/fame/jwkvam/jwkvam/jupyterlab-vim/links/4)[![](https://sourcerer.io/fame/jwkvam/jwkvam/jupyterlab-vim/images/5)](https://sourcerer.io/fame/jwkvam/jwkvam/jupyterlab-vim/links/5)[![](https://sourcerer.io/fame/jwkvam/jwkvam/jupyterlab-vim/images/6)](https://sourcerer.io/fame/jwkvam/jwkvam/jupyterlab-vim/links/6)[![](https://sourcerer.io/fame/jwkvam/jwkvam/jupyterlab-vim/images/7)](https://sourcerer.io/fame/jwkvam/jwkvam/jupyterlab-vim/links/7)
 
 ### Development install
 
@@ -135,7 +134,6 @@ The `jlpm` command is JupyterLab's pinned version of
 # Clone the repo to your local environment
 # Change directory to the jupyterlab_vim directory
 # Install package in development mode
-pip install jupyter_packaging
 pip install -e .
 # Link your development version of the extension with JupyterLab
 jupyter labextension develop . --overwrite

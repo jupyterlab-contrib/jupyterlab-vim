@@ -1,5 +1,6 @@
 import { JupyterFrontEnd } from '@jupyterlab/application';
 import { MarkdownCell } from '@jupyterlab/cells';
+import { Vim, getCM } from '@replit/codemirror-vim';
 import { CodeMirrorEditor } from '@jupyterlab/codemirror';
 import {
   INotebookTracker,
@@ -13,15 +14,18 @@ import { ElementExt } from '@lumino/domutils';
 
 export function addJLabCommands(
   app: JupyterFrontEnd,
-  tracker: INotebookTracker,
-  CodeMirror: CodeMirrorEditor
+  tracker: INotebookTracker
 ): Array<IDisposable> {
   const { commands, shell } = app;
   function getCurrent(args: ReadonlyPartialJSONObject): NotebookPanel | null {
     const widget = tracker.currentWidget;
     const activate = args['activate'] !== false;
 
-    if (activate && widget) {
+    // Should we expose `activeWidget` in `IShell`?
+    // when `activateById` is called the Notebook handler focuses current editor
+    // which leads to bluring the panel for inputing ex commands and may render
+    // the use of ex commands impossible if called needlesly.
+    if (activate && widget && shell.currentWidget !== widget) {
       shell.activateById(widget.id);
     }
 
@@ -122,7 +126,12 @@ export function addJLabCommands(
           if (content.activeCell !== null) {
             const editor = content.activeCell.editor as CodeMirrorEditor;
             current.content.mode = 'edit';
-            (CodeMirror as any).Vim.handleKey(editor.editor, 'i');
+            const cm = getCM(editor.editor);
+            if (!cm) {
+              console.error('CodeMirror vim wrapper not found');
+              return;
+            }
+            Vim.handleKey(cm, 'i');
           }
         }
       },
@@ -137,7 +146,12 @@ export function addJLabCommands(
           const { content } = current;
           if (content.activeCell !== null) {
             const editor = content.activeCell.editor as CodeMirrorEditor;
-            (CodeMirror as any).Vim.handleKey(editor.editor, '<Esc>');
+            const cm = getCM(editor.editor);
+            if (!cm) {
+              console.error('CodeMirror vim wrapper not found');
+              return;
+            }
+            Vim.handleKey(cm, '<Esc>');
           }
         }
       },
@@ -153,12 +167,16 @@ export function addJLabCommands(
           if (content.activeCell !== null) {
             const editor = content.activeCell.editor as CodeMirrorEditor;
 
+            const cm = getCM(editor.editor);
+            if (!cm) {
+              console.error('CodeMirror vim wrapper not found');
+              return;
+            }
+            const vim = cm.state.vim;
+
             // Get the current editor state
-            if (
-              editor.editor.state.vim.insertMode ||
-              editor.editor.state.vim.visualMode
-            ) {
-              (CodeMirror as any).Vim.handleKey(editor.editor, '<Esc>');
+            if (vim.insertMode || vim.visualMode) {
+              Vim.handleKey(cm, '<Esc>');
             } else {
               commands.execute('notebook:enter-command-mode');
             }
@@ -247,8 +265,7 @@ export function addJLabCommands(
         const current = getCurrent(args);
 
         if (current && current.content.activeCell !== null) {
-          const er = current.content.activeCell.inputArea.node.getBoundingClientRect();
-          current.content.scrollToPosition(er.bottom, 0);
+          current.content.scrollToCell(current.content.activeCell, 'center');
         }
       },
       isEnabled
