@@ -5,9 +5,15 @@ import {
 
 import { INotebookTracker } from '@jupyterlab/notebook';
 
-import { ICodeMirror, CodeMirrorEditor } from '@jupyterlab/codemirror';
+import {
+  IEditorExtensionRegistry,
+  EditorExtensionRegistry
+} from '@jupyterlab/codemirror';
 import { ISettingRegistry } from '@jupyterlab/settingregistry';
 import { IDisposable } from '@lumino/disposable';
+import { vim, Vim } from '@replit/codemirror-vim';
+import { EditorView } from '@codemirror/view';
+import { Prec } from '@codemirror/state';
 
 import { VimCellManager, IKeybinding } from './codemirrorCommands';
 import { addJLabCommands } from './labCommands';
@@ -23,16 +29,43 @@ const extension: JupyterFrontEndPlugin<void> = {
   id: PLUGIN_NAME,
   autoStart: true,
   activate: activateCellVim,
-  requires: [INotebookTracker, ICodeMirror, ISettingRegistry]
+  requires: [INotebookTracker, IEditorExtensionRegistry, ISettingRegistry]
 };
 
 async function activateCellVim(
   app: JupyterFrontEnd,
   tracker: INotebookTracker,
-  jlabCodeMirror: ICodeMirror,
+  editorExtensionRegistry: IEditorExtensionRegistry,
   settingRegistry: ISettingRegistry
 ): Promise<void> {
-  // await app.restored;
+  const theme = Prec.highest(
+    EditorView.theme({
+      '.cm-fat-cursor': {
+        position: 'absolute',
+        background: 'var(--jp-vim-cursor-color)',
+        border: 'none',
+        whiteSpace: 'pre'
+      },
+      '&:not(.cm-focused) .cm-fat-cursor': {
+        background: 'none',
+        outline: 'solid 1px var(--jp-vim-cursor-color)',
+        color: 'transparent !important'
+      }
+    })
+  );
+
+  editorExtensionRegistry.addExtension({
+    name: 'vim',
+    factory: options => {
+      return EditorExtensionRegistry.createConditionalExtension([
+        theme,
+        vim({
+          status: false
+        })
+      ]);
+    }
+  });
+
   app.commands.addCommand(TOGGLE_ID, {
     label: 'Enable Notebook Vim mode',
     execute: () => {
@@ -43,19 +76,28 @@ async function activateCellVim(
     isToggled: () => enabled
   });
 
-  const userKeybindings = ((
+  const userKeybindings = (
     await settingRegistry.get(`${PLUGIN_NAME}:plugin`, 'extraKeybindings')
-  ).composite as unknown) as Array<IKeybinding>;
+  ).composite as unknown as Array<IKeybinding>;
 
-  // eslint-disable-next-line prettier/prettier
-  const globalCodeMirror = jlabCodeMirror.CodeMirror as unknown as CodeMirrorEditor;
   let cellManager: VimCellManager | null = null;
   let escBinding: IDisposable | null = null;
   let hasEverBeenEnabled = false;
 
+  Vim.defineEx('write', 'w', () => {
+    app.commands.execute('docmanager:save');
+  });
+
+  Vim.defineEx('quit', 'q', () => {
+    // In JupyterLab 4.0 needs to be executed after vim panel has closed, here
+    // achived by moving it to end of execution stack with `setTimeout()`.
+    setTimeout(() => {
+      app.commands.execute('notebook:enter-command-mode');
+    });
+  });
+
   cellManager = new VimCellManager({
     commands: app.commands,
-    cm: globalCodeMirror,
     enabled,
     userKeybindings
   });
@@ -68,14 +110,14 @@ async function activateCellVim(
     cellManager
   );
 
-  addJLabCommands(app, tracker, globalCodeMirror);
+  addJLabCommands(app, tracker);
 
   async function updateSettings(
     settings: ISettingRegistry.ISettings
   ): Promise<void> {
-    const userKeybindings = ((
+    const userKeybindings = (
       await settingRegistry.get(`${PLUGIN_NAME}:plugin`, 'extraKeybindings')
-    ).composite as unknown) as Array<IKeybinding>;
+    ).composite as unknown as Array<IKeybinding>;
 
     enabled = settings.get('enabled').composite === true;
     app.commands.notifyCommandChanged(TOGGLE_ID);
@@ -88,7 +130,6 @@ async function activateCellVim(
       if (!hasEverBeenEnabled) {
         hasEverBeenEnabled = true;
         await app.restored;
-        await jlabCodeMirror.ensureVimKeymap();
       }
     } else {
       escBinding = app.commands.addKeyBinding({

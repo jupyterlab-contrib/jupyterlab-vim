@@ -1,4 +1,4 @@
-# a mybinder.org-ready environment for demoing jupyterlab-vim
+# a mybinder.org-ready environment for demoing jupyterlab_vim
 # this environment may also be used locally on Linux/MacOS/Windows, e.g.
 #
 #   conda env update --file binder/environment.yml
@@ -11,14 +11,11 @@ channels:
 
 dependencies:
   # runtime dependencies
-  - python >=3.8,<3.9.0a0
-  - jupyterlab >=3,<4.0.0a0
+  - python >=3.10,<3.11.0a0
+  - jupyterlab >=4.0.0,<5
   # labextension build dependencies
-  - nodejs >=14,<15
+  - nodejs >=18,<19
   - pip
   - wheel
-  # Dependencies
-  - packaging
-  # Fix binder
-  - parso >=0.8.0,<0.9.0
-  - jupyter_telemetry >=0.1.0
+  # additional packages for demos
+  # - ipywidgets

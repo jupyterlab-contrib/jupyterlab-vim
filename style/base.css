@@ -1,0 +1,22 @@
+/*
+    See the JupyterLab Developer Guide for useful CSS Patterns:
+
+    https://jupyterlab.readthedocs.io/en/stable/developer/css.html
+*/
+
+/* hide all vim cursors if extension is off but cells were not yet refreshed */
+[data-jp-vim-mode='false'] .cm-vimMode .cm-vimCursorLayer {
+  display: none;
+}
+
+/* hide vim cursors if non-active cell */
+[data-jp-vim-mode='true']
+  .jp-Cell:not(.jp-mod-active)
+  .cm-vimMode
+  .cm-vimCursorLayer {
+  display: none;
+}
+
+:root {
+  --jp-vim-cursor-color: #7e7;
+}
