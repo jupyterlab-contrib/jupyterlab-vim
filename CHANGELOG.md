@@ -6,6 +6,10 @@
 
 # History
 
+## 0.17.0 / 2023-07-30
+
+- Support JupyterLab 4.0 (#85, thanks @krassowski)
+
 ## 0.16.0 / 2023-03-12
 
 - Add configuration to provide custom keybindings (#74, thanks @peytondmurray)
