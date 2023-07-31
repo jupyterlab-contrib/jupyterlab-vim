@@ -43,13 +43,14 @@ export class VimEditorManager {
     this.userKeybindings = userKeybindings ?? [];
   }
 
-  onActiveEditorChanged(
+  async onActiveEditorChanged(
     tracker: IEditorTracker,
     activeEditor: IDocumentWidget<FileEditor> | null
-  ): void {
+  ): Promise<void> {
     if (!activeEditor) {
       return;
     }
+    await activeEditor.content.ready;
     this.modifyEditor(activeEditor.content.editor);
   }
 
