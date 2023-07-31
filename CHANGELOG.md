@@ -2,6 +2,37 @@
 
 <!-- <START NEW CHANGELOG ENTRY> -->
 
+## 4.0.0
+
+([Full Changelog](https://github.com/jupyterlab-contrib/jupyterlab-vim/compare/1.1.0...718d294cbbab1010ffaf35c79773e3abc5d98a6c))
+
+### Enhancements made
+
+- Add support for vim mode in Text Editor [#90](https://github.com/jupyterlab-contrib/jupyterlab-vim/pull/90) ([@krassowski](https://github.com/krassowski))
+
+### Bugs fixed
+
+- Fix undo [#92](https://github.com/jupyterlab-contrib/jupyterlab-vim/pull/92) ([@krassowski](https://github.com/krassowski))
+- BUG: Arrow keys navigation causes double cell hops [#77](https://github.com/jupyterlab-contrib/jupyterlab-vim/pull/77) ([@alexveden](https://github.com/alexveden))
+
+### Maintenance and upkeep improvements
+
+- Remove duplicate binder-on-pr action [#91](https://github.com/jupyterlab-contrib/jupyterlab-vim/pull/91) ([@krassowski](https://github.com/krassowski))
+- maintenance: Release updates [#87](https://github.com/jupyterlab-contrib/jupyterlab-vim/pull/87) ([@ianhi](https://github.com/ianhi))
+- Support JupyterLab 4.0 [#85](https://github.com/jupyterlab-contrib/jupyterlab-vim/pull/85) ([@krassowski](https://github.com/krassowski))
+
+### Other merged PRs
+
+- Add configuration to provide custom keybindings [#74](https://github.com/jupyterlab-contrib/jupyterlab-vim/pull/74) ([@peytondmurray](https://github.com/peytondmurray))
+- Add "leave-current-mode" command to move insert->normal->command. [#69](https://github.com/jupyterlab-contrib/jupyterlab-vim/pull/69) ([@asford](https://github.com/asford))
+- restore correct keybinding [#64](https://github.com/jupyterlab-contrib/jupyterlab-vim/pull/64) ([@ianhi](https://github.com/ianhi))
+
+### Contributors to this release
+
+([GitHub contributors page for this release](https://github.com/jupyterlab-contrib/jupyterlab-vim/graphs/contributors?from=2022-03-12&to=2023-07-31&type=c))
+
+[@alexveden](https://github.com/search?q=repo%3Ajupyterlab-contrib%2Fjupyterlab-vim+involves%3Aalexveden+updated%3A2022-03-12..2023-07-31&type=Issues) | [@asford](https://github.com/search?q=repo%3Ajupyterlab-contrib%2Fjupyterlab-vim+involves%3Aasford+updated%3A2022-03-12..2023-07-31&type=Issues) | [@github-actions](https://github.com/search?q=repo%3Ajupyterlab-contrib%2Fjupyterlab-vim+involves%3Agithub-actions+updated%3A2022-03-12..2023-07-31&type=Issues) | [@ianhi](https://github.com/search?q=repo%3Ajupyterlab-contrib%2Fjupyterlab-vim+involves%3Aianhi+updated%3A2022-03-12..2023-07-31&type=Issues) | [@krassowski](https://github.com/search?q=repo%3Ajupyterlab-contrib%2Fjupyterlab-vim+involves%3Akrassowski+updated%3A2022-03-12..2023-07-31&type=Issues) | [@peytondmurray](https://github.com/search?q=repo%3Ajupyterlab-contrib%2Fjupyterlab-vim+involves%3Apeytondmurray+updated%3A2022-03-12..2023-07-31&type=Issues)
+
 <!-- <END NEW CHANGELOG ENTRY> -->
 
 # History
