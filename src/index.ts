@@ -4,6 +4,7 @@ import {
 } from '@jupyterlab/application';
 
 import { INotebookTracker } from '@jupyterlab/notebook';
+import { IEditorTracker } from '@jupyterlab/fileeditor';
 
 import {
   IEditorExtensionRegistry,
@@ -15,12 +16,17 @@ import { vim, Vim } from '@replit/codemirror-vim';
 import { EditorView } from '@codemirror/view';
 import { Prec } from '@codemirror/state';
 
-import { VimCellManager, IKeybinding } from './codemirrorCommands';
-import { addJLabCommands } from './labCommands';
+import {
+  VimEditorManager,
+  VimCellManager,
+  IKeybinding
+} from './codemirrorCommands';
+import { addNotebookCommands } from './labCommands';
 
 const PLUGIN_NAME = '@axlair/jupyterlab_vim';
 const TOGGLE_ID = 'jupyterlab-vim:toggle';
 let enabled = false;
+let enabledInEditors = true;
 
 /**
  * Initialization data for the jupyterlab_vim extension.
@@ -29,14 +35,16 @@ const extension: JupyterFrontEndPlugin<void> = {
   id: PLUGIN_NAME,
   autoStart: true,
   activate: activateCellVim,
-  requires: [INotebookTracker, IEditorExtensionRegistry, ISettingRegistry]
+  requires: [INotebookTracker, IEditorExtensionRegistry, ISettingRegistry],
+  optional: [IEditorTracker]
 };
 
 async function activateCellVim(
   app: JupyterFrontEnd,
-  tracker: INotebookTracker,
+  notebookTracker: INotebookTracker,
   editorExtensionRegistry: IEditorExtensionRegistry,
-  settingRegistry: ISettingRegistry
+  settingRegistry: ISettingRegistry,
+  editorTracker: IEditorTracker
 ): Promise<void> {
   const theme = Prec.highest(
     EditorView.theme({
@@ -67,7 +75,7 @@ async function activateCellVim(
   });
 
   app.commands.addCommand(TOGGLE_ID, {
-    label: 'Enable Notebook Vim mode',
+    label: 'Enable Vim Mode',
     execute: () => {
       if (settingRegistry) {
         void settingRegistry.set(`${PLUGIN_NAME}:plugin`, 'enabled', !enabled);
@@ -76,11 +84,39 @@ async function activateCellVim(
     isToggled: () => enabled
   });
 
+  app.commands.addCommand('vim:enter-normal-mode', {
+    label: 'Enter Normal Vim Mode',
+    execute: () => {
+      const current = app.shell.currentWidget;
+      if (!current) {
+        console.warn('Current widget not found');
+      } else if (editorTracker.currentWidget === current) {
+        editorManager.modifyEditor(editorTracker.currentWidget.content.editor);
+      } else if (notebookTracker.currentWidget === current) {
+        cellManager.modifyCell(
+          notebookTracker.currentWidget.content.activeCell
+        );
+      } else {
+        console.warn('Current widget is not vim-enabled');
+      }
+    },
+    isEnabled: () => enabled
+  });
+
   const userKeybindings = (
     await settingRegistry.get(`${PLUGIN_NAME}:plugin`, 'extraKeybindings')
   ).composite as unknown as Array<IKeybinding>;
 
-  let cellManager: VimCellManager | null = null;
+  const cellManager = new VimCellManager({
+    commands: app.commands,
+    enabled,
+    userKeybindings
+  });
+  const editorManager = new VimEditorManager({
+    enabled: enabled && enabledInEditors,
+    userKeybindings
+  });
+
   let escBinding: IDisposable | null = null;
   let hasEverBeenEnabled = false;
 
@@ -96,21 +132,20 @@ async function activateCellVim(
     });
   });
 
-  cellManager = new VimCellManager({
-    commands: app.commands,
-    enabled,
-    userKeybindings
-  });
   // it's ok to connect here because we will never reach the vim section unless
   // ensureVimKeyMap has been called due to the checks for enabled.
   // we need to have now in order to keep track of the last active cell
   // so that we can modify it when vim is turned on or off.
-  tracker.activeCellChanged.connect(
+  notebookTracker.activeCellChanged.connect(
     cellManager.onActiveCellChanged,
     cellManager
   );
+  editorTracker.currentChanged.connect(
+    editorManager.onActiveEditorChanged,
+    editorManager
+  );
 
-  addJLabCommands(app, tracker);
+  addNotebookCommands(app, notebookTracker);
 
   async function updateSettings(
     settings: ISettingRegistry.ISettings
@@ -120,11 +155,15 @@ async function activateCellVim(
     ).composite as unknown as Array<IKeybinding>;
 
     enabled = settings.get('enabled').composite === true;
+    enabledInEditors = settings.get('enabledInEditors').composite === true;
     app.commands.notifyCommandChanged(TOGGLE_ID);
-    if (cellManager) {
-      cellManager.enabled = enabled;
-      cellManager.userKeybindings = userKeybindings;
-    }
+
+    cellManager.enabled = enabled;
+    cellManager.userKeybindings = userKeybindings;
+
+    editorManager.enabled = enabled && enabledInEditors;
+    editorManager.userKeybindings = userKeybindings;
+
     if (enabled) {
       escBinding?.dispose();
       if (!hasEverBeenEnabled) {
@@ -139,14 +178,21 @@ async function activateCellVim(
       });
     }
 
-    tracker.forEach(notebook => {
+    notebookTracker.forEach(notebook => {
       notebook.node.dataset.jpVimMode = `${enabled}`;
     });
-    cellManager?.modifyCell(cellManager.lastActiveCell);
+    editorTracker.forEach(document => {
+      document.node.dataset.jpVimMode = `${enabled && enabledInEditors}`;
+    });
+    editorManager?.updateLastActive();
+    cellManager?.updateLastActive();
 
     // make sure our css selector is added to new notebooks
-    tracker.widgetAdded.connect((sender, notebook) => {
+    notebookTracker.widgetAdded.connect((sender, notebook) => {
       notebook.node.dataset.jpVimMode = `${enabled}`;
+    });
+    editorTracker.widgetAdded.connect((sender, document) => {
+      document.node.dataset.jpVimMode = `${enabled && enabledInEditors}`;
     });
   }
 

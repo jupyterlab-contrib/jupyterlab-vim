@@ -12,7 +12,7 @@ import { ReadonlyPartialJSONObject } from '@lumino/coreutils';
 import { IDisposable } from '@lumino/disposable';
 import { ElementExt } from '@lumino/domutils';
 
-export function addJLabCommands(
+export function addNotebookCommands(
   app: JupyterFrontEnd,
   tracker: INotebookTracker
 ): Array<IDisposable> {
