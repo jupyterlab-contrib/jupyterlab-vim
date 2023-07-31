@@ -37,6 +37,12 @@ export namespace VimCellManager {
   }
 }
 
+interface IUndoOptions {
+  repeat: number;
+  repeatIsExplicit: boolean;
+  registerName: unknown;
+}
+
 export class VimEditorManager {
   constructor({ enabled, userKeybindings }: VimEditorManager.IOptions) {
     this.enabled = enabled;
@@ -90,6 +96,20 @@ export class VimEditorManager {
           return view.hasFocus;
         };
       }
+
+      // Override vim-mode undo/redo to make it work with JupyterLab RTC-aware
+      // history; it needs to happen on every change of the editor.
+      Vim.defineAction('undo', (cm: CodeMirror, options: IUndoOptions) => {
+        for (let i = 0; i < options.repeat; i++) {
+          editor!.undo();
+        }
+      });
+      Vim.defineAction('redo', (cm: CodeMirror, options: IUndoOptions) => {
+        for (let i = 0; i < options.repeat; i++) {
+          editor!.redo();
+        }
+      });
+
       const lcm = getCM(view);
 
       // Clear existing user keybindings, then re-register in case they changed in the user settings
