@@ -98,7 +98,7 @@ export class VimEditorManager {
       }
 
       // Override vim-mode undo/redo to make it work with JupyterLab RTC-aware
-      // history; it needs to happen on every chang of the editor.
+      // history; it needs to happen on every change of the editor.
       Vim.defineAction('undo', (cm: CodeMirror, options: IUndoOptions) => {
         for (let i = 0; i < options.repeat; i++) {
           editor!.undo();
