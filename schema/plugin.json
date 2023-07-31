@@ -11,6 +11,31 @@
       "disabled": true
     },
     {
+      "command": "vim:enter-normal-mode",
+      "keys": ["Escape"],
+      "selector": ".jp-FileEditor"
+    },
+    {
+      "command": "documentsearch:end",
+      "keys": ["Escape"],
+      "selector": ".jp-mod-searchable .jp-FileEditor .cm-vimMode"
+    },
+    {
+      "command": "documentsearch:end",
+      "keys": ["Escape"],
+      "selector": ".jp-mod-searchable .jp-Notebook .cm-vimMode"
+    },
+    {
+      "command": "documentsearch:end",
+      "keys": ["Escape"],
+      "selector": ".jp-mod-search-active .jp-FileEditor .cm-vimMode"
+    },
+    {
+      "command": "documentsearch:end",
+      "keys": ["Escape"],
+      "selector": ".jp-mod-search-active .jp-Notebook .cm-vimMode"
+    },
+    {
       "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook.jp-mod-editMode",
       "keys": ["Ctrl O", "U"],
       "command": "notebook:undo-cell-action"
@@ -256,7 +281,13 @@
     "enabled": {
       "type": "boolean",
       "title": "Enabled",
-      "description": "Enable/disable notebook vim (may require a page refresh)",
+      "description": "Enable/disable vim extension (may require a page refresh)",
+      "default": true
+    },
+    "enabledInEditors": {
+      "type": "boolean",
+      "title": "Enabled in Text Editor",
+      "description": "Enable/disable vim in text editors (may require a page refresh)",
       "default": true
     },
     "extraKeybindings": {
