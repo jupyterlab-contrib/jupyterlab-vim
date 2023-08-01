@@ -2,6 +2,31 @@
 
 <!-- <START NEW CHANGELOG ENTRY> -->
 
+## 4.0.1
+
+([Full Changelog](https://github.com/jupyterlab-contrib/jupyterlab-vim/compare/v4.0.0...9aa55aad927c578d91e51f351bb5bcf987d03c46))
+
+### Enhancements made
+
+- build: don't require package.json for python import [#93](https://github.com/jupyterlab-contrib/jupyterlab-vim/pull/93) ([@ianhi](https://github.com/ianhi))
+
+### Bugs fixed
+
+- Fix for attempting to update editor when there was none [#95](https://github.com/jupyterlab-contrib/jupyterlab-vim/pull/95) ([@krassowski](https://github.com/krassowski))
+
+### Maintenance and upkeep improvements
+
+- style: lint [#96](https://github.com/jupyterlab-contrib/jupyterlab-vim/pull/96) ([@ianhi](https://github.com/ianhi))
+- build: don't require package.json for python import [#93](https://github.com/jupyterlab-contrib/jupyterlab-vim/pull/93) ([@ianhi](https://github.com/ianhi))
+
+### Contributors to this release
+
+([GitHub contributors page for this release](https://github.com/jupyterlab-contrib/jupyterlab-vim/graphs/contributors?from=2023-07-31&to=2023-08-01&type=c))
+
+[@github-actions](https://github.com/search?q=repo%3Ajupyterlab-contrib%2Fjupyterlab-vim+involves%3Agithub-actions+updated%3A2023-07-31..2023-08-01&type=Issues) | [@ianhi](https://github.com/search?q=repo%3Ajupyterlab-contrib%2Fjupyterlab-vim+involves%3Aianhi+updated%3A2023-07-31..2023-08-01&type=Issues) | [@krassowski](https://github.com/search?q=repo%3Ajupyterlab-contrib%2Fjupyterlab-vim+involves%3Akrassowski+updated%3A2023-07-31..2023-08-01&type=Issues)
+
+<!-- <END NEW CHANGELOG ENTRY> -->
+
 ## 4.0.0
 
 ([Full Changelog](https://github.com/jupyterlab-contrib/jupyterlab-vim/compare/1.1.0...718d294cbbab1010ffaf35c79773e3abc5d98a6c))
@@ -32,8 +57,6 @@
 ([GitHub contributors page for this release](https://github.com/jupyterlab-contrib/jupyterlab-vim/graphs/contributors?from=2022-03-12&to=2023-07-31&type=c))
 
 [@alexveden](https://github.com/search?q=repo%3Ajupyterlab-contrib%2Fjupyterlab-vim+involves%3Aalexveden+updated%3A2022-03-12..2023-07-31&type=Issues) | [@asford](https://github.com/search?q=repo%3Ajupyterlab-contrib%2Fjupyterlab-vim+involves%3Aasford+updated%3A2022-03-12..2023-07-31&type=Issues) | [@github-actions](https://github.com/search?q=repo%3Ajupyterlab-contrib%2Fjupyterlab-vim+involves%3Agithub-actions+updated%3A2022-03-12..2023-07-31&type=Issues) | [@ianhi](https://github.com/search?q=repo%3Ajupyterlab-contrib%2Fjupyterlab-vim+involves%3Aianhi+updated%3A2022-03-12..2023-07-31&type=Issues) | [@krassowski](https://github.com/search?q=repo%3Ajupyterlab-contrib%2Fjupyterlab-vim+involves%3Akrassowski+updated%3A2022-03-12..2023-07-31&type=Issues) | [@peytondmurray](https://github.com/search?q=repo%3Ajupyterlab-contrib%2Fjupyterlab-vim+involves%3Apeytondmurray+updated%3A2022-03-12..2023-07-31&type=Issues)
-
-<!-- <END NEW CHANGELOG ENTRY> -->
 
 # History
 
