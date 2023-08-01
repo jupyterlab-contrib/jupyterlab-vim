@@ -61,6 +61,9 @@ export class VimEditorManager {
   }
 
   updateLastActive() {
+    if (!this._lastActiveEditor) {
+      return;
+    }
     this.modifyEditor(this._lastActiveEditor);
   }
 
@@ -161,6 +164,9 @@ export class VimCellManager extends VimEditorManager {
   }
 
   updateLastActive() {
+    if (!this._lastActiveCell) {
+      return;
+    }
     this.modifyCell(this._lastActiveCell);
   }
 
