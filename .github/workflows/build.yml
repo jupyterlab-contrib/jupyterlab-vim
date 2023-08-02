@@ -72,6 +72,7 @@ jobs:
 
         pip install "jupyterlab>=4.0.0,<5" jupyterlab_vim*.whl
 
+        python -c "import jupyterlab_vim"
 
         jupyter labextension list
         jupyter labextension list 2>&1 | grep -ie "@axlair/jupyterlab_vim.*OK"
