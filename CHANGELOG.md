@@ -2,6 +2,32 @@
 
 <!-- <START NEW CHANGELOG ENTRY> -->
 
+## 4.0.2
+
+([Full Changelog](https://github.com/jupyterlab-contrib/jupyterlab-vim/compare/v4.0.1...929b801ab0e3df63d24f277630c2d3ab6d3be146))
+
+### Enhancements made
+
+- Clear input state if applicable before hopping out of normal mode to jupyter command mode [#82](https://github.com/jupyterlab-contrib/jupyterlab-vim/pull/82) ([@ryantam626](https://github.com/ryantam626))
+
+### Bugs fixed
+
+- fix: override browser shift-esc in command mode [#100](https://github.com/jupyterlab-contrib/jupyterlab-vim/pull/100) ([@ianhi](https://github.com/ianhi))
+  - Additional thanks to [@petergthatsme](https://github.com/petergthatsme) [@firai](https://github.com/firai) [@lukashergt](https://github.com/lukashergt) for reporting, debugging and testing
+- Fix __init__.py for wheel [#99](https://github.com/jupyterlab-contrib/jupyterlab-vim/pull/99) ([@fcollonval](https://github.com/fcollonval))
+
+### Maintenance and upkeep improvements
+
+- fix: dev install + lint issues [#97](https://github.com/jupyterlab-contrib/jupyterlab-vim/pull/97) ([@ianhi](https://github.com/ianhi))
+
+### Contributors to this release
+
+([GitHub contributors page for this release](https://github.com/jupyterlab-contrib/jupyterlab-vim/graphs/contributors?from=2023-08-01&to=2023-08-03&type=c))
+
+[@fcollonval](https://github.com/search?q=repo%3Ajupyterlab-contrib%2Fjupyterlab-vim+involves%3Afcollonval+updated%3A2023-08-01..2023-08-03&type=Issues) | [@github-actions](https://github.com/search?q=repo%3Ajupyterlab-contrib%2Fjupyterlab-vim+involves%3Agithub-actions+updated%3A2023-08-01..2023-08-03&type=Issues) | [@ianhi](https://github.com/search?q=repo%3Ajupyterlab-contrib%2Fjupyterlab-vim+involves%3Aianhi+updated%3A2023-08-01..2023-08-03&type=Issues) | [@ryantam626](https://github.com/search?q=repo%3Ajupyterlab-contrib%2Fjupyterlab-vim+involves%3Aryantam626+updated%3A2023-08-01..2023-08-03&type=Issues)
+
+<!-- <END NEW CHANGELOG ENTRY> -->
+
 ## 4.0.1
 
 ([Full Changelog](https://github.com/jupyterlab-contrib/jupyterlab-vim/compare/v4.0.0...9aa55aad927c578d91e51f351bb5bcf987d03c46))
@@ -24,8 +50,6 @@
 ([GitHub contributors page for this release](https://github.com/jupyterlab-contrib/jupyterlab-vim/graphs/contributors?from=2023-07-31&to=2023-08-01&type=c))
 
 [@github-actions](https://github.com/search?q=repo%3Ajupyterlab-contrib%2Fjupyterlab-vim+involves%3Agithub-actions+updated%3A2023-07-31..2023-08-01&type=Issues) | [@ianhi](https://github.com/search?q=repo%3Ajupyterlab-contrib%2Fjupyterlab-vim+involves%3Aianhi+updated%3A2023-07-31..2023-08-01&type=Issues) | [@krassowski](https://github.com/search?q=repo%3Ajupyterlab-contrib%2Fjupyterlab-vim+involves%3Akrassowski+updated%3A2023-07-31..2023-08-01&type=Issues)
-
-<!-- <END NEW CHANGELOG ENTRY> -->
 
 ## 4.0.0
 
