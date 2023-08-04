@@ -129,7 +129,7 @@ export class VimEditorManager {
             if (mapfn === 'map') {
               Vim.map(command, keys, context);
             } else {
-              Vim.noremap(command, keys, context);
+              Vim.map(command, keys, context, true);
             }
           }
         }
