@@ -144,6 +144,8 @@ async function activateCellVim(
       const current = app.shell.currentWidget;
       if (!current) {
         console.warn('Current widget not found');
+      } else if (editorTracker.currentWidget === current) {
+        editorManager.modifyEditor(editorTracker.currentWidget.content.editor);
       } else if (notebookTracker.currentWidget === current) {
         cellManager.modifyCell(
           notebookTracker.currentWidget.content.activeCell
