@@ -1,4 +1,5 @@
 import {
+  ILabShell,
   JupyterFrontEnd,
   JupyterFrontEndPlugin
 } from '@jupyterlab/application';
@@ -140,8 +141,13 @@ async function activateCellVim(
     cellManager.onActiveCellChanged,
     cellManager
   );
-  notebookTracker.currentChanged.connect(() => {
-      const current = app.shell.currentWidget;
+  editorTracker.currentChanged.connect(
+    editorManager.onActiveEditorChanged,
+    editorManager
+  );
+  let shell = app.shell as ILabShell;
+  shell.currentChanged.connect(() => {
+      const current = shell.currentWidget;
       if (!current) {
         console.warn('Current widget not found');
       } else if (editorTracker.currentWidget === current) {
@@ -154,10 +160,6 @@ async function activateCellVim(
         console.warn('Current widget is not vim-enabled');
       }
   });
-  editorTracker.currentChanged.connect(
-    editorManager.onActiveEditorChanged,
-    editorManager
-  );
 
   addNotebookCommands(app, notebookTracker);
 
