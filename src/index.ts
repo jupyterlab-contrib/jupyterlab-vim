@@ -149,7 +149,7 @@ async function activateCellVim(
   shell.currentChanged.connect(() => {
       const current = shell.currentWidget;
       if (!current) {
-        console.warn('Current widget not found');
+        // no-op
       } else if (editorTracker.currentWidget === current) {
         editorManager.modifyEditor(editorTracker.currentWidget.content.editor);
       } else if (notebookTracker.currentWidget === current) {
@@ -157,7 +157,7 @@ async function activateCellVim(
           notebookTracker.currentWidget.content.activeCell
         );
       } else {
-        console.warn('Current widget is not vim-enabled');
+        // no-op
       }
   });
 
