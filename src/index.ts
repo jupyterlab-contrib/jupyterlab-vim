@@ -140,6 +140,10 @@ async function activateCellVim(
     cellManager.onActiveCellChanged,
     cellManager
   );
+  notebookTracker.currentChanged.connect(
+    editorManager.onActiveEditorChanged,
+    editorManager
+  );
   editorTracker.currentChanged.connect(
     editorManager.onActiveEditorChanged,
     editorManager
