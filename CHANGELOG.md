@@ -14,7 +14,7 @@
 
 - fix: override browser shift-esc in command mode [#100](https://github.com/jupyterlab-contrib/jupyterlab-vim/pull/100) ([@ianhi](https://github.com/ianhi))
   - Additional thanks to [@petergthatsme](https://github.com/petergthatsme) [@firai](https://github.com/firai) [@lukashergt](https://github.com/lukashergt) for reporting, debugging and testing
-- Fix __init__.py for wheel [#99](https://github.com/jupyterlab-contrib/jupyterlab-vim/pull/99) ([@fcollonval](https://github.com/fcollonval))
+- Fix `__init__.py` for wheel [#99](https://github.com/jupyterlab-contrib/jupyterlab-vim/pull/99) ([@fcollonval](https://github.com/fcollonval))
 
 ### Maintenance and upkeep improvements
 
