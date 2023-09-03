@@ -1,4 +1,5 @@
 import {
+  ILabShell,
   JupyterFrontEnd,
   JupyterFrontEndPlugin
 } from '@jupyterlab/application';
@@ -144,6 +145,19 @@ async function activateCellVim(
     editorManager.onActiveEditorChanged,
     editorManager
   );
+  const shell = app.shell as ILabShell;
+  shell.currentChanged.connect(() => {
+    const current = shell.currentWidget;
+    if (!current) {
+      // no-op
+    } else if (editorTracker.currentWidget === current) {
+      editorManager.modifyEditor(editorTracker.currentWidget.content.editor);
+    } else if (notebookTracker.currentWidget === current) {
+      cellManager.modifyCell(notebookTracker.currentWidget.content.activeCell);
+    } else {
+      // no-op
+    }
+  });
 
   addNotebookCommands(app, notebookTracker);
 
