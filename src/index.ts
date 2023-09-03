@@ -140,10 +140,14 @@ async function activateCellVim(
     cellManager.onActiveCellChanged,
     cellManager
   );
-  notebookTracker.currentChanged.connect(
-    cellManager.onActiveCellChanged,
-    cellManager
-  );
+  notebookTracker.currentChanged.connect(() => {
+      const current = app.shell.currentWidget;
+      if (notebookTracker.currentWidget === current) {
+        cellManager.modifyCell(
+          notebookTracker.currentWidget.content.activeCell
+        );
+      }
+  });
   editorTracker.currentChanged.connect(
     editorManager.onActiveEditorChanged,
     editorManager
