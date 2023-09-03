@@ -145,7 +145,7 @@ async function activateCellVim(
     editorManager.onActiveEditorChanged,
     editorManager
   );
-  let shell = app.shell as ILabShell;
+  const shell = app.shell as ILabShell;
   shell.currentChanged.connect(() => {
     const current = shell.currentWidget;
     if (!current) {
