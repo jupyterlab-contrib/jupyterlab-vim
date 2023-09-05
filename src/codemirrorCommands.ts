@@ -67,13 +67,17 @@ export class VimEditorManager {
     this.modifyEditor(this._lastActiveEditor);
   }
 
+  /**
+   * Hook up vim mode into given editor.
+   * Returns true if vim mode was enabled.
+   */
   modifyEditor(editor: CodeEditor.IEditor | null): boolean {
-    // JupyterLab 4.0 only supports CodeMirror editors
-    const mirrorEditor = editor as CodeMirrorEditor | null;
-
-    if (!mirrorEditor) {
+    if (!editor) {
       throw Error('Editor not available');
     }
+    // JupyterLab 4.0 only supports CodeMirror editors
+    const mirrorEditor = editor as CodeMirrorEditor;
+
     this._lastActiveEditor = mirrorEditor;
 
     const view = mirrorEditor.editor;
@@ -89,6 +93,9 @@ export class VimEditorManager {
         // as blurred because it exists outside of the CodeMirror6 state; here
         // we override `hasFocus` handler to ensure it is taken into account.
         const cm = getCM(view)!;
+        cm.on('vim-mode-change', () => {
+          editor.host.dataset.jpVimModeName = cm.state.vim.mode;
+        });
         mirrorEditor.hasFocus = () => {
           if (
             cm.state.dialog &&
