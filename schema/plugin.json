@@ -18,22 +18,12 @@
     {
       "command": "documentsearch:end",
       "keys": ["Escape"],
-      "selector": ".jp-mod-searchable .jp-FileEditor .cm-vimMode"
+      "selector": ".jp-mod-searchable .jp-FileEditor [data-jp-vim-mode-name='normal']"
     },
     {
       "command": "documentsearch:end",
       "keys": ["Escape"],
-      "selector": ".jp-mod-searchable .jp-Notebook .cm-vimMode"
-    },
-    {
-      "command": "documentsearch:end",
-      "keys": ["Escape"],
-      "selector": ".jp-mod-search-active .jp-FileEditor .cm-vimMode"
-    },
-    {
-      "command": "documentsearch:end",
-      "keys": ["Escape"],
-      "selector": ".jp-mod-search-active .jp-Notebook .cm-vimMode"
+      "selector": ".jp-mod-search-active .jp-FileEditor [data-jp-vim-mode-name='normal']"
     },
     {
       "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook.jp-mod-editMode",
