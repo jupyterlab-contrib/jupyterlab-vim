@@ -53,7 +53,7 @@
 
 ## 4.0.0
 
-([Full Changelog](https://github.com/jupyterlab-contrib/jupyterlab-vim/compare/1.1.0...718d294cbbab1010ffaf35c79773e3abc5d98a6c))
+([Full Changelog](https://github.com/jupyterlab-contrib/jupyterlab-vim/compare/v0.14.2...718d294cbbab1010ffaf35c79773e3abc5d98a6c))
 
 ### Enhancements made
 
