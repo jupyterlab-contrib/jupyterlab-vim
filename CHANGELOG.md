@@ -2,6 +2,28 @@
 
 <!-- <START NEW CHANGELOG ENTRY> -->
 
+## 4.0.3
+
+([Full Changelog](https://github.com/jupyterlab-contrib/jupyterlab-vim/compare/v4.0.2...75d6969623b361edb428539288e60fa4f98f20cc))
+
+### Bugs fixed
+
+- Fix search box `Esc` bindings [#107](https://github.com/jupyterlab-contrib/jupyterlab-vim/pull/107) ([@firai](https://github.com/firai))
+
+* Fix `modifyCell` or `modifyEditor` not called after text editor is opened after notebook by @firai in https://github.com/jupyterlab-contrib/jupyterlab-vim/pull/105
+
+### Maintenance and upkeep improvements
+
+- Update README.md for `main` branch [#108](https://github.com/jupyterlab-contrib/jupyterlab-vim/pull/108) ([@ianhi](https://github.com/ianhi))
+
+### Contributors to this release
+
+([GitHub contributors page for this release](https://github.com/jupyterlab-contrib/jupyterlab-vim/graphs/contributors?from=2023-08-03&to=2023-09-06&type=c))
+
+[@firai](https://github.com/search?q=repo%3Ajupyterlab-contrib%2Fjupyterlab-vim+involves%3Afirai+updated%3A2023-08-03..2023-09-06&type=Issues) | [@github-actions](https://github.com/search?q=repo%3Ajupyterlab-contrib%2Fjupyterlab-vim+involves%3Agithub-actions+updated%3A2023-08-03..2023-09-06&type=Issues) | [@ianhi](https://github.com/search?q=repo%3Ajupyterlab-contrib%2Fjupyterlab-vim+involves%3Aianhi+updated%3A2023-08-03..2023-09-06&type=Issues) | [@krassowski](https://github.com/search?q=repo%3Ajupyterlab-contrib%2Fjupyterlab-vim+involves%3Akrassowski+updated%3A2023-08-03..2023-09-06&type=Issues)
+
+<!-- <END NEW CHANGELOG ENTRY> -->
+
 ## 4.0.2
 
 ([Full Changelog](https://github.com/jupyterlab-contrib/jupyterlab-vim/compare/v4.0.1...929b801ab0e3df63d24f277630c2d3ab6d3be146))
@@ -25,8 +47,6 @@
 ([GitHub contributors page for this release](https://github.com/jupyterlab-contrib/jupyterlab-vim/graphs/contributors?from=2023-08-01&to=2023-08-03&type=c))
 
 [@fcollonval](https://github.com/search?q=repo%3Ajupyterlab-contrib%2Fjupyterlab-vim+involves%3Afcollonval+updated%3A2023-08-01..2023-08-03&type=Issues) | [@github-actions](https://github.com/search?q=repo%3Ajupyterlab-contrib%2Fjupyterlab-vim+involves%3Agithub-actions+updated%3A2023-08-01..2023-08-03&type=Issues) | [@ianhi](https://github.com/search?q=repo%3Ajupyterlab-contrib%2Fjupyterlab-vim+involves%3Aianhi+updated%3A2023-08-01..2023-08-03&type=Issues) | [@ryantam626](https://github.com/search?q=repo%3Ajupyterlab-contrib%2Fjupyterlab-vim+involves%3Aryantam626+updated%3A2023-08-01..2023-08-03&type=Issues)
-
-<!-- <END NEW CHANGELOG ENTRY> -->
 
 ## 4.0.1
 
