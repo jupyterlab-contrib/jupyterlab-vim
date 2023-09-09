@@ -23,11 +23,14 @@ import {
   IKeybinding
 } from './codemirrorCommands';
 import { addNotebookCommands } from './labCommands';
+import { PartialJSONObject } from '@lumino/coreutils';
 
 const PLUGIN_NAME = '@axlair/jupyterlab_vim';
 const TOGGLE_ID = 'jupyterlab-vim:toggle';
 let enabled = false;
 let enabledInEditors = true;
+let escEnterCmdMode = true;
+let shiftEscEnterCmdMode = true;
 
 /**
  * Initialization data for the jupyterlab_vim extension.
@@ -170,6 +173,19 @@ async function activateCellVim(
 
     enabled = settings.get('enabled').composite === true;
     enabledInEditors = settings.get('enabledInEditors').composite === true;
+
+    const enterCmdModeKey = settings.get('enterCmdModeKey')
+      .composite as PartialJSONObject;
+    if (!enterCmdModeKey) {
+      // no-op
+    } else {
+      console.log(enterCmdModeKey);
+      escEnterCmdMode = enterCmdModeKey['escEnterCmdMode'] as boolean;
+      console.log(escEnterCmdMode);
+      shiftEscEnterCmdMode = enterCmdModeKey['shiftEscEnterCmdMode'] as boolean;
+      console.log(shiftEscEnterCmdMode);
+    }
+
     app.commands.notifyCommandChanged(TOGGLE_ID);
 
     cellManager.enabled = enabled;
@@ -194,6 +210,8 @@ async function activateCellVim(
 
     notebookTracker.forEach(notebook => {
       notebook.node.dataset.jpVimMode = `${enabled}`;
+      notebook.node.dataset.jpVimEscEnterCmdMode = `${escEnterCmdMode}`;
+      notebook.node.dataset.jpVimShiftEscEnterCmdMode = `${shiftEscEnterCmdMode}`;
     });
     editorTracker.forEach(document => {
       document.node.dataset.jpVimMode = `${enabled && enabledInEditors}`;
@@ -204,6 +222,8 @@ async function activateCellVim(
     // make sure our css selector is added to new notebooks
     notebookTracker.widgetAdded.connect((sender, notebook) => {
       notebook.node.dataset.jpVimMode = `${enabled}`;
+      notebook.node.dataset.jpVimEscEnterCmdMode = `${escEnterCmdMode}`;
+      notebook.node.dataset.jpVimShiftEscEnterCmdMode = `${shiftEscEnterCmdMode}`;
     });
     editorTracker.widgetAdded.connect((sender, document) => {
       document.node.dataset.jpVimMode = `${enabled && enabledInEditors}`;

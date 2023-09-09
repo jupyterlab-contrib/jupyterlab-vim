@@ -285,6 +285,23 @@
       "description": "Enable/disable vim in text editors (may require a page refresh)",
       "default": true
     },
+    "enterCmdModeKey": {
+      "type": "object",
+      "title": "Shortcut Key for Entering Jupyter Command Mode in Notebooks",
+      "description": "Shortcut key for switching from vim Normal mode to Jupyter Command mode in notebooks. A custom shortcut key may be set by assigning the key to notebook - Enter Command Mode (`notebook:enter-command-mode`) in the Keyboard Shortcuts settings editor.",
+      "properties": {
+        "escEnterCmdMode": {
+          "type": "boolean",
+          "title": "Esc",
+          "default": true
+        },
+        "shiftEscEnterCmdMode": {
+          "type": "boolean",
+          "title": "Shift-Esc",
+          "default": true
+        }
+      }
+    },
     "extraKeybindings": {
       "type": "array",
       "title": "Extra Vim Keybindings",
