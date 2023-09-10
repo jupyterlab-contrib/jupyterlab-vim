@@ -29,8 +29,8 @@ const PLUGIN_NAME = '@axlair/jupyterlab_vim';
 const TOGGLE_ID = 'jupyterlab-vim:toggle';
 let enabled = false;
 let enabledInEditors = true;
-let escEnterCmdMode = true;
-let shiftEscEnterCmdMode = true;
+let escToCmdMode = true;
+let shiftEscOverrideBrowser = true;
 
 /**
  * Initialization data for the jupyterlab_vim extension.
@@ -174,13 +174,15 @@ async function activateCellVim(
     enabled = settings.get('enabled').composite === true;
     enabledInEditors = settings.get('enabledInEditors').composite === true;
 
-    const enterCmdModeKey = settings.get('enterCmdModeKey')
+    const cmdModeKeys = settings.get('cmdModeKeys')
       .composite as PartialJSONObject;
-    if (!enterCmdModeKey) {
+    if (!cmdModeKeys) {
       // no-op
     } else {
-      escEnterCmdMode = enterCmdModeKey['escEnterCmdMode'] as boolean;
-      shiftEscEnterCmdMode = enterCmdModeKey['shiftEscEnterCmdMode'] as boolean;
+      escToCmdMode = cmdModeKeys['escToCmdMode'] as boolean;
+      shiftEscOverrideBrowser = cmdModeKeys[
+        'shiftEscOverrideBrowser'
+      ] as boolean;
     }
 
     app.commands.notifyCommandChanged(TOGGLE_ID);
@@ -207,8 +209,8 @@ async function activateCellVim(
 
     notebookTracker.forEach(notebook => {
       notebook.node.dataset.jpVimMode = `${enabled}`;
-      notebook.node.dataset.jpVimEscEnterCmdMode = `${escEnterCmdMode}`;
-      notebook.node.dataset.jpVimShiftEscEnterCmdMode = `${shiftEscEnterCmdMode}`;
+      notebook.node.dataset.jpVimEscToCmdMode = `${escToCmdMode}`;
+      notebook.node.dataset.jpVimShiftEscOverrideBrowser = `${shiftEscOverrideBrowser}`;
     });
     editorTracker.forEach(document => {
       document.node.dataset.jpVimMode = `${enabled && enabledInEditors}`;
@@ -219,8 +221,8 @@ async function activateCellVim(
     // make sure our css selector is added to new notebooks
     notebookTracker.widgetAdded.connect((sender, notebook) => {
       notebook.node.dataset.jpVimMode = `${enabled}`;
-      notebook.node.dataset.jpVimEscEnterCmdMode = `${escEnterCmdMode}`;
-      notebook.node.dataset.jpVimShiftEscEnterCmdMode = `${shiftEscEnterCmdMode}`;
+      notebook.node.dataset.jpVimEscToCmdMode = `${escToCmdMode}`;
+      notebook.node.dataset.jpVimShiftEscOverrideBrowser = `${shiftEscOverrideBrowser}`;
     });
     editorTracker.widgetAdded.connect((sender, document) => {
       document.node.dataset.jpVimMode = `${enabled && enabledInEditors}`;
