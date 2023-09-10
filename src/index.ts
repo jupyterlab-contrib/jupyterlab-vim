@@ -179,11 +179,8 @@ async function activateCellVim(
     if (!enterCmdModeKey) {
       // no-op
     } else {
-      console.log(enterCmdModeKey);
       escEnterCmdMode = enterCmdModeKey['escEnterCmdMode'] as boolean;
-      console.log(escEnterCmdMode);
       shiftEscEnterCmdMode = enterCmdModeKey['shiftEscEnterCmdMode'] as boolean;
-      console.log(shiftEscEnterCmdMode);
     }
 
     app.commands.notifyCommandChanged(TOGGLE_ID);
