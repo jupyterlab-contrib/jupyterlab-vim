@@ -297,7 +297,7 @@
     },
     "cmdModeKeys": {
       "type": "object",
-      "title": "Notebook Shortcut Key Bindings for Switching from vim Normal mode to Jupyter Command mode",
+      "title": "Notebook shortcut key bindings for switching from vim Normal mode to Jupyter Command mode",
       "properties": {
         "escToCmdMode": {
           "type": "boolean",
