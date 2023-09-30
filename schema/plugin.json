@@ -96,14 +96,24 @@
       "command": "vim:select-above-execute-markdown"
     },
     {
-      "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook.jp-mod-editMode",
+      "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'][data-jp-vim-esc-to-cmd-mode='false'] .jp-Notebook.jp-mod-editMode",
       "keys": ["Escape"],
       "command": "vim:leave-insert-mode"
     },
     {
-      "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook.jp-mod-editMode",
+      "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'][data-jp-vim-esc-to-cmd-mode='true'] .jp-Notebook.jp-mod-editMode",
+      "keys": ["Escape"],
+      "command": "vim:leave-current-mode"
+    },
+    {
+      "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'][data-jp-vim-esc-to-cmd-mode='false'] .jp-Notebook.jp-mod-editMode",
       "keys": ["Ctrl ["],
       "command": "vim:leave-insert-mode"
+    },
+    {
+      "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'][data-jp-vim-esc-to-cmd-mode='true'] .jp-Notebook.jp-mod-editMode",
+      "keys": ["Ctrl ["],
+      "command": "vim:leave-current-mode"
     },
     {
       "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook:focus",
@@ -126,7 +136,7 @@
       "command": "notebook:enter-command-mode"
     },
     {
-      "selector": ".jp-Notebook.jp-mod-commandMode",
+      "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'][data-jp-vim-shift-esc-override-browser='true'] .jp-Notebook.jp-mod-commandMode",
       "keys": ["Shift Escape"],
       "command": ""
     },
@@ -284,6 +294,22 @@
       "title": "Enabled in Text Editor",
       "description": "Enable/disable vim in text editors (may require a page refresh)",
       "default": true
+    },
+    "cmdModeKeys": {
+      "type": "object",
+      "title": "Notebook shortcut key bindings for switching from vim Normal mode to Jupyter Command mode",
+      "properties": {
+        "escToCmdMode": {
+          "type": "boolean",
+          "title": "Enable `Esc` and `Ctrl-[` leaving vim Normal mode to Jupyter Command mode",
+          "default": true
+        },
+        "shiftEscOverrideBrowser": {
+          "type": "boolean",
+          "title": "Override `Shift-Esc` browser shortcut in Jupyter Command mode",
+          "default": true
+        }
+      }
     },
     "extraKeybindings": {
       "type": "array",

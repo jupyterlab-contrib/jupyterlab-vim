@@ -23,11 +23,14 @@ import {
   IKeybinding
 } from './codemirrorCommands';
 import { addNotebookCommands } from './labCommands';
+import { PartialJSONObject } from '@lumino/coreutils';
 
 const PLUGIN_NAME = '@axlair/jupyterlab_vim';
 const TOGGLE_ID = 'jupyterlab-vim:toggle';
 let enabled = false;
 let enabledInEditors = true;
+let escToCmdMode = true;
+let shiftEscOverrideBrowser = true;
 
 /**
  * Initialization data for the jupyterlab_vim extension.
@@ -170,6 +173,18 @@ async function activateCellVim(
 
     enabled = settings.get('enabled').composite === true;
     enabledInEditors = settings.get('enabledInEditors').composite === true;
+
+    const cmdModeKeys = settings.get('cmdModeKeys')
+      .composite as PartialJSONObject;
+    if (!cmdModeKeys) {
+      // no-op
+    } else {
+      escToCmdMode = cmdModeKeys['escToCmdMode'] as boolean;
+      shiftEscOverrideBrowser = cmdModeKeys[
+        'shiftEscOverrideBrowser'
+      ] as boolean;
+    }
+
     app.commands.notifyCommandChanged(TOGGLE_ID);
 
     cellManager.enabled = enabled;
@@ -194,6 +209,8 @@ async function activateCellVim(
 
     notebookTracker.forEach(notebook => {
       notebook.node.dataset.jpVimMode = `${enabled}`;
+      notebook.node.dataset.jpVimEscToCmdMode = `${escToCmdMode}`;
+      notebook.node.dataset.jpVimShiftEscOverrideBrowser = `${shiftEscOverrideBrowser}`;
     });
     editorTracker.forEach(document => {
       document.node.dataset.jpVimMode = `${enabled && enabledInEditors}`;
@@ -204,6 +221,8 @@ async function activateCellVim(
     // make sure our css selector is added to new notebooks
     notebookTracker.widgetAdded.connect((sender, notebook) => {
       notebook.node.dataset.jpVimMode = `${enabled}`;
+      notebook.node.dataset.jpVimEscToCmdMode = `${escToCmdMode}`;
+      notebook.node.dataset.jpVimShiftEscOverrideBrowser = `${shiftEscOverrideBrowser}`;
     });
     editorTracker.widgetAdded.connect((sender, document) => {
       document.node.dataset.jpVimMode = `${enabled && enabledInEditors}`;
