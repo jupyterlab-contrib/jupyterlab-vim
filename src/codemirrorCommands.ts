@@ -167,21 +167,28 @@ export class VimCellManager extends VimEditorManager {
     tracker: INotebookTracker,
     activeCell: Cell<ICellModel> | null
   ): void {
-    this.modifyCell(activeCell).catch(console.error);
+    this.modifyCell(
+      activeCell,
+      tracker.currentWidget?.content.activeCellIndex
+    ).catch(console.error);
   }
 
   updateLastActive() {
-    if (!this._lastActiveCell) {
+    if (!this._lastActiveCell || this._lastActiveCellIndex === undefined) {
       return;
     }
-    this.modifyCell(this._lastActiveCell);
+    this.modifyCell(this._lastActiveCell, this._lastActiveCellIndex);
   }
 
-  async modifyCell(activeCell: Cell<ICellModel> | null): Promise<void> {
-    if (!activeCell) {
+  async modifyCell(
+    activeCell: Cell<ICellModel> | null,
+    activeCellIndex: number | undefined
+  ): Promise<void> {
+    if (!activeCell || activeCellIndex === undefined) {
       return;
     }
     this._lastActiveCell = activeCell;
+    this._lastActiveCellIndex = activeCellIndex;
     await activeCell.ready;
 
     if (activeCell.isDisposed) {
@@ -190,11 +197,14 @@ export class VimCellManager extends VimEditorManager {
     }
     const wasEnabled = this.modifyEditor(activeCell.editor);
     if (wasEnabled) {
-      this._modifyEdgeNavigation(activeCell);
+      this._modifyEdgeNavigation(activeCell, activeCellIndex);
     }
   }
 
-  private _modifyEdgeNavigation(activeCell: Cell<ICellModel>) {
+  private _modifyEdgeNavigation(
+    activeCell: Cell<ICellModel>,
+    activeCellIndex: number
+  ) {
     // Define a function to use as Vim motion
     // This replaces the codemirror moveByLines function to
     // for jumping between notebook cells.
@@ -254,7 +264,11 @@ export class VimCellManager extends VimEditorManager {
         // var key = '';
         // `currentCell !== null should not be needed since `activeCell`
         // is already check against null (row 61). Added to avoid warning.
-        if (currentCell !== null && currentCell.model.type === 'markdown') {
+        if (
+          currentCell !== null &&
+          currentCell.model.type === 'markdown' &&
+          !(!motionArgs.forward && activeCellIndex === 0)
+        ) {
           if (!motionArgs.handleArrow) {
             // markdown cells tends to improperly handle arrow keys movement,
             //  on the way up the cell is rendered, but down movement is ignored
@@ -368,4 +382,5 @@ export class VimCellManager extends VimEditorManager {
 
   private _commands: CommandRegistry;
   private _lastActiveCell: Cell<ICellModel> | null = null;
+  private _lastActiveCellIndex: number | undefined;
 }

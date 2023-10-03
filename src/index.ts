@@ -98,7 +98,8 @@ async function activateCellVim(
         editorManager.modifyEditor(editorTracker.currentWidget.content.editor);
       } else if (notebookTracker.currentWidget === current) {
         cellManager.modifyCell(
-          notebookTracker.currentWidget.content.activeCell
+          notebookTracker.currentWidget.content.activeCell,
+          notebookTracker.currentWidget.content.activeCellIndex
         );
       } else {
         console.warn('Current widget is not vim-enabled');
@@ -156,7 +157,10 @@ async function activateCellVim(
     } else if (editorTracker.currentWidget === current) {
       editorManager.modifyEditor(editorTracker.currentWidget.content.editor);
     } else if (notebookTracker.currentWidget === current) {
-      cellManager.modifyCell(notebookTracker.currentWidget.content.activeCell);
+      cellManager.modifyCell(
+        notebookTracker.currentWidget.content.activeCell,
+        notebookTracker.currentWidget.content.activeCellIndex
+      );
     } else {
       // no-op
     }
