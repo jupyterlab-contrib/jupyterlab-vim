@@ -38,8 +38,6 @@ or with conda/mamba:
 mamba install -c conda-forge jupyterlab_vim
 ```
 
-For Jupyterlab<3 see [installing.md](installing.md).
-
 ## Key Bindings
 
 To learn how to modify key bindings see the [modify-keybinds.md](modify-keybinds.md) file.
