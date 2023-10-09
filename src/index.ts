@@ -98,7 +98,7 @@ async function activateCellVim(
       } else if (editorTracker.currentWidget === current) {
         editorManager.modifyEditor(editorTracker.currentWidget.content.editor);
       } else if (notebookTracker.currentWidget === current) {
-        let activeCellContext = {
+        const activeCellContext = {
           index: notebookTracker.currentWidget.content.activeCellIndex,
           cellCount: notebookTracker.currentWidget.content.widgets.length
         } as ICellContext;
@@ -162,7 +162,7 @@ async function activateCellVim(
     } else if (editorTracker.currentWidget === current) {
       editorManager.modifyEditor(editorTracker.currentWidget.content.editor);
     } else if (notebookTracker.currentWidget === current) {
-      let activeCellContext = {
+      const activeCellContext = {
         index: notebookTracker.currentWidget.content.activeCellIndex,
         cellCount: notebookTracker.currentWidget.content.widgets.length
       } as ICellContext;

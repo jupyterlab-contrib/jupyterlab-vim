@@ -172,7 +172,7 @@ export class VimCellManager extends VimEditorManager {
     tracker: INotebookTracker,
     activeCell: Cell<ICellModel> | null
   ): void {
-    let activeCellContext = {
+    const activeCellContext = {
       index: tracker.currentWidget?.content.activeCellIndex,
       cellCount: tracker.currentWidget?.content.widgets.length
     } as ICellContext;
