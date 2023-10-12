@@ -23,6 +23,6 @@ Jupyterlab commands don't know about the concept of vim modes so they will be ac
 
 ### Vim remappings
 
-Vim style remappings (`inoremap`, `imap`, `nmap`...) can be modified in the advanced settings editor under the `Notebook Vim` settings. Alternatively, you can use the sibling extension [jupyterlab-vimrc](https://github.com/ianhi/jupyterlab-vimrc#jupyterlab-vimrc) to do this.
+Vim style remappings (`inoremap`, `imap`, `nmap`...) can be modified in the Settings Editor under the `Notebook Vim` settings. Alternatively, for JupyterLab <4 you can use the sibling extension [jupyterlab-vimrc](https://github.com/ianhi/jupyterlab-vimrc#jupyterlab-vimrc) to do this.
 
 With either approach, Vim remappings do not work with everything you may have in your standard vimrc. Jupyterlab uses [Codemirror] for the editors in cells. This extension adds vim support by enabling the [vim](https://github.com/replit/codemirror-vim) emulation in codemirror. While this comes with partial support for remappings in your vimrc the support is incomplete. In particular, keybindings which use `noremap` don't work [unless the keybinding already exists in the default Codemirror Vim keybindings](https://github.com/replit/codemirror-vim/blob/2242fb71a1954e516150de61d416f41bcd3f0e3c/src/vim.js#L799-L801). If your keybinding doesn't work with `noremap`, try using `map`, and above all, avoid recursive remappings.
