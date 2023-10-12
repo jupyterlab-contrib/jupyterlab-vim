@@ -20,7 +20,8 @@ import { Prec } from '@codemirror/state';
 import {
   VimEditorManager,
   VimCellManager,
-  IKeybinding
+  IKeybinding,
+  ICellContext
 } from './codemirrorCommands';
 import { addNotebookCommands } from './labCommands';
 import { PartialJSONObject } from '@lumino/coreutils';
@@ -97,8 +98,13 @@ async function activateCellVim(
       } else if (editorTracker.currentWidget === current) {
         editorManager.modifyEditor(editorTracker.currentWidget.content.editor);
       } else if (notebookTracker.currentWidget === current) {
+        const activeCellContext = {
+          index: notebookTracker.currentWidget.content.activeCellIndex,
+          cellCount: notebookTracker.currentWidget.content.widgets.length
+        } as ICellContext;
         cellManager.modifyCell(
-          notebookTracker.currentWidget.content.activeCell
+          notebookTracker.currentWidget.content.activeCell,
+          activeCellContext
         );
       } else {
         console.warn('Current widget is not vim-enabled');
@@ -156,7 +162,14 @@ async function activateCellVim(
     } else if (editorTracker.currentWidget === current) {
       editorManager.modifyEditor(editorTracker.currentWidget.content.editor);
     } else if (notebookTracker.currentWidget === current) {
-      cellManager.modifyCell(notebookTracker.currentWidget.content.activeCell);
+      const activeCellContext = {
+        index: notebookTracker.currentWidget.content.activeCellIndex,
+        cellCount: notebookTracker.currentWidget.content.widgets.length
+      } as ICellContext;
+      cellManager.modifyCell(
+        notebookTracker.currentWidget.content.activeCell,
+        activeCellContext
+      );
     } else {
       // no-op
     }

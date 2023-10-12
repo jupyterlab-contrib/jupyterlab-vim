@@ -210,7 +210,7 @@ export function addNotebookCommands(
       isEnabled
     }),
     commands.addCommand('vim:select-above-execute-markdown', {
-      label: 'Execute Markdown and Select Cell Below',
+      label: 'Execute Markdown and Select Cell Above',
       execute: args => {
         const current = getCurrent(args);
 
@@ -218,7 +218,8 @@ export function addNotebookCommands(
           const { content } = current;
           if (
             content.activeCell !== null &&
-            content.activeCell.model.type === 'markdown'
+            content.activeCell.model.type === 'markdown' &&
+            content.activeCellIndex !== 0
           ) {
             (current.content.activeCell as MarkdownCell).rendered = true;
           }
