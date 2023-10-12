@@ -2,6 +2,36 @@
 
 <!-- <START NEW CHANGELOG ENTRY> -->
 
+## 4.1.0
+
+([Full Changelog](https://github.com/jupyterlab-contrib/jupyterlab-vim/compare/v4.0.3...c8cc5febb0bcc419efb0b801108b97a946a71364))
+
+### Enhancements made
+
+- Add settings to enable double duty `Esc` and to disable `Shift-Esc` override in Command mode [#110](https://github.com/jupyterlab-contrib/jupyterlab-vim/pull/110) ([@firai](https://github.com/firai))
+
+### Bugs fixed
+
+- Don't render Markdown when attempting to navigate above first cell [#119](https://github.com/jupyterlab-contrib/jupyterlab-vim/pull/119) ([@firai](https://github.com/firai))
+
+### Maintenance and upkeep improvements
+
+- Correct license classifier in `pyproject.toml` [#122](https://github.com/jupyterlab-contrib/jupyterlab-vim/pull/122) ([@firai](https://github.com/firai))
+- Correct project name to `jupyterlab-vim` [#114](https://github.com/jupyterlab-contrib/jupyterlab-vim/pull/114) ([@krassowski](https://github.com/krassowski))
+
+### Documentation improvements
+
+- Delete `installing.md` and mention in README [#121](https://github.com/jupyterlab-contrib/jupyterlab-vim/pull/121) ([@firai](https://github.com/firai))
+- Clarify settings location [#116](https://github.com/jupyterlab-contrib/jupyterlab-vim/pull/116) ([@joelostblom](https://github.com/joelostblom))
+
+### Contributors to this release
+
+([GitHub contributors page for this release](https://github.com/jupyterlab-contrib/jupyterlab-vim/graphs/contributors?from=2023-09-06&to=2023-10-12&type=c))
+
+[@firai](https://github.com/search?q=repo%3Ajupyterlab-contrib%2Fjupyterlab-vim+involves%3Afirai+updated%3A2023-09-06..2023-10-12&type=Issues) | [@github-actions](https://github.com/search?q=repo%3Ajupyterlab-contrib%2Fjupyterlab-vim+involves%3Agithub-actions+updated%3A2023-09-06..2023-10-12&type=Issues) | [@joelostblom](https://github.com/search?q=repo%3Ajupyterlab-contrib%2Fjupyterlab-vim+involves%3Ajoelostblom+updated%3A2023-09-06..2023-10-12&type=Issues) | [@krassowski](https://github.com/search?q=repo%3Ajupyterlab-contrib%2Fjupyterlab-vim+involves%3Akrassowski+updated%3A2023-09-06..2023-10-12&type=Issues)
+
+<!-- <END NEW CHANGELOG ENTRY> -->
+
 ## 4.0.3
 
 ([Full Changelog](https://github.com/jupyterlab-contrib/jupyterlab-vim/compare/v4.0.2...75d6969623b361edb428539288e60fa4f98f20cc))
@@ -21,8 +51,6 @@
 ([GitHub contributors page for this release](https://github.com/jupyterlab-contrib/jupyterlab-vim/graphs/contributors?from=2023-08-03&to=2023-09-06&type=c))
 
 [@firai](https://github.com/search?q=repo%3Ajupyterlab-contrib%2Fjupyterlab-vim+involves%3Afirai+updated%3A2023-08-03..2023-09-06&type=Issues) | [@github-actions](https://github.com/search?q=repo%3Ajupyterlab-contrib%2Fjupyterlab-vim+involves%3Agithub-actions+updated%3A2023-08-03..2023-09-06&type=Issues) | [@ianhi](https://github.com/search?q=repo%3Ajupyterlab-contrib%2Fjupyterlab-vim+involves%3Aianhi+updated%3A2023-08-03..2023-09-06&type=Issues) | [@krassowski](https://github.com/search?q=repo%3Ajupyterlab-contrib%2Fjupyterlab-vim+involves%3Akrassowski+updated%3A2023-08-03..2023-09-06&type=Issues)
-
-<!-- <END NEW CHANGELOG ENTRY> -->
 
 ## 4.0.2
 
