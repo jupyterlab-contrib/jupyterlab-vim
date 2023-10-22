@@ -105,9 +105,9 @@ Shortcuts this extension introduces:
 
 ### Transition between modes
 
-Note that there are three modes (Insert, Normal and Jupyter Command). The transition between them happens only with the key ESC, but you can enable a different transition from Normal mode to Jupyter Command mode.
+Note that there are three modes (Insert, Normal and Jupyter Command). The transition between them happens only with the key <kbd>ESC</kbd>, but you can enable a different transition from Normal mode to Jupyter Command mode.
 
-Go to *Setting / Settings Editor / Notebook Vim* and unmark the option `Enable Esc and Ctrl-[ leaving vim Normal mode to Jupyter Command mode`. From now on, `ESC` will move you from Insert to Normal mode and `Shift+ESC` will move you from Normal to Jupyter Command mode.
+Go to *Setting / Settings Editor / Notebook Vim* and unmark the option `Enable Esc and Ctrl-[ leaving vim Normal mode to Jupyter Command mode`. From now on, <kbd>ESC</kbd> will move you from Insert to Normal mode and <kbd>Shift</kbd>+<kbd>ESC</kbd> will move you from Normal to Jupyter Command mode.
 
 
 ## Special Thanks
