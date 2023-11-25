@@ -59,7 +59,15 @@ export function addNotebookCommands(
         if (current) {
           const { context, content } = current;
           NotebookActions.run(content, context.sessionContext);
-          current.content.mode = 'edit';
+          // Don't re-enter edit mode for markdown cells
+          if (
+            content.activeCell !== null &&
+            content.activeCell.model.type === 'markdown'
+          ) {
+            // no-op
+          } else {
+            current.content.mode = 'edit';
+          }
         }
       },
       isEnabled
