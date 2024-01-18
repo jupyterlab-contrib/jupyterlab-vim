@@ -330,7 +330,7 @@
         },
         "keys": {
           "title": "The key sequence to execute",
-          "description": "The 'right hand side' of the keybinding to be executed, e.g. `:noh<cr>`",
+          "description": "The 'right hand side' of the keybinding to be executed, e.g. `:noh<CR>`. non-character keys are written in camel case. e.g. <Esc> or <PageUp>",
           "type": "string"
         },
         "context": {
