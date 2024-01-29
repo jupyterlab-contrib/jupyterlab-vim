@@ -138,7 +138,7 @@
     {
       "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'][data-jp-vim-shift-esc-override-browser='true'] .jp-Notebook.jp-mod-commandMode",
       "keys": ["Shift Escape"],
-      "command": ""
+      "command": "vim:no-action"
     },
     {
       "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook:focus",

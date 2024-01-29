@@ -284,6 +284,14 @@ export function addNotebookCommands(
         }
       },
       isEnabled
+    }),
+    commands.addCommand('vim:no-action', {
+      label: 'Prevent Default Browser Action',
+      caption:
+        'Prevent default action for some keybindings (defined in the settings); for example Firefox binds Shift + Esc to its Process Manager which conflicts with the expected action in the vim mode.',
+      execute: args => {
+        // no-op
+      }
     })
   ];
   return addedCommands;
