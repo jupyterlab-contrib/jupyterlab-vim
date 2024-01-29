@@ -166,7 +166,7 @@ export function addNotebookCommands(
       isEnabled
     }),
     commands.addCommand('vim:leave-current-mode', {
-      label: 'Move Insert to Normal to Jupyter Command Mode"',
+      label: 'Move Insert to Normal to Jupyter Command Mode',
       execute: args => {
         const current = getCurrent(args);
 
