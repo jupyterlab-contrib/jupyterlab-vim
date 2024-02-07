@@ -2,6 +2,32 @@
 
 <!-- <START NEW CHANGELOG ENTRY> -->
 
+## 4.1.1
+
+This is the last release to support jupyterlab `< 4.1`  The next release will include: https://github.com/jupyterlab-contrib/jupyterlab-vim/pull/135
+
+([Full Changelog](https://github.com/jupyterlab-contrib/jupyterlab-vim/compare/v4.1.0...7977c429a45936ed13348f0c50a25d8507ce6fb9))
+
+### Enhancements made
+
+- Change `Ctrl + Enter` to render Markdown cells [#128](https://github.com/jupyterlab-contrib/jupyterlab-vim/pull/128) ([@firai](https://github.com/firai))
+
+### Bugs fixed
+
+- Fix empty command [#133](https://github.com/jupyterlab-contrib/jupyterlab-vim/pull/133) ([@krassowski](https://github.com/krassowski))
+
+### Documentation improvements
+
+- doc: add note about capitalization of map [#132](https://github.com/jupyterlab-contrib/jupyterlab-vim/pull/132) ([@ianhi](https://github.com/ianhi))
+
+### Contributors to this release
+
+([GitHub contributors page for this release](https://github.com/jupyterlab-contrib/jupyterlab-vim/graphs/contributors?from=2023-10-12&to=2024-02-07&type=c))
+
+[@firai](https://github.com/search?q=repo%3Ajupyterlab-contrib%2Fjupyterlab-vim+involves%3Afirai+updated%3A2023-10-12..2024-02-07&type=Issues) | [@github-actions](https://github.com/search?q=repo%3Ajupyterlab-contrib%2Fjupyterlab-vim+involves%3Agithub-actions+updated%3A2023-10-12..2024-02-07&type=Issues) | [@ianhi](https://github.com/search?q=repo%3Ajupyterlab-contrib%2Fjupyterlab-vim+involves%3Aianhi+updated%3A2023-10-12..2024-02-07&type=Issues) | [@krassowski](https://github.com/search?q=repo%3Ajupyterlab-contrib%2Fjupyterlab-vim+involves%3Akrassowski+updated%3A2023-10-12..2024-02-07&type=Issues)
+
+<!-- <END NEW CHANGELOG ENTRY> -->
+
 ## 4.1.0
 
 ([Full Changelog](https://github.com/jupyterlab-contrib/jupyterlab-vim/compare/v4.0.3...c8cc5febb0bcc419efb0b801108b97a946a71364))
@@ -29,8 +55,6 @@
 ([GitHub contributors page for this release](https://github.com/jupyterlab-contrib/jupyterlab-vim/graphs/contributors?from=2023-09-06&to=2023-10-12&type=c))
 
 [@firai](https://github.com/search?q=repo%3Ajupyterlab-contrib%2Fjupyterlab-vim+involves%3Afirai+updated%3A2023-09-06..2023-10-12&type=Issues) | [@github-actions](https://github.com/search?q=repo%3Ajupyterlab-contrib%2Fjupyterlab-vim+involves%3Agithub-actions+updated%3A2023-09-06..2023-10-12&type=Issues) | [@joelostblom](https://github.com/search?q=repo%3Ajupyterlab-contrib%2Fjupyterlab-vim+involves%3Ajoelostblom+updated%3A2023-09-06..2023-10-12&type=Issues) | [@krassowski](https://github.com/search?q=repo%3Ajupyterlab-contrib%2Fjupyterlab-vim+involves%3Akrassowski+updated%3A2023-09-06..2023-10-12&type=Issues)
-
-<!-- <END NEW CHANGELOG ENTRY> -->
 
 ## 4.0.3
 
