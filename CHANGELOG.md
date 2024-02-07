@@ -2,6 +2,23 @@
 
 <!-- <START NEW CHANGELOG ENTRY> -->
 
+## 4.1.2
+
+([Full Changelog](https://github.com/jupyterlab-contrib/jupyterlab-vim/compare/v4.1.1...5ed87b6c38fda4d0129ea18a43d137c60d286a9e))
+
+### Maintenance and upkeep improvements
+
+- Fix Prettier Issue [#136](https://github.com/jupyterlab-contrib/jupyterlab-vim/pull/136) ([@ianhi](https://github.com/ianhi))
+- Migrate shortcut selectors for JupyterLab 4.1+ [#135](https://github.com/jupyterlab-contrib/jupyterlab-vim/pull/135) ([@krassowski](https://github.com/krassowski))
+
+### Contributors to this release
+
+([GitHub contributors page for this release](https://github.com/jupyterlab-contrib/jupyterlab-vim/graphs/contributors?from=2024-02-07&to=2024-02-07&type=c))
+
+[@github-actions](https://github.com/search?q=repo%3Ajupyterlab-contrib%2Fjupyterlab-vim+involves%3Agithub-actions+updated%3A2024-02-07..2024-02-07&type=Issues) | [@ianhi](https://github.com/search?q=repo%3Ajupyterlab-contrib%2Fjupyterlab-vim+involves%3Aianhi+updated%3A2024-02-07..2024-02-07&type=Issues) | [@krassowski](https://github.com/search?q=repo%3Ajupyterlab-contrib%2Fjupyterlab-vim+involves%3Akrassowski+updated%3A2024-02-07..2024-02-07&type=Issues)
+
+<!-- <END NEW CHANGELOG ENTRY> -->
+
 ## 4.1.1
 
 This is the last release to support jupyterlab `< 4.1` The next release will include: https://github.com/jupyterlab-contrib/jupyterlab-vim/pull/135
@@ -25,8 +42,6 @@ This is the last release to support jupyterlab `< 4.1` The next release will inc
 ([GitHub contributors page for this release](https://github.com/jupyterlab-contrib/jupyterlab-vim/graphs/contributors?from=2023-10-12&to=2024-02-07&type=c))
 
 [@firai](https://github.com/search?q=repo%3Ajupyterlab-contrib%2Fjupyterlab-vim+involves%3Afirai+updated%3A2023-10-12..2024-02-07&type=Issues) | [@github-actions](https://github.com/search?q=repo%3Ajupyterlab-contrib%2Fjupyterlab-vim+involves%3Agithub-actions+updated%3A2023-10-12..2024-02-07&type=Issues) | [@ianhi](https://github.com/search?q=repo%3Ajupyterlab-contrib%2Fjupyterlab-vim+involves%3Aianhi+updated%3A2023-10-12..2024-02-07&type=Issues) | [@krassowski](https://github.com/search?q=repo%3Ajupyterlab-contrib%2Fjupyterlab-vim+involves%3Akrassowski+updated%3A2023-10-12..2024-02-07&type=Issues)
-
-<!-- <END NEW CHANGELOG ENTRY> -->
 
 ## 4.1.0
 
