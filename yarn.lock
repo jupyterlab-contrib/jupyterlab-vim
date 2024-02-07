@@ -31,7 +31,6 @@ __metadata:
     "@lumino/commands": ^2.0.1
     "@lumino/coreutils": ^2.0.0
     "@lumino/disposable": ^2.1.2
-    "@lumino/domutils": ^2.0.0
     "@replit/codemirror-vim": ^6.0.14
     "@types/codemirror": ^0.0.87
     "@types/json-schema": ^7.0.11

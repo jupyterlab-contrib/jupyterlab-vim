@@ -10,7 +10,6 @@ import {
 import { ReadonlyPartialJSONObject } from '@lumino/coreutils';
 
 import { IDisposable } from '@lumino/disposable';
-import { ElementExt } from '@lumino/domutils';
 
 export function addNotebookCommands(
   app: JupyterFrontEnd,
@@ -246,10 +245,8 @@ export function addNotebookCommands(
           content.activeCellIndex = 0;
           content.deselectAll();
           if (content.activeCell !== null) {
-            ElementExt.scrollIntoViewIfNeeded(
-              content.node,
-              content.activeCell.node
-            );
+            // note: using `scrollToItem` because `scrollToCell` changes mode (activate the cell)
+            content.scrollToItem(content.activeCellIndex, 'smart');
           }
         }
       },
@@ -265,10 +262,8 @@ export function addNotebookCommands(
           content.activeCellIndex = current.content.widgets.length - 1;
           content.deselectAll();
           if (content.activeCell !== null) {
-            ElementExt.scrollIntoViewIfNeeded(
-              content.node,
-              content.activeCell.node
-            );
+            // note: using `scrollToItem` because `scrollToCell` changes mode (activate the cell)
+            content.scrollToItem(content.activeCellIndex, 'smart');
           }
         }
       },
