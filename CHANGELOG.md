@@ -4,7 +4,7 @@
 
 ## 4.1.1
 
-This is the last release to support jupyterlab `< 4.1`  The next release will include: https://github.com/jupyterlab-contrib/jupyterlab-vim/pull/135
+This is the last release to support jupyterlab `< 4.1` The next release will include: https://github.com/jupyterlab-contrib/jupyterlab-vim/pull/135
 
 ([Full Changelog](https://github.com/jupyterlab-contrib/jupyterlab-vim/compare/v4.1.0...7977c429a45936ed13348f0c50a25d8507ce6fb9))
 
