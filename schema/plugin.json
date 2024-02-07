@@ -56,7 +56,7 @@
       "command": "notebook:extend-marked-cells-below"
     },
     {
-      "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook:focus",
+      "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook.jp-mod-commandMode :focus:not(:read-write)",
       "keys": ["Ctrl Shift J"],
       "command": "notebook:extend-marked-cells-below"
     },
@@ -66,7 +66,7 @@
       "command": "notebook:extend-marked-cells-above"
     },
     {
-      "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook:focus",
+      "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook.jp-mod-commandMode :focus:not(:read-write)",
       "keys": ["Ctrl Shift K"],
       "command": "notebook:extend-marked-cells-above"
     },
@@ -116,7 +116,7 @@
       "command": "vim:leave-current-mode"
     },
     {
-      "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook:focus",
+      "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook.jp-mod-commandMode :focus:not(:read-write)",
       "keys": ["Ctrl I"],
       "command": "vim:enter-insert-mode"
     },
@@ -141,7 +141,7 @@
       "command": "vim:no-action"
     },
     {
-      "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook:focus",
+      "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook.jp-mod-commandMode :focus:not(:read-write)",
       "keys": ["Shift M"],
       "command": "vim:merge-and-edit"
     },
@@ -171,82 +171,82 @@
       "command": "vim:select-last-cell"
     },
     {
-      "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook:focus",
+      "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook.jp-mod-commandMode :focus:not(:read-write)",
       "keys": ["G", "G"],
       "command": "vim:select-first-cell"
     },
     {
-      "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook:focus",
+      "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook.jp-mod-commandMode :focus:not(:read-write)",
       "keys": ["Shift G"],
       "command": "vim:select-last-cell"
     },
     {
-      "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook:focus",
+      "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook.jp-mod-commandMode :focus:not(:read-write)",
       "keys": ["Y", "Y"],
       "command": "notebook:copy-cell"
     },
     {
       "command": "notebook:cut-cell",
       "keys": ["D", "D"],
-      "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook:focus"
+      "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook.jp-mod-commandMode :focus:not(:read-write)"
     },
     {
-      "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook:focus",
+      "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook.jp-mod-commandMode :focus:not(:read-write)",
       "keys": ["Shift P"],
       "command": "notebook:paste-cell-above"
     },
     {
-      "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook:focus",
+      "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook.jp-mod-commandMode :focus:not(:read-write)",
       "keys": ["P"],
       "command": "notebook:paste-cell-below"
     },
     {
-      "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook:focus",
+      "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook.jp-mod-commandMode :focus:not(:read-write)",
       "keys": ["O"],
       "command": "notebook:insert-cell-below"
     },
     {
-      "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook:focus",
+      "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook.jp-mod-commandMode :focus:not(:read-write)",
       "keys": ["Shift O"],
       "command": "notebook:insert-cell-above"
     },
     {
-      "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook:focus",
+      "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook.jp-mod-commandMode :focus:not(:read-write)",
       "keys": ["U"],
       "command": "notebook:undo-cell-action"
     },
     {
-      "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook:focus",
+      "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook.jp-mod-commandMode :focus:not(:read-write)",
       "keys": ["Ctrl E"],
       "command": "notebook:move-cell-down"
     },
     {
-      "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook:focus",
+      "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook.jp-mod-commandMode :focus:not(:read-write)",
       "keys": ["Ctrl Y"],
       "command": "notebook:move-cell-up"
     },
     {
-      "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook:focus",
+      "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook.jp-mod-commandMode :focus:not(:read-write)",
       "keys": ["Z", "Z"],
       "command": "vim:center-cell"
     },
     {
-      "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook:focus",
+      "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook.jp-mod-commandMode :focus:not(:read-write)",
       "keys": ["Z", "C"],
       "command": "notebook:hide-cell-code"
     },
     {
-      "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook:focus",
+      "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook.jp-mod-commandMode :focus:not(:read-write)",
       "keys": ["Z", "O"],
       "command": "notebook:show-cell-code"
     },
     {
-      "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook:focus",
+      "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook.jp-mod-commandMode :focus:not(:read-write)",
       "keys": ["Z", "M"],
       "command": "notebook:hide-all-cell-code"
     },
     {
-      "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook:focus",
+      "selector": ".jp-NotebookPanel[data-jp-vim-mode='true'] .jp-Notebook.jp-mod-commandMode :focus:not(:read-write)",
       "keys": ["Z", "R"],
       "command": "notebook:show-all-cell-code"
     },
