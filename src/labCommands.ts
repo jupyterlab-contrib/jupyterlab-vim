@@ -237,7 +237,7 @@ export function addNotebookCommands(
     }),
     commands.addCommand('vim:select-first-cell', {
       label: 'Select First Cell',
-      execute: async (args) => {
+      execute: async args => {
         const current = getCurrent(args);
 
         if (current) {
@@ -255,7 +255,7 @@ export function addNotebookCommands(
     }),
     commands.addCommand('vim:select-last-cell', {
       label: 'Select Last Cell',
-      execute: async (args) => {
+      execute: async args => {
         const current = getCurrent(args);
 
         if (current) {
