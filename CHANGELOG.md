@@ -2,6 +2,22 @@
 
 <!-- <START NEW CHANGELOG ENTRY> -->
 
+## 4.1.3
+
+([Full Changelog](https://github.com/jupyterlab-contrib/jupyterlab-vim/compare/v4.1.2...7aa48c117212dd4eb7b5a828735d514265b7b4c9))
+
+### Bugs fixed
+
+- Fix scrolling on `g g` and `G` [#137](https://github.com/jupyterlab-contrib/jupyterlab-vim/pull/137) ([@krassowski](https://github.com/krassowski))
+
+### Contributors to this release
+
+([GitHub contributors page for this release](https://github.com/jupyterlab-contrib/jupyterlab-vim/graphs/contributors?from=2024-02-07&to=2024-02-08&type=c))
+
+[@krassowski](https://github.com/search?q=repo%3Ajupyterlab-contrib%2Fjupyterlab-vim+involves%3Akrassowski+updated%3A2024-02-07..2024-02-08&type=Issues)
+
+<!-- <END NEW CHANGELOG ENTRY> -->
+
 ## 4.1.2
 
 ([Full Changelog](https://github.com/jupyterlab-contrib/jupyterlab-vim/compare/v4.1.1...5ed87b6c38fda4d0129ea18a43d137c60d286a9e))
@@ -16,8 +32,6 @@
 ([GitHub contributors page for this release](https://github.com/jupyterlab-contrib/jupyterlab-vim/graphs/contributors?from=2024-02-07&to=2024-02-07&type=c))
 
 [@github-actions](https://github.com/search?q=repo%3Ajupyterlab-contrib%2Fjupyterlab-vim+involves%3Agithub-actions+updated%3A2024-02-07..2024-02-07&type=Issues) | [@ianhi](https://github.com/search?q=repo%3Ajupyterlab-contrib%2Fjupyterlab-vim+involves%3Aianhi+updated%3A2024-02-07..2024-02-07&type=Issues) | [@krassowski](https://github.com/search?q=repo%3Ajupyterlab-contrib%2Fjupyterlab-vim+involves%3Akrassowski+updated%3A2024-02-07..2024-02-07&type=Issues)
-
-<!-- <END NEW CHANGELOG ENTRY> -->
 
 ## 4.1.1
 
