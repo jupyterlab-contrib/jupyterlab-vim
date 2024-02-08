@@ -237,7 +237,7 @@ export function addNotebookCommands(
     }),
     commands.addCommand('vim:select-first-cell', {
       label: 'Select First Cell',
-      execute: args => {
+      execute: async (args) => {
         const current = getCurrent(args);
 
         if (current) {
@@ -246,7 +246,8 @@ export function addNotebookCommands(
           content.deselectAll();
           if (content.activeCell !== null) {
             // note: using `scrollToItem` because `scrollToCell` changes mode (activate the cell)
-            content.scrollToItem(content.activeCellIndex, 'smart');
+            await content.scrollToItem(content.activeCellIndex, 'smart');
+            content.activeCell.node.focus();
           }
         }
       },
@@ -254,7 +255,7 @@ export function addNotebookCommands(
     }),
     commands.addCommand('vim:select-last-cell', {
       label: 'Select Last Cell',
-      execute: args => {
+      execute: async (args) => {
         const current = getCurrent(args);
 
         if (current) {
@@ -262,8 +263,9 @@ export function addNotebookCommands(
           content.activeCellIndex = current.content.widgets.length - 1;
           content.deselectAll();
           if (content.activeCell !== null) {
-            // note: using `scrollToItem` because `scrollToCell` changes mode (activate the cell)
-            content.scrollToItem(content.activeCellIndex, 'smart');
+            // note: using `scrollToItem` because `scrollToCell` changes mode (activates the cell)
+            await content.scrollToItem(content.activeCellIndex, 'smart');
+            content.activeCell.node.focus();
           }
         }
       },
