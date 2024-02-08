@@ -10,7 +10,6 @@ import {
 import { ReadonlyPartialJSONObject } from '@lumino/coreutils';
 
 import { IDisposable } from '@lumino/disposable';
-import { ElementExt } from '@lumino/domutils';
 
 export function addNotebookCommands(
   app: JupyterFrontEnd,
@@ -238,7 +237,7 @@ export function addNotebookCommands(
     }),
     commands.addCommand('vim:select-first-cell', {
       label: 'Select First Cell',
-      execute: args => {
+      execute: async args => {
         const current = getCurrent(args);
 
         if (current) {
@@ -246,10 +245,9 @@ export function addNotebookCommands(
           content.activeCellIndex = 0;
           content.deselectAll();
           if (content.activeCell !== null) {
-            ElementExt.scrollIntoViewIfNeeded(
-              content.node,
-              content.activeCell.node
-            );
+            // note: using `scrollToItem` because `scrollToCell` changes mode (activate the cell)
+            await content.scrollToItem(content.activeCellIndex, 'smart');
+            content.activeCell.node.focus();
           }
         }
       },
@@ -257,7 +255,7 @@ export function addNotebookCommands(
     }),
     commands.addCommand('vim:select-last-cell', {
       label: 'Select Last Cell',
-      execute: args => {
+      execute: async args => {
         const current = getCurrent(args);
 
         if (current) {
@@ -265,10 +263,9 @@ export function addNotebookCommands(
           content.activeCellIndex = current.content.widgets.length - 1;
           content.deselectAll();
           if (content.activeCell !== null) {
-            ElementExt.scrollIntoViewIfNeeded(
-              content.node,
-              content.activeCell.node
-            );
+            // note: using `scrollToItem` because `scrollToCell` changes mode (activates the cell)
+            await content.scrollToItem(content.activeCellIndex, 'smart');
+            content.activeCell.node.focus();
           }
         }
       },
