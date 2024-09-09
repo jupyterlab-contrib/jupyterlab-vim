@@ -99,6 +99,7 @@ export class VimEditorManager {
         // we override `hasFocus` handler to ensure it is taken into account.
         const cm = getCM(view)!;
         cm.on('vim-mode-change', () => {
+          if (!cm.state.vim) return;
           editor.host.dataset.jpVimModeName = cm.state.vim.mode;
         });
         mirrorEditor.hasFocus = () => {

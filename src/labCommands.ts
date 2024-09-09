@@ -180,6 +180,7 @@ export function addNotebookCommands(
               return;
             }
             const vim = cm.state.vim;
+            if (!vim) return;
 
             // Get the current editor state
             if (
