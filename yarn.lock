@@ -13,14 +13,14 @@ __metadata:
     "@codemirror/search": ^6.5.6
     "@codemirror/state": ^6.4.1
     "@codemirror/view": ^6.26.0
-    "@jupyterlab/application": ^4.2.5
-    "@jupyterlab/builder": ^4.2.5
-    "@jupyterlab/cells": ^4.2.5
-    "@jupyterlab/codeeditor": ^4.2.5
-    "@jupyterlab/codemirror": ^4.2.5
-    "@jupyterlab/fileeditor": ^4.2.5
-    "@jupyterlab/notebook": ^4.2.5
-    "@jupyterlab/settingregistry": ^4.2.5
+    "@jupyterlab/application": ^4.2.0
+    "@jupyterlab/builder": ^4.2.0
+    "@jupyterlab/cells": ^4.2.0
+    "@jupyterlab/codeeditor": ^4.2.0
+    "@jupyterlab/codemirror": ^4.2.0
+    "@jupyterlab/fileeditor": ^4.2.0
+    "@jupyterlab/notebook": ^4.2.0
+    "@jupyterlab/settingregistry": ^4.2.0
     "@lumino/commands": ^2.0.1
     "@lumino/coreutils": ^2.0.0
     "@lumino/disposable": ^2.1.2
@@ -555,7 +555,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@jupyterlab/application@npm:^4.2.5":
+"@jupyterlab/application@npm:^4.2.0":
   version: 4.2.5
   resolution: "@jupyterlab/application@npm:4.2.5"
   dependencies:
@@ -626,7 +626,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@jupyterlab/builder@npm:^4.2.5":
+"@jupyterlab/builder@npm:^4.2.0":
   version: 4.2.5
   resolution: "@jupyterlab/builder@npm:4.2.5"
   dependencies:
@@ -667,7 +667,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@jupyterlab/cells@npm:^4.2.5":
+"@jupyterlab/cells@npm:^4.2.0, @jupyterlab/cells@npm:^4.2.5":
   version: 4.2.5
   resolution: "@jupyterlab/cells@npm:4.2.5"
   dependencies:
@@ -703,7 +703,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@jupyterlab/codeeditor@npm:^4.2.5":
+"@jupyterlab/codeeditor@npm:^4.2.0, @jupyterlab/codeeditor@npm:^4.2.5":
   version: 4.2.5
   resolution: "@jupyterlab/codeeditor@npm:4.2.5"
   dependencies:
@@ -727,7 +727,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@jupyterlab/codemirror@npm:^4.2.5":
+"@jupyterlab/codemirror@npm:^4.2.0, @jupyterlab/codemirror@npm:^4.2.5":
   version: 4.2.5
   resolution: "@jupyterlab/codemirror@npm:4.2.5"
   dependencies:
@@ -881,7 +881,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@jupyterlab/fileeditor@npm:^4.2.5":
+"@jupyterlab/fileeditor@npm:^4.2.0":
   version: 4.2.5
   resolution: "@jupyterlab/fileeditor@npm:4.2.5"
   dependencies:
@@ -939,7 +939,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@jupyterlab/notebook@npm:^4.2.5":
+"@jupyterlab/notebook@npm:^4.2.0":
   version: 4.2.5
   resolution: "@jupyterlab/notebook@npm:4.2.5"
   dependencies:
@@ -1061,7 +1061,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@jupyterlab/settingregistry@npm:^4.2.5":
+"@jupyterlab/settingregistry@npm:^4.2.0, @jupyterlab/settingregistry@npm:^4.2.5":
   version: 4.2.5
   resolution: "@jupyterlab/settingregistry@npm:4.2.5"
   dependencies:

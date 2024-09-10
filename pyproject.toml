@@ -22,7 +22,7 @@ classifiers = [
     "Programming Language :: Python :: 3.11",
 ]
 dependencies = [
-  "jupyterlab>=4.2.5,<5"
+  "jupyterlab>=4.2.0,<5"
 ]
 dynamic = ["version", "description", "authors", "urls", "keywords"]
 
@@ -67,7 +67,7 @@ version_cmd = "hatch version"
 
 [tool.jupyter-releaser.hooks]
 before-build-npm = [
-    "python -m pip install 'jupyterlab>=4.2.5,<5'",
+    "python -m pip install 'jupyterlab>=4.2.0,<5'",
     "jlpm",
     "jlpm build:prod"
 ]
