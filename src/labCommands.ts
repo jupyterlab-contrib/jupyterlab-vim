@@ -180,6 +180,10 @@ export function addNotebookCommands(
               return;
             }
             const vim = cm.state.vim;
+            if (!vim) {
+              console.error('CodeMirror vim state not found');
+              return;
+            }
 
             // Get the current editor state
             if (
