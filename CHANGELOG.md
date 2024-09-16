@@ -2,6 +2,23 @@
 
 <!-- <START NEW CHANGELOG ENTRY> -->
 
+## 4.1.4
+
+([Full Changelog](https://github.com/jupyterlab-contrib/jupyterlab-vim/compare/v4.1.3...e2d73f4ee2bee0999c6aee8667158b8c888bff12))
+
+### Maintenance and upkeep improvements
+
+- Update release workflows [#147](https://github.com/jupyterlab-contrib/jupyterlab-vim/pull/147) ([@krassowski](https://github.com/krassowski))
+- Update `codemirror-vim` to 6.2.1 and `jupyterlab` to 4.2.0 [#146](https://github.com/jupyterlab-contrib/jupyterlab-vim/pull/146) ([@firai](https://github.com/firai))
+
+### Contributors to this release
+
+([GitHub contributors page for this release](https://github.com/jupyterlab-contrib/jupyterlab-vim/graphs/contributors?from=2024-02-08&to=2024-09-16&type=c))
+
+[@firai](https://github.com/search?q=repo%3Ajupyterlab-contrib%2Fjupyterlab-vim+involves%3Afirai+updated%3A2024-02-08..2024-09-16&type=Issues) | [@github-actions](https://github.com/search?q=repo%3Ajupyterlab-contrib%2Fjupyterlab-vim+involves%3Agithub-actions+updated%3A2024-02-08..2024-09-16&type=Issues) | [@krassowski](https://github.com/search?q=repo%3Ajupyterlab-contrib%2Fjupyterlab-vim+involves%3Akrassowski+updated%3A2024-02-08..2024-09-16&type=Issues)
+
+<!-- <END NEW CHANGELOG ENTRY> -->
+
 ## 4.1.3
 
 ([Full Changelog](https://github.com/jupyterlab-contrib/jupyterlab-vim/compare/v4.1.2...7aa48c117212dd4eb7b5a828735d514265b7b4c9))
@@ -15,8 +32,6 @@
 ([GitHub contributors page for this release](https://github.com/jupyterlab-contrib/jupyterlab-vim/graphs/contributors?from=2024-02-07&to=2024-02-08&type=c))
 
 [@krassowski](https://github.com/search?q=repo%3Ajupyterlab-contrib%2Fjupyterlab-vim+involves%3Akrassowski+updated%3A2024-02-07..2024-02-08&type=Issues)
-
-<!-- <END NEW CHANGELOG ENTRY> -->
 
 ## 4.1.2
 
