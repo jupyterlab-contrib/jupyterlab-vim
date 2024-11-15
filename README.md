@@ -26,6 +26,8 @@ This extension combines the Jupyterlab (Edit and Command) modes with the standar
    - Normal
    - Visual
 
+See [key bindings for switching between modes](#switching-between-modes).
+
 ## Install
 
 ```bash
@@ -103,11 +105,20 @@ Shortcuts this extension introduces:
 | Z, M    | Hide All Code Cells |
 | Z, R    | Show All Code Cells |
 
-### Transition between modes
+### Switching between modes
 
-Note that there are three modes (Insert, Normal and Jupyter Command). The transition between them happens only with the key <kbd>ESC</kbd>, but you can enable a different transition from Normal mode to Jupyter Command mode.
-
-Go to _Setting / Settings Editor / Notebook Vim_ and unmark the option `Enable Esc and Ctrl-[ leaving vim Normal mode to Jupyter Command mode`. From now on, <kbd>ESC</kbd> will move you from Insert to Normal mode and <kbd>Shift</kbd>+<kbd>ESC</kbd> will move you from Normal to Jupyter Command mode.
+- From Command mode:
+   - To enter Normal mode from Command mode, press `Enter`.
+   - The extension blocks `Shift-Esc` from invoking browser commands, such as the browser task manager, by default. To disable the blocking behavior in Command mode, go to Settings menu → Settings Editor → Notebook Vim, and disable the "Override `Shift-Esc` browser shortcut in Jupyter Command mode" option.
+- From Normal mode:
+   - To leave Normal mode to Command mode, several options are available:
+      - `Shift-Esc`
+      - `Esc` or `Ctrl-[`, if the "Enable `Esc` and `Ctrl-[` leaving vim Normal mode to Jupyter Command mode" option is enabled (on by default). To disable the option, go to Settings menu → Settings Editor → Notebook Vim.
+   - To enter Insert mode from Normal mode, use one of the insert commmands, such as `i`, `I`, `a`, `A`, `o`, `O`, `c`, `C`, `s` or `S`.
+   - To enter Visual Mode from Normal mode, use one of the visual commands, such as `v`, `V` or `Ctrl-V`.
+- From Insert or Visual modes:
+   - To leave Insert or Visual modes to Normal Mode, press `Esc` or `Ctrl-[`.
+   - To leave Insert or Visual modes to Command Mode, press `Shift-Esc`.
 
 ## Special Thanks
 
