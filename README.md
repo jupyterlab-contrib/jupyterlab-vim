@@ -108,17 +108,17 @@ Shortcuts this extension introduces:
 ### Switching between modes
 
 - From Command mode:
-  - To enter Normal mode from Command mode, press `Enter`.
-  - The extension blocks `Shift-Esc` from invoking browser commands, such as the browser task manager, by default. To disable the blocking behavior in Command mode, go to Settings menu → Settings Editor → Notebook Vim, and disable the "Override `Shift-Esc` browser shortcut in Jupyter Command mode" option.
+  - To enter Normal mode from Command mode, press <kbd>Enter</kbd>.
+  - The extension blocks <kbd>Shift</kbd>+<kbd>Esc</kbd> from invoking browser commands, such as the browser task manager, by default. To disable the blocking behavior in Command mode, go to Settings menu → Settings Editor → Notebook Vim, and disable the "Override `Shift-Esc` browser shortcut in Jupyter Command mode" option.
 - From Normal mode:
   - To leave Normal mode to Command mode, several options are available:
-    - `Shift-Esc`
-    - `Esc` or `Ctrl-[`, if the "Enable `Esc` and `Ctrl-[` leaving vim Normal mode to Jupyter Command mode" option is enabled (on by default). To disable the option, go to Settings menu → Settings Editor → Notebook Vim.
-  - To enter Insert mode from Normal mode, use one of the insert commmands, such as `i`, `I`, `a`, `A`, `o`, `O`, `c`, `C`, `s` or `S`.
-  - To enter Visual Mode from Normal mode, use one of the visual commands, such as `v`, `V` or `Ctrl-V`.
+    - <kbd>Shift</kbd>+<kbd>Esc</kbd>
+    - <kbd>Esc</kbd> or <kbd>Ctrl</kbd>+<kbd>[</kbd>, if the "Enable `Esc` and `Ctrl-[` leaving vim Normal mode to Jupyter Command mode" option is enabled (on by default). To disable the option, go to Settings menu → Settings Editor → Notebook Vim.
+  - To enter Insert mode from Normal mode, use one of the insert commmands, such as <kbd>i</kbd>, <kbd>I</kbd>, <kbd>a</kbd>, <kbd>A</kbd>, <kbd>o</kbd>, <kbd>O</kbd>, <kbd>c</kbd>, <kbd>C</kbd>, <kbd>s</kbd> or <kbd>S</kbd>.
+  - To enter Visual Mode from Normal mode, use one of the visual commands, such as <kbd>v</kbd>, <kbd>V</kbd> or <kbd>Ctrl</kbd>+<kbd>V</kbd>.
 - From Insert or Visual modes:
-  - To leave Insert or Visual modes to Normal Mode, press `Esc` or `Ctrl-[`.
-  - To leave Insert or Visual modes to Command Mode, press `Shift-Esc`.
+  - To leave Insert or Visual modes to Normal Mode, press <kbd>Esc</kbd> or <kbd>Ctrl</kbd>+<kbd>[</kbd>.
+  - To leave Insert or Visual modes to Command Mode, press <kbd>Shift</kbd>+<kbd>Esc</kbd>.
 
 ## Special Thanks
 
