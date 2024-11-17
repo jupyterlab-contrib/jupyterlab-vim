@@ -16,14 +16,14 @@ Notebook cell vim bindings
 
 ## Modes
 
-Like vim, Jupyterlab has a distinction between edit mode and command mode. Jupyterlab Command mode is when the cursor is not in a specific cell, and edit mode when typing in a cell.
+Like vim, Jupyterlab has a distinction between Edit mode and Command mode. Jupyterlab is in Command mode when the cursor is not in a specific cell, and it is in Edit mode when typing in a cell.
 
-This extension combines the Jupyterlab (Edit and Command) modes with the standard vim modes (Normal, Insert, Visual). So the set of modes now looks like:
+This extension combines the Jupyterlab (Edit and Command) modes with the standard vim modes (Normal, Insert and Visual). So the set of modes now looks like:
 
-1. Jupyterlab Command Mode
-2. Jupyterlab Edit Mode
-   - Insert
+1. Jupyterlab Command mode
+2. Jupyterlab Edit mode
    - Normal
+   - Insert
    - Visual
 
 See [key bindings for switching between modes](#switching-between-modes).
@@ -44,45 +44,45 @@ mamba install -c conda-forge jupyterlab_vim
 
 To learn how to modify key bindings see the [modify-keybinds.md](modify-keybinds.md) file.
 
-**Please note that all keys are lowercase unless `Shift` is explicitly indicated.**
-For example, `Y, Y` is two lowercase `y`s, `Shift-Y, Y` is one uppercase `Y` followed by a lowercase `y`.
+**Please note that all keys are lowercase unless <kbd>Shift</kbd> is explicitly indicated.**
+For example, <kbd>Y, Y</kbd> is two lowercase <kbd>y</kbd>s, and <kbd>Shift-Y, Y</kbd> is one uppercase <kbd>Y</kbd> followed by a lowercase <kbd>y</kbd>.
 
-Shortcuts this extension introduces:
+Shortcuts that this extension introduces:
 
 ### Vim Ex commands
 
 | Command  | Action                     |
 | -------- | -------------------------- |
 | :w[rite] | Save Notebook              |
-| :q[uit]  | Enter Jupyter command mode |
+| :q[uit]  | Enter Jupyter Command Mode |
 
 ### Vim command bindings
 
-| Chord           | Action                    |
-| --------------- | ------------------------- |
-| Ctrl-O, U       | Undo Cell Action          |
-| -               | Split Cell at Cursor      |
-| Ctrl-O, -       | Split Cell at Cursor      |
-| Ctrl-O, D       | Cut Cell                  |
-| Ctrl-O, Y       | Copy Cell                 |
-| Ctrl-O, P       | Paste Cell                |
-| Ctrl-Shift-J    | Extend Marked Cells Below |
-| Ctrl-Shift-K    | Extend Marked Cells Above |
-| Ctrl-O, O       | Insert Cell Below         |
-| Ctrl-O, Ctrl-O  | Insert Cell Above         |
-| Ctrl-J          | Select Cell Below         |
-| Ctrl-K          | Select Cell Above         |
-| Ctrl-O, G       | Select First Cell         |
-| Ctrl-O, Ctrl-G  | Select Last Cell          |
-| Ctrl-E          | Move Cell Down            |
-| Ctrl-Y          | Move Cell Up              |
-| Ctrl-O, Z, Z    | Center Cell               |
-| Ctrl-G          | Show Tooltip              |
-| Command/Ctrl-1  | Code Cell Mode            |
-| Command/Ctrl-2  | Markdown Cell Mode        |
-| Command/Ctrl-3  | Raw Cell Mode             |
-| Shift-Escape    | Leave Vim Mode            |
-| Escape, Ctrl-\[ | Exit Vim Insert Mode      |
+| Chord          | Action                    |
+| -------------- | ------------------------- |
+| Ctrl-O, U      | Undo Cell Action          |
+| -              | Split Cell at Cursor      |
+| Ctrl-O, -      | Split Cell at Cursor      |
+| Ctrl-O, D      | Cut Cell                  |
+| Ctrl-O, Y      | Copy Cell                 |
+| Ctrl-O, P      | Paste Cell                |
+| Ctrl-Shift-J   | Extend Marked Cells Below |
+| Ctrl-Shift-K   | Extend Marked Cells Above |
+| Ctrl-O, O      | Insert Cell Below         |
+| Ctrl-O, Ctrl-O | Insert Cell Above         |
+| Ctrl-J         | Select Cell Below         |
+| Ctrl-K         | Select Cell Above         |
+| Ctrl-O, G      | Select First Cell         |
+| Ctrl-O, Ctrl-G | Select Last Cell          |
+| Ctrl-E         | Move Cell Down            |
+| Ctrl-Y         | Move Cell Up              |
+| Ctrl-O, Z, Z   | Center Cell               |
+| Ctrl-G         | Show Tooltip              |
+| Command/Ctrl-1 | Code Cell Mode            |
+| Command/Ctrl-2 | Markdown Cell Mode        |
+| Command/Ctrl-3 | Raw Cell Mode             |
+| Shift-Esc      | Exit to Command Mode      |
+| Esc or Ctrl-\[ | Exit Current Mode        |
 
 ### Jupyter command bindings
 
@@ -115,10 +115,10 @@ Shortcuts this extension introduces:
     - <kbd>Shift</kbd>+<kbd>Esc</kbd>
     - <kbd>Esc</kbd> or <kbd>Ctrl</kbd>+<kbd>[</kbd>, if the "Enable `Esc` and `Ctrl-[` leaving vim Normal mode to Jupyter Command mode" option is enabled (on by default). To disable the option, go to Settings menu → Settings Editor → Notebook Vim.
   - To enter Insert mode from Normal mode, use one of the insert commmands, such as <kbd>i</kbd>, <kbd>I</kbd>, <kbd>a</kbd>, <kbd>A</kbd>, <kbd>o</kbd>, <kbd>O</kbd>, <kbd>c</kbd>, <kbd>C</kbd>, <kbd>s</kbd> or <kbd>S</kbd>.
-  - To enter Visual Mode from Normal mode, use one of the visual commands, such as <kbd>v</kbd>, <kbd>V</kbd> or <kbd>Ctrl</kbd>+<kbd>V</kbd>.
-- From Insert or Visual modes:
-  - To leave Insert or Visual modes to Normal Mode, press <kbd>Esc</kbd> or <kbd>Ctrl</kbd>+<kbd>[</kbd>.
-  - To leave Insert or Visual modes to Command Mode, press <kbd>Shift</kbd>+<kbd>Esc</kbd>.
+  - To enter Visual mode from Normal mode, use one of the visual commands, such as <kbd>v</kbd>, <kbd>V</kbd> or <kbd>Ctrl</kbd>+<kbd>V</kbd>.
+- From Insert or Visual mode:
+  - To leave Insert or Visual mode to Normal mode, press <kbd>Esc</kbd> or <kbd>Ctrl</kbd>+<kbd>[</kbd>.
+  - To leave Insert or Visual mode to Command mode, press <kbd>Shift</kbd>+<kbd>Esc</kbd>.
 
 ## Special Thanks
 
