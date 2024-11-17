@@ -82,7 +82,7 @@ Shortcuts that this extension introduces:
 | Command/Ctrl-2 | Markdown Cell Mode        |
 | Command/Ctrl-3 | Raw Cell Mode             |
 | Shift-Esc      | Exit to Command Mode      |
-| Esc or Ctrl-\[ | Exit Current Mode        |
+| Esc or Ctrl-\[ | Exit Current Mode         |
 
 ### Jupyter command bindings
 
