@@ -45,7 +45,7 @@ mamba install -c conda-forge jupyterlab_vim
 To learn how to modify key bindings see the [modify-keybinds.md](modify-keybinds.md) file.
 
 **Please note that all keys are lowercase unless <kbd>Shift</kbd> is explicitly indicated.**
-For example, <kbd>Y, Y</kbd> is two lowercase <kbd>y</kbd>s, and <kbd>Shift-Y, Y</kbd> is one uppercase <kbd>Y</kbd> followed by a lowercase <kbd>y</kbd>.
+For example, `Y, Y` means press lowercase <kbd>y</kbd> twice, while `Shift-Y, Y` means press <kbd>Shift</kbd>+<kbd>y</kbd> followed by a lowercase <kbd>y</kbd>.
 
 Shortcuts that this extension introduces:
 
@@ -78,9 +78,9 @@ Shortcuts that this extension introduces:
 | Ctrl-Y         | Move Cell Up              |
 | Ctrl-O, Z, Z   | Center Cell               |
 | Ctrl-G         | Show Tooltip              |
-| Command/Ctrl-1 | Code Cell Mode            |
-| Command/Ctrl-2 | Markdown Cell Mode        |
-| Command/Ctrl-3 | Raw Cell Mode             |
+| Cmd/Ctrl-1     | Change to Code Cell       |
+| Cmd/Ctrl-2     | Change to Markdown Cell   |
+| Cmd/Ctrl-3     | Change to Raw Cell        |
 | Shift-Esc      | Exit to Command Mode      |
 | Esc or Ctrl-\[ | Exit Current Mode         |
 
@@ -114,8 +114,8 @@ Shortcuts that this extension introduces:
   - To leave Normal mode to Command mode, several options are available:
     - <kbd>Shift</kbd>+<kbd>Esc</kbd>
     - <kbd>Esc</kbd> or <kbd>Ctrl</kbd>+<kbd>[</kbd>, if the "Enable `Esc` and `Ctrl-[` leaving vim Normal mode to Jupyter Command mode" option is enabled (on by default). To disable the option, go to Settings menu → Settings Editor → Notebook Vim.
-  - To enter Insert mode from Normal mode, use one of the insert commmands, such as <kbd>i</kbd>, <kbd>I</kbd>, <kbd>a</kbd>, <kbd>A</kbd>, <kbd>o</kbd>, <kbd>O</kbd>, <kbd>c</kbd>, <kbd>C</kbd>, <kbd>s</kbd> or <kbd>S</kbd>.
-  - To enter Visual mode from Normal mode, use one of the visual commands, such as <kbd>v</kbd>, <kbd>V</kbd> or <kbd>Ctrl</kbd>+<kbd>V</kbd>.
+  - To enter Insert mode from Normal mode, use one of the insert commmands, such as <kbd>i</kbd>, <kbd>Shift</kbd>+<kbd>i</kbd>, <kbd>a</kbd>, <kbd>Shift</kbd>+<kbd>a</kbd>, <kbd>o</kbd>, <kbd>Shift</kbd>+<kbd>o</kbd>, <kbd>c</kbd>, <kbd>Shift</kbd>+<kbd>c</kbd>, <kbd>s</kbd> or <kbd>Shift</kbd>+<kbd>s</kbd>.
+  - To enter Visual mode from Normal mode, use one of the visual commands, such as <kbd>v</kbd>, <kbd>Shift</kbd>+<kbd>v</kbd> or <kbd>Ctrl</kbd>+<kbd>v</kbd>.
 - From Insert or Visual mode:
   - To leave Insert or Visual mode to Normal mode, press <kbd>Esc</kbd> or <kbd>Ctrl</kbd>+<kbd>[</kbd>.
   - To leave Insert or Visual mode to Command mode, press <kbd>Shift</kbd>+<kbd>Esc</kbd>.
