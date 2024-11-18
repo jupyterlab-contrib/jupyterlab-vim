@@ -60,22 +60,22 @@ Shortcuts that this extension introduces:
 
 | Chord          | Action                    |
 | -------------- | ------------------------- |
-| Ctrl-O, U      | Undo Cell Action          |
 | -              | Split Cell at Cursor      |
 | Ctrl-O, -      | Split Cell at Cursor      |
-| Ctrl-O, D      | Cut Cell                  |
-| Ctrl-O, Y      | Copy Cell                 |
-| Ctrl-O, P      | Paste Cell                |
 | Ctrl-Shift-J   | Extend Marked Cells Below |
 | Ctrl-Shift-K   | Extend Marked Cells Above |
-| Ctrl-O, O      | Insert Cell Below         |
-| Ctrl-O, Ctrl-O | Insert Cell Above         |
 | Ctrl-J         | Select Cell Below         |
 | Ctrl-K         | Select Cell Above         |
 | Ctrl-O, G      | Select First Cell         |
 | Ctrl-O, Ctrl-G | Select Last Cell          |
+| Ctrl-O, O      | Insert Cell Below         |
+| Ctrl-O, Ctrl-O | Insert Cell Above         |
+| Ctrl-O, D      | Delete (Cut) Cell         |
+| Ctrl-O, Y      | Yank (Copy) Cell          |
+| Ctrl-O, P      | Paste Cell Below          |
 | Ctrl-E         | Move Cell Down            |
 | Ctrl-Y         | Move Cell Up              |
+| Ctrl-O, U      | Undo Cell Action          |
 | Ctrl-O, Z, Z   | Center Cell               |
 | Ctrl-G         | Show Tooltip              |
 | Cmd/Ctrl-1     | Change to Code Cell       |
@@ -90,15 +90,15 @@ Shortcuts that this extension introduces:
 | ------- | ------------------- |
 | G, G    | Select First Cell   |
 | Shift-G | Select Last Cell    |
-| D, D    | Delete Cell         |
-| Y, Y    | Yank (Copy) Cell    |
-| P       | Paste Cell          |
-| Shift-P | Paste Cell Above    |
-| O       | Insert Cell         |
+| O       | Insert Cell Below   |
 | Shift-O | Insert Cell Above   |
-| U       | Undo Cell Action    |
+| D, D    | Delete (Cut) Cell   |
+| Y, Y    | Yank (Copy) Cell    |
+| P       | Paste Cell Below    |
+| Shift-P | Paste Cell Above    |
 | Ctrl-E  | Move Cells Down     |
 | Ctrl-Y  | Move Cells Up       |
+| U       | Undo Cell Action    |
 | Z, Z    | Center Cell         |
 | Z, C    | Hide Code Cell      |
 | Z, O    | Show Code Cell      |
