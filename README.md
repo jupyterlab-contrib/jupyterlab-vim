@@ -45,7 +45,7 @@ mamba install -c conda-forge jupyterlab_vim
 To learn how to modify key bindings see the [modify-keybinds.md](modify-keybinds.md) file.
 
 **Please note that all keys are lowercase unless <kbd>Shift</kbd> is explicitly indicated.**
-For example, `Y, Y` means press lowercase <kbd>y</kbd> twice, while `Shift-Y, Y` means press <kbd>Shift</kbd>+<kbd>y</kbd> followed by a lowercase <kbd>y</kbd>.
+For example, "<kbd>Y</kbd>, <kbd>Y</kbd>" means pressing lowercase <kbd>y</kbd> twice, while "<kbd>Shift-Y</kbd>, <kbd>Y</kbd>" means pressing <kbd>Shift</kbd>+<kbd>y</kbd> followed by a lowercase <kbd>y</kbd>.
 
 Shortcuts that this extension introduces:
 
@@ -56,9 +56,9 @@ Shortcuts that this extension introduces:
 | :w[rite] | Save Notebook              |
 | :q[uit]  | Enter Jupyter Command Mode |
 
-### Vim command bindings
+### Vim (Jupyter Edit mode) bindings
 
-| Chord          | Action                    |
+| Shortcut       | Action                    |
 | -------------- | ------------------------- |
 | -              | Split Cell at Cursor      |
 | Ctrl-O, -      | Split Cell at Cursor      |
@@ -84,26 +84,26 @@ Shortcuts that this extension introduces:
 | Shift-Esc      | Exit to Command Mode      |
 | Esc or Ctrl-\[ | Exit Current Mode         |
 
-### Jupyter command bindings
+### Jupyter Command mode bindings
 
-| Chord   | Action              |
-| ------- | ------------------- |
-| G, G    | Select First Cell   |
-| Shift-G | Select Last Cell    |
-| O       | Insert Cell Below   |
-| Shift-O | Insert Cell Above   |
-| D, D    | Delete (Cut) Cell   |
-| Y, Y    | Yank (Copy) Cell    |
-| P       | Paste Cell Below    |
-| Shift-P | Paste Cell Above    |
-| Ctrl-E  | Move Cells Down     |
-| Ctrl-Y  | Move Cells Up       |
-| U       | Undo Cell Action    |
-| Z, Z    | Center Cell         |
-| Z, C    | Hide Code Cell      |
-| Z, O    | Show Code Cell      |
-| Z, M    | Hide All Code Cells |
-| Z, R    | Show All Code Cells |
+| Shortcut | Action              |
+| -------- | ------------------- |
+| G, G     | Select First Cell   |
+| Shift-G  | Select Last Cell    |
+| O        | Insert Cell Below   |
+| Shift-O  | Insert Cell Above   |
+| D, D     | Delete (Cut) Cell   |
+| Y, Y     | Yank (Copy) Cell    |
+| P        | Paste Cell Below    |
+| Shift-P  | Paste Cell Above    |
+| Ctrl-E   | Move Cells Down     |
+| Ctrl-Y   | Move Cells Up       |
+| U        | Undo Cell Action    |
+| Z, Z     | Center Cell         |
+| Z, C     | Hide Code Cell      |
+| Z, O     | Show Code Cell      |
+| Z, M     | Hide All Code Cells |
+| Z, R     | Show All Code Cells |
 
 ### Switching between modes
 
