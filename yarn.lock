@@ -24,7 +24,7 @@ __metadata:
     "@lumino/commands": ^2.0.1
     "@lumino/coreutils": ^2.0.0
     "@lumino/disposable": ^2.1.2
-    "@replit/codemirror-vim": ^6.2.1
+    "@replit/codemirror-vim": ^6.3.0
     "@types/codemirror": ^0.0.87
     "@types/json-schema": ^7.0.11
     "@types/react": ^18.0.26
@@ -1570,16 +1570,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@replit/codemirror-vim@npm:^6.2.1":
-  version: 6.2.1
-  resolution: "@replit/codemirror-vim@npm:6.2.1"
+"@replit/codemirror-vim@npm:^6.3.0":
+  version: 6.3.0
+  resolution: "@replit/codemirror-vim@npm:6.3.0"
   peerDependencies:
-    "@codemirror/commands": ^6.0.0
-    "@codemirror/language": ^6.1.0
-    "@codemirror/search": ^6.2.0
-    "@codemirror/state": ^6.0.1
-    "@codemirror/view": ^6.0.3
-  checksum: 95e25cd1fa18a90f44c606744d2f7979e44f90e5c3ffb9f28f26c34e2cb0b5fb6d91563e4e2fa60cd0e84d06e1e50bd9c9197558ee404d473c8bb134d5833bde
+    "@codemirror/commands": 6.x.x
+    "@codemirror/language": 6.x.x
+    "@codemirror/search": 6.x.x
+    "@codemirror/state": 6.x.x
+    "@codemirror/view": 6.x.x
+  checksum: a6ed7be14cb5617f32ed195ca1c0cea4ab81ed9faf37d7ccbdf420aa973a6000cb8715c838fe52abf4b3d01e151daccb7d6af593b990fca015618e3abd4b99ca
   languageName: node
   linkType: hard
 
