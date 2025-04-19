@@ -67,7 +67,7 @@
         "@lumino/commands": "^2.0.1",
         "@lumino/coreutils": "^2.0.0",
         "@lumino/disposable": "^2.1.2",
-        "@replit/codemirror-vim": "^6.2.1",
+        "@replit/codemirror-vim": "^6.3.0",
         "react": "^18.2.0"
     },
     "devDependencies": {
